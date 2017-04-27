@@ -1,0 +1,121 @@
+<style>
+.web-cam {
+	width: 99%;
+    height: 85%;
+    /*border-radius: 100%;*/
+    position: relative;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+}
+.webCamera {
+    width: 100%;
+    height: 100%;
+    border-radius: 150px;
+    position: relative;
+}
+
+video {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.webCamera > video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.remoteCameraDiv {
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    margin-left: 15px;
+    /*position: absolute; top: 60%; left: 50%; transform: translate(-50%, -60%);*/
+}
+.localCameraDiv {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #E33539;
+    background-color: blanchedalmond;
+    /*position: relative; top: 50%; left: 50%; transform: translate(-50%, -55%);*/
+}
+
+.icon-on {
+    color: RoyalBlue;
+    aria-hidden: true;
+
+}
+
+.icon-off {
+    color: grey;
+    aria-hidden: true;
+
+}
+@media (max-width: 1200px) {
+    .web-cam {
+        width: 99%;
+        height: 85%;
+        /*border-radius: 100%;*/
+        position: relative;
+        -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+        /*-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);*/
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .remoteCameraDiv {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        /*position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%);*/
+    }
+    .localCameraDiv {
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #E33539;
+        background-color: blanchedalmond;
+        /*position: relative; top: 50%; left: 50%; transform: translate(-50%, -70%);*/
+    }
+}
+</style>
+<div class="row" style="height: 100%; padding: 0px; position: relative;">
+        <div style="position: absolute;color: #3a3c42;font-weight: bold;bottom: 0;left: 30px;z-index: 90;width: 160px;height: 160px;">
+            <!-- {{localParty.title}} -->
+            <div class="localCameraDiv" style="border-bottom-color: blanchedalmond">
+                <div align=center class="web-cam">
+                    <video id="localCamera" autoplay muted></video>
+                </div>
+                <div style="position: relative;">
+                <span ng-click="toggleAudio()" class="fa fa-microphone" ng-class="audio?'icon-on':'icon-off'" ng-init="audio=true"></span>&nbsp;
+                <span ng-click="toggleVideo()" class="fa fa-camera" ng-class="video?'icon-on':'icon-off'" ng-init="video=true"></span>
+                
+                </div>
+            </div>
+        </div>
+        <div class="remoteCameraDiv" style="background-color:#e0e0e0">
+            <div style="position:absolute; top:5%; left:40%" align=center ng-show="!isStarted">
+                <div class="row"><img src="assets/images/interview/placeholder_avatar.jpg" style="max-height: 60vh;"></div>
+                <div class="row">
+                    <span>{{remoteParty.name}}</span>
+                </div>
+            </div>
+            <div align=center class="webCamera">
+                <video id="remoteCamera" autoplay style="width:100%"></video>
+            </div>
+        </div>
+</div>

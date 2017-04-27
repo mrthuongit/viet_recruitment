@@ -1,0 +1,20 @@
+<script type="text/ng-template" id="modalPremiumSuggestView.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{"notification"
+                                | translate}}</h3>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <p>
+            {{"customerServiceMsg_01" | translate}}
+            <a href="https://vietinterview.com/#/price" target="_blank">{{"customerServiceMsg_02" | translate}}.</a>
+            {{"customerServiceMsg_03" | translate}}
+        </p>
+        <p>Phone: <a href="tel:0466629448">0466.629.448</a></p>
+        <p>Email: <a href="mailto:info@vietinterview.com" target="_top">info@vietinterview.com</a></p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="cancel()">{{"login.close" | translate}}</button>
+    </div>
+</script>

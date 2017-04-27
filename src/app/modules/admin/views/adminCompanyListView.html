@@ -1,0 +1,67 @@
+<div ng-include src="'app/modules/admin/views/main.html'"></div>
+<div class="body-info-admin" id="marginfrom">   
+  <h2 align="center">Company</h2>
+  <div class="table-responsive">
+    
+    <div ng-if="userAdmin.role == 'admin'" align="right" style="float: right;margin-right: 15px; font-weight: 500; cursor: pointer;">
+      <a ng-click="newCompany()">
+        <img src="assets/images/add.gif" border="0" alt="New Company">&nbsp;Add
+      </a>
+    </div>
+    <form class="form-inline">
+      <div class="form-group">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" ng-model="searchText" class="form-control" placeholder="Search" ng-change="setSearch()" style="width:300px; margin-bottom: 5px;">
+      </div>
+    </form>
+    <table  class="table table-striped">
+      <thead>
+        <tr style="border-bottom: 2px solid rgb(6,122,171); color: rgb(30,140,180);">
+          <th >#</th>
+          <th >Title</th>
+          <th >License</th>
+          <th style="text-align: center">Email Used</th>
+          <th style="text-align: center">Point</th>
+          <th >Expire date</th>
+          <th ng-if="userAdmin.role == 'admin'" ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="company in companyList | filter: searchText">
+          <td>{{$index + (currPage - 1)*itemsPerPage + 1}}</td>
+          <td>{{company.name}}</td>
+          <td>{{company.license}}</td>
+          <td style="text-align: center">{{company.statisticEmail}}</td>
+          <td style="text-align: center">{{company.statisticPoint}}</td>
+          <td>{{company.licenseExpire | date: formatDate}}</td>
+          <td ng-if="userAdmin.role == 'admin'" ng-click="editCompany(company)"><a aria-hidden="true"><img src="assets/images/edit.gif" border="0" alt="Edit Company"></a></td>
+        </tr>   
+      </tbody>
+    </table>
+    
+    <div align="right" style="font-size: 14px;">
+      {{"employer.assignment.choosepage" | translate}}
+      <select name="pageOptions"
+          ng-options="option.name | translate for option in pageOptions.availableOptions track by option.value"
+          ng-model="pageOptions.selectedOption"
+          ng-change="changeItemsPerPage(pageOptions.selectedOption)"></select>
+      {{"employer.assignment.onepage" | translate}}
+      <br>
+      <ul class="pagination"
+        uib-pagination
+        total-items="totalCompanys"
+        ng-model="currPage"
+        max-size="maxSize"
+        items-per-page="itemsPerPage"
+        num-pages="numPages"
+        first-text = "&laquo;"
+        last-text = "&raquo;"
+        previous-text = "&lsaquo;"
+        next-text = "&rsaquo;"
+        ng-change = "changePage(currPage)"
+        boundary-links="true"
+        force-ellipses="true"></ul>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<style type="text/css">
+	html {
+        position: relative;
+        min-height: 100%;
+    }
+div.jumbotron {
+      / Margin bottom by footer height /
+      min-height: 100%;
+      margin-bottom: 40px;
+      z-index: 90;
+    }
+</style>
+<div class="jumbotron" ng-controller="QuizThankyouController" >
+	<div style="padding: 20px" align=center>
+		<img class="img-responsive" border="0" alt="Viet Interview" src="assets/images/logow.png" style="width: 60%">
+	</div>
+	<div align=center>
+		<video style="width: 400px; border-width: 3px; border-style: solid; border-color: #B0C4DE;" ng-if="interview.exitUrl" controls autoplay id="webcam" src={{interview.exitUrl|trusted}}></video>
+		<p >{{"interview.thankyou" | translate}}</p>
+	</div>
+</div>
+
+<div class="footer-interview">
+<p align=center>&copy; Thanh Cong A Chau JSC 2016</p>
+</div>

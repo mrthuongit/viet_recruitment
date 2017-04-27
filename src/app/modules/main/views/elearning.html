@@ -1,0 +1,188 @@
+<link rel="stylesheet" href="assets/cssmain/style.css">
+<style type="text/css">
+	.iconsign .titleicon {
+		font-size: 19px;
+		font-weight: 600;
+    text-transform: capitalize;
+    width: 100%;
+	}
+  .size21 {
+    font-size: 19px;
+  }
+  .iconsign .iconp {
+    width: 90%;
+    text-align: justify;
+  }
+  p.size20 {
+    font-size: 18px;
+  }
+  div.imgvideo > a {
+    position: absolute; z-index: 100; top: 39%; right: 37%;
+  }
+  div.imgvideo > a > img {
+    width: 100px;
+  }
+  @media (max-width: 1280px) {
+    div.imgvideo > a > img {
+      width: 80px;
+    }
+  }
+  @media (max-width: 995px) {
+    div.imgvideo > a > img {
+      width: 150px;
+    }
+  }
+  @media (max-width: 800px) {
+    div.imgvideo > a > img {
+      width: 100px;
+    }
+  }
+  @media (max-width: 600px) {
+    div.imgvideo > a > img {
+      width: 70px;
+    }
+  }
+  @media (max-width: 420px) {
+    div.imgvideo > a > img {
+      width: 50px;
+    }
+  }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div id="elearning">
+	<section class="bge">
+        <div class="container-fluid">
+            <div class="row" style="margin-top: 0%;margin-bottom: 0px;">
+                <div class="cold-md-12">
+                    <div class="etitle" style="padding-top: 7%;">
+                        <h1 style="text-transform: uppercase; text-shadow: 2px 2px 2px #ccc;">{{"elearning.title" | translate}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container econtent">
+            <div class="row">
+              <div class="col-md-6" style="text-align: justify;">
+                <h3 style="color: black; text-transform: uppercase;">
+                  {{"elearning.intro" | translate}}
+                </h3>
+                <p style="color: black" class="size21">
+                {{"elearning.intro.t1" | translate}}
+                <br>
+                {{"elearning.intro.t2" | translate}}
+                <br>
+                {{"elearning.intro.t3" | translate}}
+                </p>
+              </div>
+              <div class="col-md-6 imgvideo">
+                <img src="assets/images/elearning.jpg" style="width: 100%;">
+                <a ng-click="openVideoModal('elearning')" style="">
+                  <img src="assets/images/playvideo.png" style="cursor: pointer;">
+                </a>
+              </div>
+              <!-- <div class="col-md-6">
+                <div class="col-xs-12" style="text-align: center; padding: 170px; background-image: url('assets/images/elearning.jpg'); background-repeat: no-repeat; background-position: right top; ">
+                  <a ng-click="openVideoModal('quiz')">
+                    <img src="assets/images/playvideo.png" width="100px" style="cursor: pointer;">
+                  </a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container eicon" style="margin-top: 2%">
+          <div class="row">
+            <div class="cold-md-12 icontitel">
+                <h2 style="color: black">{{"elearning.benifit" | translate}}</h2>
+            </div>
+            <div class="allicon">
+              <div class="col-md-12">
+                <div class="col-xs-4 iconsign">
+                  <img src="assets/images/icon1.png">
+                  <p class="size22 titleicon" style="color: black">{{"elearning.benifit.t1" | translate}}</p>
+                  <p class="iconp size20" style="color: black">{{"elearning.benifit.t11" | translate}}
+                  <br>{{"elearning.benifit.t12" | translate}}
+                  <br>{{"elearning.benifit.t13" | translate}}
+                  <br>{{"elearning.benifit.t14" | translate}}</p>
+                </div>
+
+                <div class="col-xs-4 iconsign" style="color: black">
+                  <img src="assets/images/e5.png">
+                  <p class="size22 titleicon">{{"elearning.benifit.t2" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t21" | translate}}
+                  <br>{{"elearning.benifit.t22" | translate}}
+                  <!-- <br>{{"elearning.benifit.t23" | translate}} -->
+                  <br>{{"elearning.benifit.t24" | translate}}
+                  <br>{{"elearning.benifit.t25" | translate}}
+                  <!-- <br>{{"elearning.benifit.t26" | translate}} -->
+                  </p>
+                </div>
+
+                <div class="col-xs-4 iconsign" style="color: black">
+                  <img src="assets/images/e3.png">
+                  <p class="size22 titleicon">{{"elearning.benifit.t3" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t31" | translate}}
+                  <br>{{"elearning.benifit.t32" | translate}}
+                  <br>{{"elearning.benifit.t33" | translate}}
+                  <br>{{"elearning.benifit.t34" | translate}}
+                  <br></p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-xs-4 iconsign">
+                  <img src="assets/images/e4.png" style="color: black">
+                  <p class="size22 titleicon">{{"elearning.benifit.t4" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t41" | translate}}</p>
+                </div>
+
+                <div class="col-xs-4 iconsign" style="color: black">
+                  <img src="assets/images/e2.png">
+                  <p class="size22 titleicon" >{{"elearning.benifit.t5" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t51" | translate}}
+                  <br>{{"elearning.benifit.t52" | translate}}
+                  <br>{{"elearning.benifit.t53" | translate}}</p>
+                </div>
+
+                <div class="col-xs-4 iconsign" style="color: black">
+                  <img src="assets/images/e6.png">
+                  <p class="size22 titleicon">{{"elearning.benifit.t6" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t61" | translate}}
+                  <br>{{"elearning.benifit.t62" | translate}}</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-xs-4 iconsign" style="color: black">
+                  <img src="assets/images/e7.png">
+                  <p class="size22 titleicon">{{"elearning.benifit.t7" | translate}}</p>
+                  <p class="iconp size20">{{"elearning.benifit.t71" | translate}}
+                  <br>{{"elearning.benifit.t72" | translate}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="margin-bottom: -0.2%; margin-top: 4%">
+    <div class="container-fluid">
+      <div class="row">
+        <img class="bannerbot" src="assets/images/bannerbotom.jpg" />
+        <div class="home_btn">
+          <a href="/#/schedule_demo#schedule" class="btn btn-lg m_t_10 btnbottom">{{"default.demo" | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div> 

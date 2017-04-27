@@ -1,0 +1,36 @@
+<div ng-include="'app/modules/main/views/menu_main.html'"></div>
+<div ng-controller="ResetPassController" class="container container-reset-pass">
+	<div class="row">
+		<div class="col-sm-offset-4 col-sm-4">
+			<h2 class="text-center title">{{"employee.resetPass.setNewPass" | translate}}</h2>
+			<p ng-show="!reset.result" class="alert alert-warning">{{"employee.resetPass.setNewPassFailed" | translate}}</p>
+			<form name="formReset" ng-submit="resetPassword();" novalidate="">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formReset.password.$invalid &&!formReset.password.$pristine }">
+					<input type="password" class="form-control input-lg" placeholder="{{'login.enterPass' | translate}}"
+					name="password"
+					ng-model="reset.password"
+					required>
+					<span ng-show="formReset.password.$invalid && !formReset.password.$pristine" class="help-block">{{"employee.resetPass.invalidPass" | translate}}</span>
+				</div>
+				<div class="form-group"
+					ng-class="{ 'has-error' : (formReset.passwordConfirm.$invalid 
+					|| (reset.password != reset.passwordConfirm))
+					&& !formReset.passwordConfirm.$pristine }">
+					<input type="password" class="form-control input-lg" placeholder="{{'login.reEnterPass' | translate}}"
+					name="passwordConfirm"
+					ng-model="reset.passwordConfirm"
+					required>
+					<span ng-show="formReset.passwordConfirm.$invalid && !formReset.passwordConfirm.$pristine" class="help-block">{{"employee.resetPass.invalidPass" | translate}}</span>
+					<span ng-show="formReset.passwordConfirm.$valid 
+					&& (reset.password != reset.passwordConfirm) 
+					&& !formReset.passwordConfirm.$pristine" class="help-block">{{"employee.resetPass.notMatchPass" | translate}}</span>
+				</div>
+				<div class="form-group text-center">
+					<button class="btn btn-lg btn-primary btn-reset" type="submit" ng-disabled="formReset.$invalid">{{"employee.resetPass.changePass" | translate}}</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div> 

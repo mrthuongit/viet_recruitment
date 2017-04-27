@@ -1,0 +1,134 @@
+
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <form method="post" id="marginfrom">
+        <div class="panel panel-info">
+        <div align="center" class="panel-heading headtitle">{{"employer.assignment.newQuiz" |
+            translate}}</div>
+        <div class="panel-body panel-body-0padding">
+        <div class="row rowMenuInterview">
+            <div class="menu-assignment">
+                <ul class="nav nav-justified">
+                    <li class="menu-video ">1.
+                        {{"employer.assignment.nameQuiz" |
+                        translate}}</li>
+                    <li class="menu-video">2.
+                        {{"employer.assignment.settingInterview" |
+                        translate}}</li>
+                    <li class="menu-video">3.
+                        {{"employer.assignment.selectInterview" |
+                        translate}}</li>
+                    <li class="menu-video menu-videoactive">4.
+                        {{"employer.assignment.confirmInterview" |
+                        translate}}</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="">
+                    <div>
+                        <div class="row paddingRightLeft15">
+                            <div class="col-sm-5" align="center">
+                               
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.aboutVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss" style="width: 80%">
+                                        <video class="videoAssessment" controls>
+                                            <source src={{interview.aboutUsUrl|trusted}} type="video/webm"></source>
+                                        </video>
+                                    </div>
+                                </div>
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.introVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss"
+                                        style="width: 80%">
+                                        <video class="videoAssessment"
+                                            controls>
+                                            <source
+                                                src={{interview.introUrl|trusted}}
+                                                type="video/webm"></source>
+                                        </video>
+                                    </div>
+                                </div>
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.exitVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss"
+                                        style="width: 80%">
+                                        <video class="videoAssessment"
+                                            controls>
+                                            <source
+                                                src={{interview.exitUrl|trusted}}
+                                                type="video/webm"></source>
+                                        </video>
+                                    </div>
+                         
+                                </div>
+                            </div>
+                            <div class="col-sm-7" id="questionSelect" style="padding: 0px 30px">
+                                <label style="font-weight: 500; font-size: 19px;">{{"employer.assignment.nameQuiz"| translate}}: </label>
+                                <div style="border:1px solid gray; padding: 10px 12px;">
+                                    <label>{{"quiz.time" | translate}}:&nbsp;{{interview.quizTime}}</label>
+      
+                                    <br>
+                                    <label for="name">{{"quiz.benchmark" | translate}}:&nbsp;{{interview.benchmark}}</label>
+              
+                                    <br>
+                                    <label for="name">{{"quiz.shuffle" | translate}}</label>
+              
+                                    <br> 
+                                    <div class="btn-group" style="width: 100%;">
+                                        <label class="btn btn-success"
+                                            ng-model="interview.shuffle" ng-disabled="true"
+                                            uib-btn-radio="true">{{"interview.yes"  | translate}}</label>
+                                        <label class="btn btn-success"
+                                            ng-model="interview.shuffle" ng-disabled="true"
+                                            uib-btn-radio="false">{{"interview.no" | translate}}</label>
+                                    </div>
+                                </div>
+                                <label style="font-weight: 500; font-size: 19px;">{{"employer.listQuizQuestion"| translate}}: </label>
+                                <div style="border:1px solid gray; padding: 10px 12px;">
+                                    <div ng-repeat="interviewQuestion in interviewQuestionList  | orderBy:'order'" ng-if="!interviewQuestion.remove">
+                                        <div>
+                                            <label
+                                                style="font-weight: 500">{{"employer.assignment.question"
+                                                | translate}}
+                                                {{interviewQuestion.order}}:
+                                                {{interviewQuestion.title}}</label>
+                                               <br>
+                                        <label ng-repeat="option in interviewQuestion.options" class="radio-inline">
+                                            <!-- <input type="radio" name="{{interviewQuestion.order}}" disabled ng-checked="option.correct"> -->
+                                            <i class="fa fa-check-square-o" aria-hidden="true" ng-if="option.correct"></i>
+                                            <i class="fa fa-square-o" aria-hidden="true" ng-if="!option.correct"></i>{{option.title}}
+                                        </label>
+                                        </div>
+                                   <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row" align=center
+            style="margin-left: 1px; margin-right: 1px">
+            <a class="btn btn-default"
+                href="/#/employer/quiz/question_interview"
+                style="float: left; margin-bottom: 5px !important; width: 120px;">{{"employer.assignment.back"
+                | translate}}</a>
+            <input type="button" ng-click="doSave()"
+                class="btn btn-primary"
+                value='{{"employer.assignment.save" | translate}}'
+                style="margin-bottom: 5px !important; width: 120px;">
+            <a class="btn btn-default" href="/#/employer/interview_list"
+                style="margin-bottom: 5px !important; width: 120px; float: right">{{"employer.assignment.cancel"
+                | translate}}</a>
+        </div>
+        <br>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

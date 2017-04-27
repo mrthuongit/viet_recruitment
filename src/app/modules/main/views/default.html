@@ -1,0 +1,232 @@
+<link rel="stylesheet" href="assets/cssmain/style.css">
+<style type="text/css">
+    .btnsolution {
+        background: white;
+        color: black;
+        border: solid 3px black;
+        border-radius: 4px;
+        text-align: center;
+        padding-right: 80px;
+    }
+    .btnsolution:hover {
+        color: black;
+        background: white;
+        border-right: none;
+        border: solid 3px rgb(6,122,171);
+        border-radius: 4px;
+    }
+    .btnplay > a > img {
+        width: 200px;
+    }
+    .list-solution .item-solution {
+        font-size: 16px;
+        border-right: none;
+        margin-left: -3px;
+    }
+    .list-solution .item-solution:last-child:hover {
+        border-right: solid 3px rgb(6,122,171);
+    }
+    @media (max-width: 768px) {
+        .btnplay > a > img {
+            width: 100px;
+        }
+    }
+    .btnplay > a > img {
+        width: 200px;
+    }
+    .list-solution .item-solution {
+        font-size: 16px;
+        border-right: none;
+        margin-left: -3px;
+    }
+    .list-solution .item-solution:last-child:hover {
+        border-right: solid 3px rgb(6,122,171);
+    }
+    @media (max-width: 768px) {
+        .btnplay > a > img {
+            width: 100px;
+        }
+    }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<section id="home">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="">
+                <div class="col-sm-12 bgbanner">
+                    <h1 style="text-transform: uppercase;">{{"default.banner" | translate}}</h1>
+                    <h2></h2>
+                    <div class="col-md-12 btnplay">
+                        <a data-toggle="modal" data-target=".bd-example-modal-lg" style="text-decoration: none; cursor: pointer;" ng-click="openyoutube()">
+                            <img src="assets/images/play-icon.png">
+                            <p style="text-transform: uppercase; font-size: 45px; color: #fff; font-weight: 600;">{{"default.watch" | translate}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid mainReview">
+        <div class="row">
+            <div class="col-md-6" style="padding-bottom: 5%; border-right: solid 0px white;">
+                <h3>  {{"default.cusno1" | translate}}</h3>
+                <div class="clearfix">
+                    <div class="hrAvatar">
+                        <img src="assets/images/rv1.png" style="float: left;">
+                    </div>
+                    <div class="iconquote">
+                        <img src="assets/images/bluequote.png">
+                    </div>
+                    <div class="quotecontent">
+                        <p style="color: black ; font-weight: bold; padding-right: 20px; margin-bottom: 0px;">
+                            <i style="margin-left: 30px;"> {{"default.cusno1.t1" | translate}} {{"default.cusno1.t2" | translate}} </i>
+                        </p>
+                        <p style="text-align: right;">
+                            <img src="assets/images/bluequote2.png">
+                        </p>
+                        <p style="text-align: right">
+                            <strong style=" font-size: 20px;"> {{"default.cusno1.t3" | translate}}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding-bottom: 5%; border-right: solid 0px white; border-left: solid 2px white;">
+                <h3>{{"default.cusno2" | translate}}</h3>
+                <div class="clearfix">
+                    <div class="hrAvatar">
+                        <img src="assets/images/rv2.png" style="float: left;">
+                    </div>
+                    <div class="iconquote">
+                        <img src="assets/images/bluequote.png">
+                    </div>
+                    <div class="quotecontent">
+                        <p style="color: black ; font-weight: bold; padding-right: 10px; margin-bottom: 0px;">
+                            <i style="margin-left: 20px;">
+                            {{"default.cusno2.t1" | translate}} {{"default.cusno2.t2" | translate}} {{"default.cusno2.t3" | translate}}
+                            </i>
+                        </p>
+                        <p style="text-align: right;">
+                            <img src="assets/images/bluequote2.png">
+                        </p>
+                        <p style="text-align: right;">
+                            <strong style=" font-size: 20px;"> {{"default.cusno2.t4" | translate}}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="counter" class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main_counter_area text-center">
+                    <div class="row">
+                        <div class="single_counter ">
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="single_counter_item">
+                                    <i class="fa fa-users"></i>
+                                    <h2 class="statistic-counter" style="margin-top: 0px;"
+                                        count-to="{{countToCv | randomStatistic}}"
+                                        value="{{countFrom}}" 
+                                        duration="{{countDuration}}"></h2>
+                                    <span class="">{{"default.no1" | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single_counter">
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="single_counter_item">
+                                    <i class="fa fa-laptop"></i>
+                                    <h2 class="statistic-counter" style="margin-top: 0px;"
+                                        count-to="{{countToInterview | randomStatistic}}" 
+                                        value="{{countFrom}}" 
+                                        duration="{{countDuration}}"></h2>
+                                    <span class="">{{"default.no2" | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single_counter">
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="single_counter_item">
+                                    <i class="fa fa-clock-o"></i>
+                                    <h2 class="statistic-counter" style="margin-top: 0px;"
+                                        count-to="{{countToConference | randomStatistic}}" 
+                                        value="{{countFrom}}" 
+                                        duration="{{countDuration}}"></h2>
+                                    <span class="">{{"default.no3" | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single_counter">
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="single_counter_item">
+                                    <i class="fa fa-user-plus"></i>
+                                    <h2 class="statistic-counter" style="margin-top: 0px;"
+                                        count-to="{{countToStudent | randomStatistic}}" 
+                                        value="{{countFrom}}" 
+                                        duration="{{countDuration}}"></h2>
+                                    <span class="">{{"default.no4" | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="history" class="history sections">
+    <div class="container">
+        <div class="row">
+            <div class="main_history">
+                <div class="col-sm-6">
+                    <div class="single_history_img">
+                        <img src="assets/images/stab1.png" alt="" />
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="single_history_content">
+                        <div class="head_title">
+                            <h2 style="padding: 12px 30px; font-size: 35px; margin-top: 25px; margin-bottom: 12.5px;">{{"default.thsp" | translate}}</h2>
+                        </div>
+                        <ul class="list-inline list-solution">
+                            <li class="item-solution btnsolution">
+                                <a href="/#/solution#solution"> {{"default.sp1" | translate}} </a>
+                            </li>
+                            <li class="item-solution btnsolution">
+                                <a href="/#/solution/elearning#elearning">{{"default.sp2" | translate}}</a>
+                            </li>
+                            <li class="item-solution btnsolution">
+                                <a href="/#/solution/training#training">{{"default.sp3" | translate}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="margin-bottom: -0.2%;">
+    <div class="container-fluid">
+        <div class="row">
+            <img class="bannerbot" src="assets/images/bannerbotom.jpg" />
+
+            <div class="home_btn">
+              <a href="/#/schedule_demo#schedule" class="btn btn-lg m_t_10 btnbottom">{{"default.demo" | translate}}</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div>

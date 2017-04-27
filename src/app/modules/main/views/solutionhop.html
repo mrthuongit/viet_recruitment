@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="assets/cssmain/style.css">
+<style type="text/css">
+  p > strong {
+    font-size: 19px;
+    text-transform: capitalize;
+  }
+  .msingicon {
+    padding-left: 10%;
+    margin-bottom: 6%;
+    padding-right: 10%;
+  }
+  .msingicon > p {
+    text-align: justify;
+    font-size: 18px;
+  }
+  .msingicon > p > strong {
+    font-size: 20px;
+  }
+  .msingicon2 i {
+    font-size: 60px;
+    color: #1d1d1d;
+  }
+  .msingicon2 > p {
+    font-size: 18px;
+  }
+  .msingicon i {
+    font-size: 60px;
+  }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div id="training">
+	<section style="background-image: url('assets/images/bg_training.jpg'); padding-top: 7%;">
+		<div class="container-fluid">
+			<div class="row" style="margin-bottom: 4%;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 msolution">
+							<h1 style="color: #0579ab; text-shadow: 3px 3px 3px gray;">{{"solutionhop.title" | translate}} </h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 msolution">
+              <img src="assets/images/metingsolution.png" style="  margin-top: 1%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid" style="background: #0579ab; margin-top: 2%">
+      <div class="row">
+        <div class=" mshow">
+          <div style="padding-left: 5%; padding-right: 5%;">
+            <div class="col-md-12">
+              <h2 style="text-transform: uppercase; margin-top: 4%;">{{"default.sp3" | translate}} </h2>
+            </div>
+            <div class="col-md-3 ">
+              <div class="msingicon">
+                <i class="fa fa-volume-up 4x" aria-hidden="true"></i>
+                <p><strong> {{"solutionhop.be1" | translate}}</strong></p>
+                <p>
+                  {{"solutionhop.be11" | translate}}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-3 ">
+              <div class="msingicon">
+                <i class="fa fa-cog 4x" aria-hidden="true"></i>
+                <p><strong>{{"solutionhop.be2" | translate}} </strong></p>
+                <p>
+                  {{"solutionhop.be21" | translate}}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-3 ">
+              <div class="msingicon">
+                <i class="fa fa-user-plus 4x" aria-hidden="true"></i>
+                <p><strong>{{"solutionhop.be3" | translate}}</strong></p>
+                <p>
+                  {{"solutionhop.be31" | translate}}
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-3 ">
+              <div class="msingicon">
+                <i class="fa fa-gratipay 4x" aria-hidden="true"></i>
+                <p><strong>{{"solutionhop.be4" | translate}}</strong></p>
+                <p>
+                  {{"solutionhop.be41" | translate}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom: 3%;margin-top: 3%">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-12" style="margin-bottom: 1%">
+                <h2 style="color:black;text-align: center; text-transform: uppercase;">{{"solutionhop.fit" | translate}}</h2>
+              </div>
+
+              <div class="col-md-4 ">
+                <div class="msingicon2">
+                  <i class="fa fa-share-alt 3x" aria-hidden="true"></i>
+                  <p>
+                    {{"solutionhop.fit.t1" | translate}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-4 ">
+                <div class="msingicon2">
+                  <i class="fa fa-plane 3x" aria-hidden="true"></i>
+                  <p>
+                    {{"solutionhop.fit.t2" | translate}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-4 ">
+                <div class="msingicon2">
+                  <i class="fa fa-phone 3x" aria-hidden="true"></i>
+                  <p>
+                    {{"solutionhop.fit.t3" | translate}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <img class="bannerbot" src="assets/images/bannerbotom.jpg" />
+        <div class="home_btn">
+          <a href="/#/schedule_demo#schedule" class="btn btn-lg m_t_10 btnbottom">{{"default.demo" | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div>

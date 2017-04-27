@@ -1,0 +1,57 @@
+  <script type="text/ng-template" id="modalCreateLicense.html">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="closePopup()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Create License</h4>
+      </div>
+      <div class="modal-body">
+        <form name="licenseForm">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Name:</label>
+              <input type="text" class="form-control" ng-model="license.name" name="name" ng-required="true">
+              <p class="required_employer" ng-if="licenseForm.name.$error.required">{{"required" | translate}}</p>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Category:</label>
+              <select class="form-control" 
+                ng-model="categories.selectedCategoy"
+                ng-options="category.name for category in categories.availableCategories track by category.id" 
+                ng-value="category.id" name="category" ng-required="true">
+              </select>
+              <p class="required_employer" ng-if="licenseForm.category.$error.required">{{"required" | translate}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Assignment:</label>
+              <input type="number" class="form-control" ng-model="license.assignment">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Point:</label>
+              <input type="number" class="form-control" ng-model="license.point" name="point" ng-required="true">
+              <p class="required_employer" ng-if="licenseForm.point.$error.required">{{"required" | translate}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Email:</label>
+              <input type="number" class="form-control" ng-model="license.email" name="email" ng-required="true">
+              <p class="required_employer" ng-if="licenseForm.email.$error.required">{{"required" | translate}}</p>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="recipient-name" class="control-label">Validity:</label>
+              <input type="number" class="form-control" ng-model="license.validity" name="validity" ng-required="true">
+              <p class="required_employer" ng-if="licenseForm.validity.$error.required">{{"required" | translate}}</p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="closePopup()">{{"employee.cancel" | translate}}</button>
+        <button type="button" class="btn btn-primary" ng-click="createLicense()">{{"employee.save" | translate}}</button>
+      </div>
+    </div>
+  </script>
+
+

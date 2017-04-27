@@ -1,0 +1,214 @@
+<style type="text/css">
+  .submenuMain > .menusub {
+      display: none;
+  }
+  .submenuMain:hover > .menusub {
+      display: block;
+      position: absolute;
+  }
+  .mainmenu > li > a {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+  .menusub > li > a {
+      display: block;
+      text-decoration:none;
+      padding: 7px 0px;
+      font-size: 15px;
+  }
+  .menusub > li {
+      background-color: #BEEFEC;
+      padding-left: 10px;
+  }
+  .main_menu_bg .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+  .user-icon {
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+  }
+  #bs-example-navbar-collapse-1 ul li a {
+    font-size: 15px;
+  }
+  ul{
+    list-style: none;
+  }
+  @media (min-width: 768px){
+      .container {
+          width: 100%;
+      }
+    }
+  @media (min-width: 992px){
+    .container {
+        width: 100%;
+    }
+  }
+  @media (min-width: 1100px){
+    .container {
+        width: 90%;
+    }
+  }
+  @media (min-width: 1200px){
+    .container {
+        width: 85%;
+    }
+  }
+  @media (max-width: 767px) {
+    .submenuMain:hover > .menusub {
+      margin-left: 15%;
+      margin-top: -50px;
+      z-index: 300;
+    }
+  }
+  @media (max-width: 350px) {
+    .user-action {
+      padding: 15px 25px 15px 70px !important;
+    }
+  }
+
+  .btnbottom {
+      margin-top: -25%;
+      margin-left: 20%;
+  }
+  .m_t_10 {
+      background-color: rgb(6,122,171);
+      border: solid white 1px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 18%;
+      min-width: 220px;
+  }
+  .h1, h1 {
+    font-size: 53px;
+    line-height: 1.5;
+  }
+  .h3, h3 {
+    font-size: 27px;
+  }
+  .h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+      line-height: 1.5;
+      margin-top: 25px;
+      margin-bottom: 12.5px;
+  }
+  .h2, h2 {
+    font-size: 34px;
+  }
+
+  .btnbasic {
+    background-color: rgb(6,122,171);
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 3%;
+    font-family: Source Sans Pro;
+  }
+  .btnbasic:hover {
+    background-color: rgba(255,255,255,0);
+    font-weight: bold;
+    border: solid 3px rgb(6,122,171);
+    font-size: 17px;
+    border-radius: 3%;
+    color: black;
+  }
+  .collapse.in > ul {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+</style>
+<div ng-controller="MenuMainController">
+  <header id="main_menu" class="header navbar-fixed-top" style="box-shadow: 0 6px 12px rgba(0, 0, 0, .175);padding-top: 0px; padding-bottom: 0px; position: fixed; top: 0; left: 0; right: 0; z-index: 300; transition: all .3s;">
+    <div class="main_menu_bg">
+        <div style="position: relative; width: 100%">
+            <div class="container-fluid">
+              <div style="position: relative; z-index: 1000; float: right; ">
+                <div ng-include src="'app/shared/language/language.html'" style="color: white"></div>
+              </div>
+
+              <div ng-show="!employee" style="position: relative; z-index: 1000; float: right; ">
+                <a ng-click="openPopupLogin(2)" class="moto-widget-menu-link moto-widget-menu-link-level-1 moto-widget-menu-link-active moto-link btnwhite" style="cursor: pointer;text-decoration: none; font-size: 14px; font-weight: bold;">{{"main.signin" | translate}}</a>
+              </div>
+
+              <div ng-show="employee" style="position: relative; z-index: 1000; float: right; font-size: 14px;">
+                  <div class="user-panel-main user-panel list-inline" style="margin-top: 0px;">
+                      <div class="btn-group" uib-dropdown is-open="status.isopen">
+                          <div id="emp-panel" uib-dropdown-toggle ng-disabled="disabled">
+                              <span ng-show="employee.firstName" class="user-name hidden-xs btnwhite">{{ employee.firstName }}</span>
+                              <span ng-show="employee.firstName" class="caret hidden-xs btnwhite"></span>
+                              <span class="user-icon" ><i class="fa fa-user" aria-hidden="true"></i></span>
+                          </div>
+                          <ul class="dropdown-menu user-action" uib-dropdown-menu role="menu" aria-labelledby="single-button" style="background-color: #fff;">
+                              <li>
+                                  <a href="#/employee">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{"employee.profile" | translate}}
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#/employee/my-job">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                  {{"employee.jobs" | translate}}
+                                  </a>
+                              </li>
+                              <li ng-click="openChangeEmployeePassModal()">
+                                  <a href="JavaScript:void(0)">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                  {{"employer.profile.changepass" | translate}}
+                                  </a>
+                              </li>
+                              <li ng-click="logoutEmployee()">
+                                  <a href="JavaScript:void(0)">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{"main.signout" | translate}}
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="container" ng-init="showmenu=false;">
+            <div class="row">
+                <div class="nave_menu">
+                    <nav class=" navbar-default" style="margin: 0px 0px; background-color: #fff;">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" ng-click="showmenu = !showmenu">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="/#/" style="padding: 0px 15px;">
+                                    <img style="width:200px;" src="assets/images/logow.png"/>
+                                </a>
+                            </div>
+                            <div ng-class="showmenu?'in':''" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right mainmenu">
+                                    <li><a class="cool-link" href="/#/">{{"main.home" | translate}}</a></li>
+                                    <!-- <li class="submenuMain"><a class="cool-link" href="/#/solution">{{"main.solution" | translate}}</a>
+                                        <ul class="menusub" style=" min-width: 300px; padding: 0px 10px;">
+                                            <li><a class="cool-link" href="/#/solution#solution">{{"main.interview" | translate}}</a></li>
+                                            <li><a class="cool-link" href="/#/solution/training#training">{{"main.training" | translate}}</a></li>
+                                            <li><a class="cool-link" href="/#/solution/elearning#elearning">{{"main.elearning" | translate}}</a></li>
+                                            <li><a class="cool-link" href="/#/job">{{"main.buildWebJob" | translate}}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="cool-link" href="/#/price">{{"main.price" | translate}}</a></li>
+                                    <li class="submenuMain"><a class="cool-link" href="/#/aboutus" style="cursor: pointer;">{{"main.aboutus" | translate}}</a>
+                                        <ul class="menusub" style=" min-width: 300px; padding: 0px 10px;">
+                                            <li><a class="cool-link" href="/#/aboutus#about">{{"main.subabout1" | translate}}</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="cool-link" href="/#/job">{{"main.findajob" | translate}}</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
+</div>

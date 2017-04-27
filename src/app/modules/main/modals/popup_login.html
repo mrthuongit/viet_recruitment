@@ -1,0 +1,213 @@
+<div id="loginCareerModal">
+    <uib-tabset active="activeTab" justified="true" type="pills"
+        vertical=false> <uib-tab index="1" 
+        heading="{{'login.employer' | translate}}">
+    <div class="modal-body" ng-keydown="$event.keyCode == 13 && doLogin()">
+        <form>
+            <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                    style="font-weight: 400;">Email:</label>
+                <input type="text"
+                    placeholder="{{'login.enterEmail' | translate}}"
+                    class="form-control" ng-model="userLogin.email">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="control-label"
+                    style="font-weight: 400;">{{"login.password"
+                    | translate}}:</label>
+                <input type="password"
+                    placeholder="{{'login.enterPass' | translate}}"
+                    class="form-control" ng-model="userLogin.password">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default"
+            ng-click="closeDialog()" style="padding: 0.75rem 1rem;">{{"login.close" |
+            translate}}</button>
+        <button type="button" class="btn btn-primary"
+            ng-click="doLogin()">{{"LOGIN" | translate}}</button>
+    </div>
+    </uib-tab> <uib-tab index="2" heading="{{'login.employee' | translate}}">
+    <div ng-show="employeeOption.login"
+        ng-keydown="$event.keyCode == 13 && loginEmployee()">
+        <div class="modal-body">
+            <h3 class="text-center title">{{"main.signin" |
+                translate}}</h3>
+
+            <div ng-show="reset.result">
+                <div uib-alert ng-repeat="alert in alerts" class="alert-success" close="closeAlert($index)">{{alert.msg}} <b>{{ reset.email }}</b></div>
+            </div>                    
+            <form name="formSigninEmployee" novalidate>
+                <div class="form-group"
+                    ng-class="{ 'has-error' : formSigninEmployee.employeeEmail.$invalid 
+                  &&!formSigninEmployee.employeeEmail.$pristine }">
+                    <label for="recipient-name" class="control-label"
+                        style="font-weight: 400;">Email:</label>
+                    <input type="email" class="form-control"
+                        id="login-email" name="employeeEmail"
+                        ng-model="userLogin.email"
+                        ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
+                        placeholder="{{'login.enterEmail' | translate}}"
+                        required>
+                    <span
+                        ng-show="formSigninEmployee.employeeEmail.$invalid && !formSigninEmployee.employeeEmail.$pristine"
+                        class="help-block">{{"toarster.emailDefault"
+                        | translate}}</span>
+                </div>
+                <div class="form-group"
+                    ng-class="{ 'has-error' : formSigninEmployee.employeePassword.$invalid 
+                  &&!formSigninEmployee.employeePassword.$pristine }">
+                    <label for="recipient-name" class="control-label"
+                        style="font-weight: 400;">{{"login.password"
+                        | translate}}:</label>
+                    <input type="password" class="form-control"
+                        id="login-pass" name="employeePassword"
+                        ng-model="userLogin.password"
+                        placeholder="{{'login.enterPass' | translate}}"
+                        required>
+                    <span
+                        ng-show="formSigninEmployee.employeePassword.$invalid && !formSigninEmployee.employeePassword.$pristine"
+                        class="help-block">{{"employee.uninvail"
+                        | translate}}</span>
+                    <a class="btn-link btn-reset-password"
+                        ng-click="selectResetPassword()">
+                        <i class="fa fa-question-circle-o"
+                            aria-hidden="true"></i>
+                        {{"unremember" | translate}}
+                    </a>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-primary"
+                        ng-disabled="formSigninEmployee.$invalid"
+                        ng-click="loginEmployee()">{{"LOGIN" |
+                        translate}}</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="text-center note">
+                {{"login.askRegister" | translate}}
+                <a class="btn-link" ng-click="selectRegister()">{{"login.register" | translate}}</a>
+            </div>
+        </div>
+    </div>
+    <!-- End login employee --> 
+    <!-- Start register employee -->
+    <div ng-show="employeeOption.register"
+        ng-keydown="$event.keyCode == 13 && signupEmployee()">
+        <div class="modal-body">
+            <h3 class="text-center title">{{"login.register" | translate}}</h3>
+            <form name="formSignupEmployee" novalidate>
+                <div class="form-group"
+                    ng-class="{ 'has-error' : formSignupEmployee.employeeSignupEmail.$invalid 
+                                &&!formSignupEmployee.employeeSignupEmail.$pristine }">
+                    <label for="recipient-name" class="control-label"
+                        style="font-weight: 400;">Email:</label>
+                    <input type="email" class="form-control"
+                        id="signup-email" name="employeeSignupEmail"
+                        placeholder="{{'login.enterEmail' | translate}}"
+                        required ng-model="userRegister.email"
+                        ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
+                    <span
+                        ng-show="formSignupEmployee.employeeSignupEmail.$invalid && !formSignupEmployee.employeeSignupEmail.$pristine"
+                        class="help-block">{{"toarster.emailDefault"
+                        | translate}}</span>
+                </div>
+                <div class="form-group"
+                    ng-class="{ 'has-error' : formSignupEmployee.employeeSignupPassword.$invalid 
+                  &&!formSignupEmployee.employeeSignupPassword.$pristine }">
+                    <label for="recipient-name" class="control-label"
+                        style="font-weight: 400;">{{"login.password"
+                        | translate}}:</label>
+                    <input type="password" class="form-control"
+                        id="signup-pass" name="employeeSignupPassword"
+                        placeholder="{{'login.enterPassRegister' | translate}}"
+                        required minlength="6"
+                        ng-model="userRegister.password">
+                    <span
+                        ng-show="formSignupEmployee.employeeSignupPassword.$invalid && !formSignupEmployee.employeeSignupPassword.$pristine"
+                        class="help-block">{{"employee.uninvail"
+                        | translate}}</span>
+                </div>
+                <div class="form-group"
+                    ng-class="{ 'has-error' : (formSignupEmployee.employeeSignupPasswordConfirm.$invalid 
+                  &&!formSignupEmployee.employeeSignupPasswordConfirm.$pristine) || ((userRegister.password != userRegister.confirmPassword) && !formSignupEmployee.employeeSignupPasswordConfirm.$pristine) }">
+                    <label for="recipient-name" class="control-label"
+                        style="font-weight: 400;">{{"login.password"
+                        | translate}}:</label>
+                    <input type="password" class="form-control"
+                        id="signup-confirm-pass"
+                        name="employeeSignupPasswordConfirm"
+                        placeholder="{{'login.reEnterPass' | translate}}"
+                        required ng-model="userRegister.confirmPassword">
+                    <span
+                        ng-show="formSignupEmployee.employeeSignupPasswordConfirm.$invalid && !formSignupEmployee.employeeSignupPasswordConfirm.$pristine"
+                        class="help-block">{{"employee.uninvail"
+                        | translate}}</span>
+                    <span
+                        ng-show="formSignupEmployee.employeeSignupPasswordConfirm.$valid && (userRegister.password != userRegister.confirmPassword) && !formSignupEmployee.employeeSignupPasswordConfirm.$pristine"
+                        class="help-block">{{"samepass" |
+                        translate}}</span>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-primary"
+                        ng-disabled="formSignupEmployee.$invalid"
+                        ng-click="signupEmployee()">{{"login.register" | translate}}</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="text-center note">
+                {{"login.askLogin" | translate}}
+                <a class="btn-link" ng-click="selectLogin()">{{"LOGIN"
+                    | translate}}</a>
+            </div>
+        </div>
+    </div>
+    <!-- End register employee --> 
+
+    <!-- Start reset password -->
+    <div ng-show="employeeOption.resetPassword" class="reset-wrapper">
+        <form name="formResetPassword" novalidate>
+            <div class="modal-body">
+                <h3 class="text-center title">{{"setpass" |
+                    translate}}</h3>
+                <div ng-show="!reset.result">
+                    <p class="alert alert-warning">{{"getEmail" |
+                        translate}}</p>
+                    <div class=""
+                        ng-class="{ 'has-error' : formResetPassword.employeeEmail.$invalid 
+                                &&!formResetPassword.employeeEmail.$pristine }">
+                        <input type="email" class="form-control"
+                            id="login-email" name="employeeEmail"
+                            ng-model="reset.email"
+                            ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
+                            placeholder='{{"toaster.emailNull" | translate}}'
+                            required>
+                        <span
+                            ng-show="formResetPassword.employeeEmail.$invalid 
+                                && !formResetPassword.employeeEmail.$pristine"
+                            class="help-block">{{"toarster.emailDefault"
+                            | translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-danger btn-block"
+                            ng-click="selectLogin()">{{"employee.cancel" | translate}}</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary btn-block"
+                            ng-disabled="formResetPassword.$invalid"
+                            ng-click="sendEmailReset()">{{"sendpass"
+                            | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- End reset password --> </uib-tab> </uib-tabset>
+</div>

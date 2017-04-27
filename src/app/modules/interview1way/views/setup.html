@@ -1,0 +1,9 @@
+<div ng-controller="InterviewSetupController"  style="margin-left:50px;margin-right:50px">
+
+	<div ng-include ng-if="step == 1" 
+		src="'app/modules/interview1way/views/setup1.html'"></div>
+	<div ng-include ng-if="step == 2" 
+		src="'app/modules/interview1way/views/setup2.html'"></div>
+	<div ng-include ng-if="step == 3" 
+		src="'app/modules/interview1way/views/setup3.html'"></div>
+</div>

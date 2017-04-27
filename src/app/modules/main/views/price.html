@@ -1,0 +1,405 @@
+<link rel="stylesheet" href="assets/cssmain/style.css">
+<style type="text/css" media="screen">
+    .btnsolutionpr{
+        border-color: #fff;
+        background: white;
+        color: #1C1C1C;
+        text-transform: uppercase;
+        width: 230px;
+        padding: 15px 0px;
+        border: 2px solid #fff;
+    }
+    .pricing_head h3 {
+        font-size: 30px;
+    }
+    .btnsolutionpr:active {
+        border-color: navy;
+    }
+    .pricing_price > .m_t {
+        text-transform: uppercase;
+    }
+    .pricing_head  > h3 {
+        margin-top: 0px;
+    }
+    .pricing_head1 {
+        background: #76BCDA;
+    }
+    .pricing_business .pricing_head {
+        background: #0579ab;
+    }
+    .pricing_headGold {
+        background:  #052e51;
+    }
+    .btn-md-bzone {
+        background-color: #76BCDA;
+        text-transform: uppercase;
+    }
+    .btn-md-sliver {
+        background-color: #0579ab;
+        text-transform: uppercase;
+    }
+    .btn-md-gold {
+        background-color: #052e51;
+        text-transform: uppercase;
+    }
+    td {
+        font-size: 20px;
+        text-align: center;
+        color: #1c1c1c;
+    }
+    th,h3{
+        text-transform: uppercase;
+        text-align: center;
+        color: #1c1c1c;
+    }
+    .textleft {
+        text-align: left;
+    }
+    i.fa {
+        font-size: 22px;
+        color: #0579ab;
+    }
+    i.fa-times {
+        color: red;
+    }
+    .showtabsolution {
+        border-color: lightblue;
+        background-color: lightblue;
+    }
+    button.btnsolutionpr:hover {
+        border-color: lightblue;
+        background-color: lightblue;
+    }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div align="center" ng-init="showbag1=true; showbag2=false; showbag3=false; showbag4=false;">
+    <section id="pricing" class="pricing" style="background-image: url('assets/images/bg_price.jpg'); min-height: 220px; margin: 0px 15px; background-attachment: fixed; background-repeat: no-repeat; margin: 0px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="main_pricing_area sections">
+                    <div>
+                        <div class="head_title3 text-center headtab" style="padding-top: 30px; padding-bottom: 20px;">
+                            <h2 style="color: #fff; text-transform: uppercase; text-shadow: 3px 3px 3px #454545; border-bottom: 1px solid; max-width: 180px;">{{"price.title" | translate}}</h2>
+                        </div>
+                        <div class="col-md-12" style="margin-bottom: 15px;">
+                            <div class="btnprice">
+                                <button ng-click="showbag1=true; showbag2=false; showbag3=false; showbag4=false;" ng-class="showbag1?'showtabsolution':''" class="btn btn-lg btnsolutionpr">{{"main.interview" | translate}}</button>
+                                <button ng-click="showbag1=false; showbag2=true; showbag3=false; showbag4=false;" ng-class="showbag2?'showtabsolution':''" class="btn btn-lg btnsolutionpr">{{"default.sp3" | translate}}</button>
+                                <button ng-click="showbag1=false; showbag2=false; showbag3=true; showbag4=false;" ng-class="showbag3?'showtabsolution':''" class="btn btn-lg btnsolutionpr">{{"default.sp2" | translate}}</button>
+                                <button ng-click="showbag1=false; showbag2=false; showbag3=false; showbag4=true" ng-class="showbag4?'showtabsolution':''" class="btn btn-lg btnsolutionpr">{{"main.buildWebJob" | translate}}</button>
+                           </div>
+                        </div>
+                    </div>
+                    <div ng-if="showbag1" style="color: gray;">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing" style="border-radius: 10px; border: 1px solid #d4d4d4;">
+                                <div class="pricing_head pricing_head1">
+                                    <h3>{{"price.bronze" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">699.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.interviewBron.fit1" | translate}}</li>
+                                        <li>{{"price.interviewBron.fit2" | translate}}</li>
+                                        <li>{{"price.interviewBron.fit3" | translate}}</li>
+                                        <li>{{"price.interviewBron.fit4" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-bzone">{{"price.choose" | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing pricing_business">
+                                <div class="pricing_head ">
+                                    <h3>{{"price.sliver" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">999.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.interviewSliver.fit1" | translate}}</li>
+                                        <li>{{"price.interviewSliver.fit2" | translate}}</li>
+                                        <li>{{"price.interviewSliver.fit3" | translate}}</li>
+                                        <li>{{"price.interviewSliver.fit4" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-sliver">{{"price.choose" | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head pricing_headGold">
+                                    <h3>{{"price.gold" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">1.499.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.interviewGold.fit1" | translate}}</li>
+                                        <li>{{"price.interviewGold.fit2" | translate}}</li>
+                                        <li>{{"price.interviewGold.fit3" | translate}}</li>
+                                        <li>{{"price.interviewGold.fit4" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-gold">{{"price.choose" | translate}} </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="showbag2">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head pricing_head1">
+                                    <h3>{{"price.bronze" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">1.250.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.solutionhopBron.fit1" | translate}}</li>
+                                        <li>{{"price.solutionhopBron.fit2" | translate}}</li>
+                                        <li>{{"price.solutionhopBron.fit3" | translate}}</li>
+                                        <li>{{"price.solutionhopBron.fit4" | translate}}</li>
+                                        <li>{{"price.solutionhopBron.fit5" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-bzone">{{"price.choose" | translate}}</a>
+                                </div>
+                            </div>
+                        </div> <!-- End off col-md-4 -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing pricing_business">
+                                <div class="pricing_head ">
+                                    <h3>{{"price.sliver" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">2.000.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.solutionhopSliver.fit1" | translate}}</li>
+                                        <li>{{"price.solutionhopSliver.fit2" | translate}}</li>
+                                        <li>{{"price.solutionhopSliver.fit3" | translate}}</li>
+                                        <li>{{"price.solutionhopSliver.fit4" | translate}}</li>
+                                        <li>{{"price.solutionhopSliver.fit5" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-sliver">{{"price.choose" | translate}}</a>
+                                </div>
+                            </div>
+                        </div> <!-- End off col-md-4 -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head pricing_headGold">
+                                    <h3>{{"price.gold" | translate}}</h3>
+                                    <div class="pricing_price" style="color: #fff;">
+                                        <span class="p_r text-center">2.150.000</span>VND/{{"price.month" | translate}}
+                                    </div>
+                                </div>
+
+                                <div class="pricing_body">
+                                    <ul>
+                                        <li>{{"price.solutionhopGold.fit1" | translate}}</li>
+                                        <li>{{"price.solutionhopGold.fit2" | translate}}</li>
+                                        <li>{{"price.solutionhopGold.fit3" | translate}}</li>
+                                        <li>{{"price.solutionhopGold.fit4" | translate}}</li>
+                                        <li>{{"price.solutionhopGold.fit5" | translate}}</li>
+                                    </ul>
+                                    <a href="/#/schedule_demo#schedule" class="btn btn-md-gold">{{"price.choose" | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="showbag3 || showbag4">
+                        <div class="col-md-4 col-sm-6"></div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single_pricing">
+                                <div class="pricing_head pricing_headGold">
+                                    <div class="pricing_price">
+                                        <div class="p_r text-center">{{"price.contact" | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="pricing_body" style="font-weight: 600; text-align: justify; padding: 50px 20px;">
+                                        <p>{{"main.address1" | translate}} {{"main.address2" | translate}}</p>
+                                        <p>Phone: 0868.977.384</p>
+                                        <p>Email: <a style="text-decoration:none;" href="mailto:info@vietinterview.com" target="_blank">info@vietinterview.com</a></p>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6"></div>
+                    </div>
+                </div>
+            </div><!-- End off row -->
+        </div><!-- End off container -->
+    </section>
+
+    <section ng-if="showbag1">
+        <div class="container" style="padding-top: 15px;">
+            <div class="row tabprice">
+                <h3 style="text-align: center;">{{"price.ctgsp" | translate}}</h3>
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="textleft">{{"price.benifit" | translate}}</th>
+                            <th> {{"price.bronze" | translate}}</th>
+                            <th> {{"price.sliver" | translate}}</th>
+                            <th> {{"price.gold" | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t1" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t2" | translate}}</td>
+                            <td><span>15</span></td>
+                            <td><span>25</span></td>
+                            <td><span>45</span></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t3" | translate}}</td>
+                            <td><span>1</span></td>
+                            <td><span>3</span></td>
+                            <td><span>3</span></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t4" | translate}}</td>
+                            <td><span>45</span></td>
+                            <td><span>75</span></td>
+                            <td><span>135</span></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t5" | translate}}</td>
+                            <td><i class="fa fa-times" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t6" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t7" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t8" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t9" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t10" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t11" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t12" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t13" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t14" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t15" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t16" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t17" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t18" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t19" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t20" | translate}}</td>
+                            <td><i class="fa fa-times" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t21" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t22" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="textleft">{{"price.beInterview.t23" | translate}}</td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div>

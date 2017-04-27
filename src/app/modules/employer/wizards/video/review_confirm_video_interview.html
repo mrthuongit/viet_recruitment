@@ -1,0 +1,129 @@
+
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <form method="post" id="marginfrom">
+        <div class="panel panel-info">
+        <div align="center" class="panel-heading headtitle">{{"employer.assignment.newVideo" |
+            translate}}</div>
+        <div class="panel-body panel-body-0padding">
+        <div class="row rowMenuInterview">
+            <div class="menu-assignment">
+                <ul class="nav nav-justified">
+                    <li class="menu-video ">1.
+                        {{"employer.assignment.nameInterview" |
+                        translate}}</li>
+                    <li class="menu-video">2.
+                        {{"employer.assignment.settingInterview" |
+                        translate}}</li>
+                    <li class="menu-video">3.
+                        {{"employer.assignment.selectInterview" |
+                        translate}}</li>
+                    <li class="menu-video menu-videoactive">4.
+                        {{"employer.assignment.confirmInterview" |
+                        translate}}</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="">
+                    <div>
+                        <div class="row paddingRightLeft15">
+                            <div class="col-sm-5" align="center">
+                               
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.aboutVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss" style="width: 80%">
+                                        <video class="videoAssessment" controls>
+                                            <source src={{interview.aboutUsUrl|trusted}} type="video/webm"></source>
+                                        </video>
+                                    </div>
+                                </div>
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.introVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss"
+                                        style="width: 80%">
+                                        <video class="videoAssessment"
+                                            controls>
+                                            <source
+                                                src={{interview.introUrl|trusted}}
+                                                type="video/webm"></source>
+                                        </video>
+                                    </div>
+                                </div>
+                                <div align="left"><i class="fa fa-cog fa-lg" style="color: coral;"></i>
+                                    <label style="font-weight: normal">{{"employer.assignment.exitVideo"
+                                        | translate}}</label>
+                                    <div class="background-videoAss"
+                                        style="width: 80%">
+                                        <video class="videoAssessment"
+                                            controls>
+                                            <source
+                                                src={{interview.exitUrl|trusted}}
+                                                type="video/webm"></source>
+                                        </video>
+                                    </div>
+                         
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-1"></div> -->
+                            <div class="col-sm-7" id="questionSelect" style="padding: 0px 30px">
+                                <label style="font-weight: 500; font-size: 19px;">{{"employer.listInterviewQuestion"| translate}}: </label>
+                                <div style="border:1px solid gray; padding: 10px 12px;">
+                                <div
+                                    ng-repeat="interviewQuestion in interviewQuestionList  | orderBy:'order'" ng-if="!interviewQuestion.remove">
+                                    <div>
+                                        <label
+                                            style="font-weight: 500">{{"employer.assignment.question"
+                                            | translate}}
+                                            {{interviewQuestion.order}}:
+                                            {{interviewQuestion.title}}</label>
+                                           <br>
+                                    <label class="label-sz17">{{"employer.assignment.response"
+                                        | translate}} :
+                                        {{interviewQuestion.response}} {{"employer.assignment.minute"
+                                        | translate}}</label>
+                                <br>
+                                 <label class="label-sz17">{{"employer.assignment.prepare"
+                                        | translate}} :
+                                        {{interviewQuestion.prepare}} {{"employer.assignment.minute"
+                                        | translate}}</label>
+                                        <div class="background-videoAss"
+                                            ng-if="interviewQuestion.videoUrl"
+                                            style="width: 80%">
+                                            <video
+                                                class="videoAssessment"
+                                                controls>
+                                                <source src={{interviewQuestion.videoUrl|trusted}} type="video/webm"></source>
+                                            </video>
+                                        </div>
+                                    </div>
+                                   <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="row" align=center
+            style="margin-left: 1px; margin-right: 1px">
+            <a class="btn btn-default"
+                href="/#/employer/video/question_interview"
+                style="float: left; margin-bottom: 5px !important; width: 120px;">{{"employer.assignment.back"
+                | translate}}</a>
+            <input type="button" ng-click="doSave()"
+                class="btn btn-primary"
+                value='{{"employer.assignment.save" | translate}}'
+                style="margin-bottom: 5px !important; width: 120px;">
+            <a class="btn btn-default" href="/#/employer/interview_list"
+                style="margin-bottom: 5px !important; width: 120px; float: right">{{"employer.assignment.cancel"
+                | translate}}</a>
+        </div>
+        <br>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

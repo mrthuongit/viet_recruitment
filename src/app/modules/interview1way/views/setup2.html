@@ -1,0 +1,15 @@
+<div ng-controller="InterviewSetup2Controller" >
+<h4 style="color: #0099FF"><b>{{"interview.configuration" | translate}}</b></h4>
+	<p><img src="assets/images/s1o.png" align="top"><img src="assets/images/s2.png" align="top"><img src="assets/images/s3o.png" align="top"></p>
+   
+    
+	  <div class="row" style="width: 480px; height: 360px;position: relative;" >
+                <video-recorder  control="recorder" ></video-recorder>
+            </div>
+			<div class="row">
+             <span style="font-weight:bold;font-family:verdana">{{"interview.yourself" | translate}}</span>
+	<p align="center" style="vertical-align: middle;">
+    	<button class="btn btn-success responsive-width"  ng-click="proceed()"  style=" font-weight: bold; width: 120px;">{{"interview.yes" | translate}}</button>
+	<button class="btn btn-default responsive-width btn-success"  ng-click="alert()"  style="font-weight: bold; width: 120px;">{{"interview.no" | translate}}</button>
+    </div>
+</div>

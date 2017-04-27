@@ -1,0 +1,59 @@
+<style type="text/css">
+    .myCheckbox img.checked {
+        width: 29px;
+        height: 22px;
+        margin-right: 21px;
+        margin-top: 8px;
+        content:url(assets/images/check.png);
+    }
+
+    .myCheckbox input:checked + img.checked {
+        width: 35px;
+        height: 30px;
+        margin-right: 15px;
+        margin-top: 0px;
+        content:url(assets/images/checked.png);
+    }
+    p.heading {
+            color: rgb(242, 93, 37);
+            font-size: 16px;
+            text-align: center;
+            font-weight: 500;
+            /*text-transform: uppercase;*/
+        }
+</style>
+<div style="margin-left: 50px; margin-right: 50px;" ng-controller="QuizController">
+    <div style="background-color: #dddddd; padding: 20px 30px;">
+        <div class="row" style="background-color: white; padding: 30px 30px 30px 30px; height:500px; overflow: scroll;">
+            <div>
+                <div align="center" style="background-color: gray; padding: 14px 6px; color: white; font-weight: bold;">{{"interview.time-left-anwer" | translate}}:  {{timeString}}</div>
+                <br>
+                <div style="font-weight: 500; font-size: 18px; text-transform: uppercase;">{{"interview.question" | translate}} : {{index}} / {{questionList.length}}</div><br>
+                <div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-sm-5">
+                            <div style="padding: 3px 10px;">
+                                <p class="heading">Nội dung câu hỏi:</p>
+                                <span style="font-weight: 500; font-size: 20px;">{{question.title}}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div style="border: 1px solid #ccc; padding-left: 10px;">
+                                <p class="heading" style="text-align: left;">Trả lời:</p>
+                                <label ng-repeat="option in question.options" class="radio myCheckbox" style="margin-top: 10px; margin-bottom: 27px; cursor:pointer; padding-left: 20px">
+                                    <input type="checkbox" ng-click="updateSelection($index, question.options)" ng-model="option.checked" style="float: right; cursor:pointer; position: relative; z-index: -9999;">
+                                    <img class="checked" style=" float: left; position: relative;">
+                                    <p style="float: left; font-size: 18px; font-weight: 400; cursor:pointer;">{{option.title}}</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>        
+                <div class="center">
+                    <button  class="btn btn-primary" ng-click="submitAnswer()">{{"employer.assignment.next" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

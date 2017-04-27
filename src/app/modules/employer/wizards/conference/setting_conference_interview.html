@@ -1,0 +1,86 @@
+<style type="text/css">
+    @media (max-width: 1200px) {
+        div.maxcol {
+            width: 50%;
+        }
+    }
+    @media (max-width: 769px) {
+        div.maxcol {
+            width: 100%;
+        }
+    }
+</style>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <form method="post" enctype="multipart/form-data" id="marginfrom"
+        name="setting_conference">
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading headtitle">{{"employer.assignment.newConference" |
+                translate}}</div>
+            <div class="panel-body panel-body-0padding">
+                <div class="row rowMenuInterview" align=center>
+                    <div class="menu-assignment">
+                        <ul class="nav nav-justified">
+                            <li class="menu-video ">1.
+                                {{"employer.assignment.nameConference" |
+                                translate}}</li>
+                            <!-- <li class="menu-video menu-videoactive">2.
+                                {{"employer.assignment.settingInterview" |
+                                translate}}</li> -->
+                            <li class="menu-video">2.
+                                {{"employer.assignment.selectInterview" |
+                                translate}}</li>
+                            <li class="menu-video">3.
+                                {{"employer.assignment.confirmInterview" |
+                                translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <!-- <div class="col-sm-4 maxcol" align=left>
+                        <i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                        <label class="titleAss">{{"employer.assignment.aboutVideo"
+                            | translate}}</label>
+                        <video-selector
+                            control="videoControl.aboutUs"
+                            url="interview.aboutUsUrl"
+                            file="uploadFile.aboutUs"></video-selector>
+                    </div> -->
+                    <div class="col-sm-6 maxcol">
+                        <i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                        <label class="titleAss">{{"employer.assignment.introVideo"
+                                    | translate}}</label>
+                        <video-selector
+                                    control="videoControl.intro"
+                                    url="interview.introUrl"
+                                    file="uploadFile.intro"></video-selector>
+                    </div>
+                    <div class="col-sm-6 maxcol">
+                        <i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                        <label class="titleAss">{{"employer.assignment.exitVideo"
+                                | translate}}</label>
+                        <video-selector
+                                control="videoControl.exit"
+                                url="interview.exitUrl"
+                                file="uploadFile.exit"></video-selector>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div align=center>
+            <input type="button" name="back" class="btn btn-default"
+                value='{{"employer.assignment.back" | translate}}' style="float:left;margin-bottom: 5px !important; width: 120px;"
+                ng-click="backInterview()">
+            <input type="button" class="btn btn-primary" style="margin-bottom: 5px !important; width: 120px;"
+                ng-click="gotoQuestionInterview()"
+                value='{{"employer.assignment.next" | translate}}'>
+            <input type="button" class="btn btn-default" ng-click="doCancel()" style="float:right;margin-bottom: 5px !important; width: 120px;"
+                 value='{{"employer.assignment.cancel" | translate}}' >
+           
+        </div>
+        <br>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

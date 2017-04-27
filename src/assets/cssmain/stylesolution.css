@@ -1,0 +1,171 @@
+.bge {
+    		 background-image: url("../images/ebg.jpg");
+    		 min-width: 100%;
+    		 min-height: 272px;
+    	}
+.etitle {
+        color: white;
+        text-align: center;
+        margin: auto;
+        padding-top:6%;
+      }
+.btne {
+      margin-left:50%;
+     }
+.econtent {
+      margin-top: 3%;
+     }
+.icontitel h2  {
+        color: #262626;
+        text-align: center;
+      }
+.eicon  {
+        margin-top:0%;
+      }
+.iconsign .titleicon {
+        font-size: 18px;
+
+    padding-top: 1%;
+    padding-left: 4%;
+    text-align:center;
+    width: 80%;
+
+      }
+ .iconsign img {
+        float: left;
+
+      }
+.iconsign .iconp{
+        /*text-indent: 20%;*/
+        width: 80%;
+        font-weight: 400;
+
+      }
+.iconsign {
+        padding-top: 2%;
+      }
+ .abe .row h2 {
+      	margin:auto;
+      	text-align: center;
+
+      }
+ .abe {
+      	margin-top:5%;
+      }
+ .singft {
+      	margin-top:4%;
+      }
+
+
+.msolution  {
+ text-align: center;
+ color: black;
+}
+.msingicon i{
+  font-size: 70px;
+  color: white;
+  text-align: center;
+  margin-top:3%;
+  padding-left: 33%;
+}
+.msingicon p {
+  color: white;
+  text-align: center;
+   margin-top:3%;
+}
+
+.msingicon {
+/*  width: 70%;*/
+  padding-left: 30%;
+      margin-bottom: 6%;
+}
+.msingicon2 {
+  text-align: center;
+}
+
+.msingicon2 i{
+  font-size: 70px;
+  color: black;
+  text-align: center;
+  margin-top:3%;
+  // padding-left: 33%;
+}
+.msingicon2 p {
+  color: black;
+  text-align: center;
+   margin-top:3%;
+}
+
+.msingicon2 {
+/*  width: 70%;*/
+  // padding-left: 30%;
+
+}
+
+.mft {
+  margin: auto;
+  text-align: center;
+  margin-top: 5%;
+  padding-bottom: 5%;
+}
+.titlesolution {
+  border-top:solid 1px black;
+  border-bottom: solid 1px black;
+  color: black;
+ font-size:20px;
+  margin:auto;
+}
+.sigiconsolu {
+  margin-top: 3%;
+  margin-left: 9%;
+}
+.bannersolution {
+  background: #245ca7;
+  min-height: 420px;
+
+}
+.numbersoulution{
+  border-radius: 15px;
+  color: white;
+  background: #ccc;
+  width: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  text-align: center;
+
+}
+.allcontenthd {
+  margin-top: 130px;
+  background-color: #003663;
+}
+.bgcolorsolution {
+  background-color: #003663;
+}
+.siground {
+   background: green;
+   height: 200px;
+   width: 200px;
+   border-radius:50%;
+   margin: auto;
+}
+.allsolution  {
+  margin-bottom: 4%;
+}
+.siground i {
+  color: white;
+  font-size: 55px;
+  margin: auto;
+  margin-top: 30%;
+  margin-left: 35%
+}
+.siground p {
+   font-size: 20px;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+.sigiconsolu p {
+  margin-top: -1.5%;
+  font-size: 19px;
+  font-weight: 400;
+}

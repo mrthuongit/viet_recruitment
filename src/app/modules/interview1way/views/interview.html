@@ -1,0 +1,32 @@
+<div ng-controller="InterviewController" style="margin-left: 50px; margin-right: 50px">
+<div style="background-color: #dddddd; padding: 20px 30px;">
+    <div class="row" style="background-color: white; padding: 30px 30px 30px 30px;height:500px" >
+    <div class="col-sm-9 " >
+        <div align="center" style="background-color: gray; padding: 14px 6px; color: white; font-weight: bold;">
+        {{timePrompt}}</div>
+        <div  ng-hide="!questionMode" align=center style="width: 480px; height: 360px;" >
+            <video  id="questionVideo" style="width: 88.5%; height: calc(100% - 40px); border-width: 3px; border-style: solid; border-color: #B0C4DE;"></video>
+        </div>
+        <div ng-hide="questionMode" style="width: 480px; height: 360px;" >
+            <video-recorder  control="recorder" ></video-recorder>
+            <img src="assets/images/location.png"
+            style="z-index: 3; position: absolute; top: 55px; right: 20px">
+        </div>
+    </div>
+    <div class="col-sm-3 ">
+        <div  class="center">
+            <input name="ready" class="btn btn-primary"
+            id="answerButton"
+            style=" font-weight: 500; width: 100%"
+            type="button">
+        </div>
+        <div align="left" style="position: absolute; top: 150px">
+            <div style="font-weight: 500; font-size: 25px">{{"interview.interview-mode" | translate}}</div>
+            <br>
+            <div style="font-weight: 500; font-size: 20px;">{{"interview.question" | translate}} 
+                {{index}} / {{questionList.length}}</div>
+                <div>{{question.title}}</div>
+            </div>
+        </div>
+    </div>
+

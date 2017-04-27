@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\modules\main\modals\popup_login.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">app/modules/main/modals/</a> popup_login.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/82</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/82</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+angular.module('mainModule').controller('LoginDialogController', <span class="fstat-no" title="function not covered" >function($scope, $rootScope,</span>
+    $translate, $q, $location, $employee, $common, toastr, localStorageService, _,$log, $uibModalInstance,
+    EMPLOYEE_DEFAULT_VALUES,POPUP_DIALOG_RESULT,$employer,activeTab) {
+    
+<span class="cstat-no" title="statement not covered" >    var alert = $translate.instant('toarster.alert');</span>
+<span class="cstat-no" title="statement not covered" >    var emailNull = $translate.instant('toaster.emailNull');</span>
+<span class="cstat-no" title="statement not covered" >    var passNull = $translate.instant('toaster.passNull');</span>
+<span class="cstat-no" title="statement not covered" >    var loginSuccess = $translate.instant('toaster.loginSuccess');</span>
+<span class="cstat-no" title="statement not covered" >    var loginError = $translate.instant('toaster.loginError');</span>
+<span class="cstat-no" title="statement not covered" >    var registerError = $translate.instant('toaster.noRegister');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $scope.activeTab = activeTab;</span>
+<span class="cstat-no" title="statement not covered" >    $scope.closeDialog = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        $uibModalInstance.close(POPUP_DIALOG_RESULT.CANCEL);</span>
+      };
+      
+<span class="cstat-no" title="statement not covered" >    $scope.doLogin = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (validateUserLogin()) {</span>
+<span class="cstat-no" title="statement not covered" >        $employer.loginAccount({</span>
+          email: $scope.userLogin.email,
+          password: $scope.userLogin.password
+        }, <span class="fstat-no" title="function not covered" >function(result) {</span>
+<span class="cstat-no" title="statement not covered" >            if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >              var user = {</span>
+                  token: result.data.token
+              }
+<span class="cstat-no" title="statement not covered" >              toastr.success(loginSuccess);</span>
+<span class="cstat-no" title="statement not covered" >              localStorageService.set('userEmployer', user);</span>
+<span class="cstat-no" title="statement not covered" >              $employer.getLicenseInfo( {</span>
+                  token:result.data.token
+                }, <span class="fstat-no" title="function not covered" >function(result) {</span>
+<span class="cstat-no" title="statement not covered" >                  if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >                    localStorageService.set('licenseInfo', result.data.licenseInfo);</span>
+<span class="cstat-no" title="statement not covered" >                    $uibModalInstance.close(POPUP_DIALOG_RESULT.EMPLOYER_LOGIN);</span>
+                  } else {
+<span class="cstat-no" title="statement not covered" >                    toastr.error( loginError);</span>
+                  } 
+               });                
+            } else {
+<span class="cstat-no" title="statement not covered" >              toastr.error(loginError);</span>
+            }
+        });
+      }
+    };
+      
+<span class="fstat-no" title="function not covered" >    function validateUserLogin() {</span>
+<span class="cstat-no" title="statement not covered" >        if ($scope.userLogin.email.length == 0) {</span>
+<span class="cstat-no" title="statement not covered" >            toastr.error(  emailNull,alert);</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if ($scope.userLogin.password.length == 0) {</span>
+<span class="cstat-no" title="statement not covered" >            toastr.error(  passNull,alert);</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getEmployeeProfile(token) {</span>
+<span class="cstat-no" title="statement not covered" >      var deferred = $q.defer(),</span>
+          employee = {};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $employee.getEmployeeProfile({</span>
+          token: token
+      }, <span class="fstat-no" title="function not covered" >function(result) {</span>
+<span class="cstat-no" title="statement not covered" >          if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >              employee = result.data.employee;</span>
+          } else {
+<span class="cstat-no" title="statement not covered" >              employee = $scope.userLogin;</span>
+<span class="cstat-no" title="statement not covered" >              $log.info('get employee profile error');</span>
+          }
+          
+<span class="cstat-no" title="statement not covered" >          employee.status = result.status;</span>
+<span class="cstat-no" title="statement not covered" >          employee.token = token;</span>
+<span class="cstat-no" title="statement not covered" >          deferred.resolve(employee);</span>
+      });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return deferred.promise;</span>
+    }
+    
+<span class="cstat-no" title="statement not covered" >    $scope.loginEmployee = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      $log.info('main - login');</span>
+<span class="cstat-no" title="statement not covered" >      var info = {</span>
+        email: $scope.userLogin.email,
+        password: $scope.userLogin.password
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $employee.loginAccount(info, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >          $scope.loginStatus = true;</span>
+<span class="cstat-no" title="statement not covered" >          getEmployeeProfile(result.data.token)</span>
+            .then(<span class="fstat-no" title="function not covered" >function(employee) {</span>
+<span class="cstat-no" title="statement not covered" >              if (employee.status) {</span>
+<span class="cstat-no" title="statement not covered" >                $employee.setNameEmployee(employee);</span>
+              }
+<span class="cstat-no" title="statement not covered" >              localStorageService.set('employee', employee);</span>
+<span class="cstat-no" title="statement not covered" >              $uibModalInstance.close(POPUP_DIALOG_RESULT.EMPLOYEE_LOGIN);</span>
+            });
+        } else {
+<span class="cstat-no" title="statement not covered" >          $log.info('get employee error');</span>
+<span class="cstat-no" title="statement not covered" >          $scope.loginStatus = false;</span>
+<span class="cstat-no" title="statement not covered" >          toastr.error('Email hoặc mật khẩu không đúng', 'Lỗi');</span>
+        }
+      });
+    };
+    
+<span class="cstat-no" title="statement not covered" >    $scope.signupEmployee = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      var info = {</span>
+        email: $scope.userRegister.email,
+        password: $scope.userRegister.password
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $employee.registerAccount(info, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        localStorageService.remove('employee');</span>
+<span class="cstat-no" title="statement not covered" >        if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >            $scope.signupStatus = true;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.userLogin.email = $scope.userRegister.email;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.userLogin.password = $scope.userRegister.password;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.loginEmployee();</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            $scope.signupStatus = false;</span>
+        }
+      });
+    };
+    
+<span class="cstat-no" title="statement not covered" >    $scope.sendEmailReset = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      var info = {</span>
+          email: $scope.reset.email
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $common.sendEmailReset(info, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.selectLogin();</span>
+      });
+    }
+    
+<span class="cstat-no" title="statement not covered" >    $scope.selectResetPassword =  <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      $scope.employeeOption = {</span>
+        login:false,
+        register:false,
+        resetPassword:true
+      };
+    };
+    
+<span class="cstat-no" title="statement not covered" >    $scope.selectRegister =  <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      $scope.employeeOption = {</span>
+        login:false,
+        register:true,
+        resetPassword:false
+      };
+    };
+    
+<span class="cstat-no" title="statement not covered" >    $scope.selectLogin =  <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      $scope.employeeOption = {</span>
+        login:true,
+        register:false,
+        resetPassword:false
+      };
+    };
+    
+<span class="fstat-no" title="function not covered" >    function init() {       </span>
+<span class="cstat-no" title="statement not covered" >      $scope.userLogin = {</span>
+              email: '',
+              password: ''
+          };
+<span class="cstat-no" title="statement not covered" >      $scope.userRegister =   {</span>
+              email: '',
+              password: '',
+              confirmPassword: ''
+          };
+<span class="cstat-no" title="statement not covered" >      $scope.reset = {</span>
+              email: '',
+              result: false
+          }
+<span class="cstat-no" title="statement not covered" >      $scope.selectLogin();</span>
+    };
+    
+<span class="cstat-no" title="statement not covered" >    init();</span>
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 16 2016 13:24:13 GMT+0700 (SE Asia Standard Time)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

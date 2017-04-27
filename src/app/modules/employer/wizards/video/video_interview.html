@@ -1,0 +1,81 @@
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+ <form method="post" ng-controller="VideoInterviewController"
+                id="marginfrom" name="video_interview"
+                style="">
+    <div class="panel panel-info">
+    <div align="center" class="panel-heading headtitle">{{"employer.assignment.newVideo" |
+        translate}}</div>
+    <div class="panel-body panel-body-0padding">    
+    <div class="row rowMenuInterview" align="center">
+            <div class="menu-assignment">
+                <ul class="nav nav-justified"  >
+                    
+                    <li class="menu-video menu-videoactive">1.
+                        {{"employer.assignment.nameInterview" |
+                        translate}}</li>
+                    <li class="menu-video">2.
+                        {{"employer.assignment.settingInterview" |
+                        translate}}</li>
+                    <li class="menu-video">3.
+                        {{"employer.assignment.selectInterview" |
+                        translate}}</li>
+                    <li class="menu-video">4.
+                        {{"employer.assignment.confirmInterview" |
+                        translate}}</li>
+                </ul>
+            </div>
+    </div>
+    <div align="center" class="paddingRightLeft15">
+           
+                        <div class="row" style="height: 250px;">
+                            <br>
+                            <div class="col-sm-4" align=left>
+                                <label for="name">{{"employer.assignment.interviewName"
+                                    | translate}}</label>
+                                <input type="text" class="form-control"
+                                    ng-model="interview.name"
+                                    placeholder={{chooseAssignment.name}}
+                                    ng-required="true" autofocus
+                                    name="name">
+                                <p class="required_employer"
+                                    ng-if="video_interview.name.$error.required">{{"required"
+                                    | translate}}</p>
+                                <br>
+                              
+                            </div>
+                            <div class="col-sm-2">&nbsp;</div>
+                            <div class="col-sm-4" align=left>
+                                <label for="name" class="">{{"employer.language"
+                                    | translate}}</label>
+                                <div class="btn-group"
+                                    style="width: 100%;">
+                                    <label class="btn btn-success"
+                                        ng-model="interview.language"
+                                        uib-btn-radio="'en'">{{"employer.english"
+                                        | translate}}</label>
+                                    <label class="btn btn-success"
+                                        ng-model="interview.language"
+                                        uib-btn-radio="'vi'">{{"employer.vietname"
+                                        | translate}}</label>
+                                </div>
+                            </div>
+                        </div>
+           
+    </div>
+    </div>
+    </div>
+    <div  align=center>
+      <input type="button"
+                                    ng-click="gotoSettingInterview()"
+                                    class="btn btn-primary"
+                                    value='{{"employer.assignment.next" | translate}}'
+                                    style="margin-bottom: 5px !important; width: 120px;">
+                                    <a class="btn btn-default" href="/#/employer/interview_list"
+                            style="margin-bottom: 5px !important; width: 120px;float:right">{{"employer.assignment.cancel"
+                            | translate}}</a>
+    </div>
+     </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

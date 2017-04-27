@@ -1,0 +1,59 @@
+<div ng-controller="InterviewWrapupController"
+	style="margin-left: 50px; margin-right: 50px">
+
+	<div style="background-color: #dddddd; padding: 20px 30px;">
+		<div class="row"
+			style="background-color: white; padding: 30px 30px 30px 30px;"
+			align="center">
+			<h3 style="font-weight: 500;">{{"interview.attach-support" | translate}}</h3>
+			<p>{{"interview.support-doccuments" | translate}}</p>
+			<br>
+			<p>{{"interview.upload-document" | translate}}</p>
+			<br>
+
+			<div class="row">
+				<div class="col-sm-4" align="center">
+					<fieldset>
+						{{"interview.comment" | translate}} <input type="text" name="comment1" ng-model="comment1"
+							 required><br>
+						<input type="file" ngf-select ng-model="picFile1" name="file1"
+							ngf-max-size="10MB" >
+							
+						<button ng-click="picFile1 = null" ng-show="picFile1">{{"interview.remove" | translate}}</button>
+						<br>
+					</fieldset>
+				</div>
+				<div class="col-sm-4" align="center">
+					<fieldset>
+						{{"interview.comment" | translate}}<input type="text" name="comment2" ng-model="comment2"
+							 required><br>
+						<input type="file" ngf-select ng-model="picFile2" name="file2"
+							ngf-max-size="10MB" >
+							
+						<button ng-click="picFile2 = null" ng-show="picFile2">{{"interview.remove" | translate}}</button>
+						<br>
+					</fieldset>
+				</div>
+				<div class="col-sm-4" align="center">
+					<fieldset>
+						{{"interview.comment" | translate}} <input type="text" name="comment3" ng-model="comment3"
+							 required><br>
+						<input type="file" ngf-select ng-model="picFile3" name="file3"
+							ngf-max-size="10MB" >
+							
+						<button ng-click="picFile3 = null" ng-show="picFile3">{{"interview.remove" | translate}}</button>
+						<br>
+					</fieldset>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row" class="center" >
+
+			<input name="Senddoc" class="btn btn-success" ng-click="uploadFile()"
+				style=" font-weight: bold; width: 100px" type="submit"
+				value='{{"interview.submit" | translate}}'>
+		</div>
+	</div>
+</div>

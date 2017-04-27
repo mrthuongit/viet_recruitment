@@ -1,0 +1,323 @@
+<div class="container-profile" id="marginfrom">
+	<div class="row">
+		<div class="col-sm-offset-1 col-sm-10">
+			<h2 class="text-center">{{"employer.employee.cv" | translate}}</h2>
+			<!-- Start employee profile -->
+			<div class="panel panel-info panel-emp">		
+				<div class="panel-heading clearfix">
+					<h4 class="title pull-left"><i class="fa fa-info-circle" aria-hidden="true"></i> {{ "employee.information" | translate }}</h4>
+				</div>
+				
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="thumbnail avarta-wrapper">
+								<img src="{{'data:image/png;base64,' + candidate.profile.image}}" alt="Avatar">
+							</div>
+							<div ng-if="candidate.profile.videoUrl">
+					            <button class="btn btn-info btn-block"
+					            ng-click="openVideoProfileModal();">
+					                <i class="fa fa-video-camera" aria-hidden="true"></i> {{"employer.employee.showvideo"
+                                | translate}}
+					            </button>					
+							</div>
+						</div>
+
+						<div class="col-sm-9">
+							<div class="info-item">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{ "employee.applyName" | translate }}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ candidate.profile.fullname }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{ "employee.birthdate" | translate }}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ candidate.profile.birthdate ? candidate.profile.birthdate : null }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.sex" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p ng-if="(candidate.profile.gender == 'Nữ') || (candidate.profile.gender == 'Female')">{{"employee.female" | translate}}</p>
+										<p ng-if="(candidate.profile.gender == 'Nam') || (candidate.profile.gender == 'Male')">{{"employee.male" | translate}}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"login.mobile" | translate}}</b></p>
+										<hr class="custom-hr">
+										<p><b>Email</b></p>
+									</div>
+									<div class="col-sm-8">
+										<div ng-if="!candidate.viewed" class="btn btn-default btn-coral" style="margin-top: 15px" ng-click="openConfirmGetContactModal()">{{"candidate.viewContact" | translate}}</div>
+										<p ng-if="candidate.viewed">{{ candidate.profile.mobile ? candidate.profile.mobile : null }}</p>
+										<p ng-if="candidate.viewed"><a href="mailto:{{ candidate.profile.email }}">{{ candidate.profile.email }}</a></p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.address" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p ng-if="candidate.profile.provinceId">{{ candidate.profile.provinceName }}, {{ candidate.profile.countryName }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.latestCompany" | translate}}</b> </p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ candidate.profile.recentlyCompany }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.highestEducation" | translate}}</b> </p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ candidate.profile.highestEduLevel }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>										
+			</div><!-- End employee profile -->
+
+			<!-- Start employee experience -->
+			<div class="panel panel-info panel-emp">
+				<div class="panel-heading">
+					<h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> {{"employee.experience" | translate}}</h4>
+				</div>
+				<div class="panel-body">
+					<div ng-if="candidate.expList.length > 0">
+						<div ng-repeat="exp in candidate.expList">
+							<div class="info-item">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.jobTitle" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ exp.title }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employer.invitation.Ass" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ exp.positionName }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.applyCompany" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ exp.employer }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.latestJob" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p ng-if="exp.current"><i class="fa fa-check-square-o" aria-hidden="true"></i></p>
+										<p ng-if="!exp.current"></p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.major" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<span ng-repeat="category in exp.categories" ng-class="{'alert alert-info alert-sm': category.title}">{{ category.title }}</span>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.durationWork" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ exp.startDate }} {{"employee.to" | translate}} {{ exp.endDate }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.jobLocation" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p ng-if="exp.provinceId && exp.countryId">{{ exp.provinceName }}, {{ exp.countryName }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.responsibilities" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ exp.description }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>				
+					<div ng-if="candidate.expList == 0">	
+						<p>{{"candidate.noInformation" | translate}}</p>
+					</div>
+				</div>				
+			</div><!-- End employee experience -->
+			
+			<!-- Start employee education -->
+			<div class="panel panel-info panel-emp">
+				<div class="panel-heading">
+					<h4 class="title"><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{"employee.education" | translate}}</h4>
+				</div>
+				<div class="panel-body">					
+					<div ng-if="candidate.eduList.length >0">
+						<div ng-repeat="edu in candidate.eduList">
+							<div class="info-item">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"candidate.major2" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ edu.program }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.institution" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ edu.institute }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.status" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ edu.statusVi }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.graduationDate" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ edu.finishDate }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.educationLevel" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">
+										<p>{{ edu.levelName }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="candidate.eduList.length == 0">				
+						<p>{{"candidate.noInformation" | translate}}</p>
+					</div>					
+				</div>
+			</div><!-- End employee education -->
+
+			<!-- Start employee certificate -->
+			<div class="panel panel-info panel-emp">
+				<div class="panel-heading">
+					<h4 class="title"><i class="fa fa-certificate" aria-hidden="true"></i> {{"employee.certifications" | translate}}</h4>
+				</div>
+				<div class="panel-body">
+					<div ng-if="candidate.certList.length >0">
+						<div ng-repeat="cer in candidate.certList">
+							<div class="info-item">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.certifTitle" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">{{ cer.title }}</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.issuer" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">{{ cer.issuer }}</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-3">
+										<p><b>{{"employee.issueDate" | translate}}</b></p>
+									</div>
+									<div class="col-sm-9">{{ cer.issueDate }}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="candidate.certList.length == 0">				
+						<p>{{"candidate.noInformation" | translate}}</p>
+					</div>
+				</div>
+			</div><!-- Start employee certificate -->
+
+			<!-- Start employee attachment -->
+			<div ng-if="candidate.viewed" class="panel panel-info panel-emp">
+				<div class="panel-heading">
+					<h4 class="title"><i class="fa fa-file" aria-hidden="true"></i> {{"employee.attachments" | translate}}</h4>
+				</div>
+				<div class="panel-body">
+					<table ng-if="candidate.docList.length > 0" class="table table-striped">
+						<thead>
+							<tr>
+								<th>{{"employee.attachmentTitle" | translate}}</th>
+								<th>File</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody class="doc-table-content">
+							<tr ng-repeat="doc in candidate.docList">
+								<td>{{ doc.title }}</td>
+								<td><a href="{{ doc.filedata }}" target="_blank">{{ doc.filename }}</a></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<div ng-if="candidate.docList.length == 0">
+						<p>{{"candidate.noInformation" | translate}}</p>
+					</div>
+				</div>
+			</div><!-- End employee attachment -->
+		</div>
+	</div>
+</div>
+<div ng-include="'app/modules/employer/modals/video-profile-modal.html'"></div>
+<div ng-include="'app/modules/employer/modals/confirm-get-contact-modal.html'"></div>
+

@@ -1,0 +1,30 @@
+<style>
+</style>
+<div align=center style="height: 100%; position: relative">
+    <div
+        style="position: absolute; top: 0; width: 100%; height: 40px; z-index: 2">
+        <div style="padding: 3px; height: 40px" align=center>
+            <span style="color: red; font-size: 14px"
+                ng-show="control.timerBar">
+                <timer interval="1000" autostart=false>
+                {{mminutes}} : {{sseconds}} </timer>
+            </span>
+        </div>
+    </div>
+    <video id="webcam" src={{videoUrl|trusted}} 
+        video-autoplay data-attr-autoplay={{videoAttr.autoplay}}
+        video-control data-attr-control={{videoAttr.controls}}
+        video-muted data-attr-muted={{videoAttr.muted}}
+        poster="{{ videoUrl?'':'assets/images/logow.png' }}"
+        style="z-index: 1; width: 88.5%; height: calc(100% - 40px); border-width: 3px; border-style: solid; border-color: #B0C4DE;"></video>
+    <div style="position: relative; bottom: 0; width: 100%; height: 40px; z-index: 5">
+        <a ng-click="startRecording()" ng-show="control.actionBar">
+            <img style="width: 30px; height: 30px"
+                ng-src="{{recordMode?'assets/images/interview/b2.png':'assets/images/interview/b1.png'}}">
+        </a>
+        <a ng-click="stopRecording()" ng-show="control.actionBar">
+            <img style="width: 30px; height: 30px"
+                src="assets/images/interview/a1.png">
+        </a>
+    </div>
+</div>

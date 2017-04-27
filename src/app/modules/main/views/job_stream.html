@@ -1,0 +1,63 @@
+<style type="text/css">
+	p {
+		text-align: justify; 
+		text-justify: inter-word;
+		color: #404041;
+		font-size: 17px;
+	}
+	div.solutionimg {
+		background-image: url('assets/images/bg_find_job_v2.png');
+		padding: 15px 30px;
+		height: 300px;
+	}
+	
+
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div ng-controller="JobStreamController" align="center">
+	<div data-css-name="moto-container_content_57dfbd3d1" class="moto-widget moto-widget-container moto-background-fixed moto-container_content_57dfbd3d1 solutionimg" data-widget="container" data-container="container">
+		<div class="moto-widget moto-widget-row" data-widget="row" style="padding-top: 180px">
+            <div class="container-fluid">
+            	<h2 class="titleh2 titleimage">Solutions</h2>
+            </div>
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10">
+			<h2 class="titleh2"><span>{{"solution.jobstream" | translate}}</span></h2>
+			<br>
+			<p style="width: 90%">{{"solution.jobstream.line1" | translate}}</p>
+		</div>
+		<div class="col-sm-1"></div>
+	</div><br><br>
+	<div align="center" style="width: 80%;">
+		<h2 class="titleh2">{{"solution.jobstream.line2" | translate}}</h2>
+		<br>
+		<div class="row">
+			<div class="col-sm-6 features">
+				<div class="imagetext">
+					<i class="fa fa-globe fa-2x imagefea" aria-hidden="true"></i>
+					<div><p>{{"solution.jobstream.line21" | translate}}</p></div>
+				</div>
+				<div class="imagetext">
+					<i class="fa fa-clock-o fa-2x imagefea" aria-hidden="true"></i>
+					<div><p>{{"solution.jobstream.line22" | translate}}</p></div>
+				</div>
+				<div class="imagetext">
+					<i class="fa fa-users fa-2x imagefea" aria-hidden="true"></i>
+					<div><p>{{"solution.jobstream.line23" | translate}}</p></div>
+				</div>
+				<div class="imagetext">
+					<i class="fa fa-calendar-check-o fa-2x imagefea" aria-hidden="true"></i>
+					<div><p>{{"solution.jobstream.line24" | translate}}</p></div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<img src="assets/images/jobstream.jpg" style="padding-top: 30px">
+			</div>
+		</div>
+	</div>
+</div>
+<br><br><br>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div> 

@@ -1,0 +1,265 @@
+<link rel="stylesheet" href="assets/cssmain/style.css">
+<style type="text/css">
+	.sigiconsolu > p{
+		font-size: 19px;
+    text-align: justify;
+    font-weight: 400;
+	}
+  .sigiconsolu > i{
+    float: left;
+    margin-right: 10px;
+    color: navy;
+  }
+	.titlesolution > p {
+		margin: 3px 0px;
+    font-size: 27px;
+    text-transform: uppercase;
+	}
+  .siground > p{
+    font-size: 21px;
+  }
+  .bgpv {
+    background: #4d606c;
+    transition: 2s;
+  }
+  .bgpv:hover {
+    background: #016B2F;
+    transition: 1.5s;
+  }
+  .bghop {
+    background: coral;
+    transition: 2s;
+  }
+  .bghop:hover {
+    background: #CD3333;
+    transition: 1.5s;
+  }
+  .bgelearn {
+    background: #96c952;
+    transition: 2s;
+  }
+  .bgelearn:hover {
+    background: #006400;
+    transition: 1.5s;
+  }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div id="solution">
+	<section style="background-image: url('assets/images/solution.jpg'); background-position: center; background-repeat: no-repeat;">
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 12%;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 allsolution">
+                <div class="col-xs-4">
+                  <a href="/#/solution" style="text-decoration: none;">
+                    <div class="siground bgpv" style="">
+                      <i class="fa fa-video-camera" aria-hidden="true"></i>
+                      <p style="text-transform: uppercase;">{{"solution.pvtn" | translate}}</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-xs-4">
+                  <a href="/#/solution#1way" style="text-decoration: none;">
+                  <div class="siground bghop"  style="">
+                    <i class="fa fa-laptop" aria-hidden="true"></i>
+                    <p style="text-transform: uppercase;">{{"solution.pv1c" | translate}}</p>
+                  </div>
+                  </a>
+                </div>
+                <div class="col-xs-4">
+                  <a href="/#/solution#2way" style="text-decoration: none;">
+                  <div class="siground bgelearn" style="">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  <p style="text-transform: uppercase;">{{"solution.pv2c" | translate}}</p>
+                  </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 20px;">
+      <div class="container-fluid" ng-init="showtn = false;">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12 titlesolution">
+                  <p>{{"solution.choice" | translate}}</p>
+                </div>
+                <div class="col-md-12">
+                  <p style="font-size: 20px; text-align: justify;">{{"solution.mutilchoice.line1" | translate}}</p>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 3%">
+                  <div class="col-xs-12 sigiconsolu" style="margin-top: 8%">
+                    <i class="fa fa-mobile" aria-hidden="true" style="font-size: 25px; margin-left: 3px;"></i>
+                    <p>{{"solution.choice.t1" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-spinner" aria-hidden="true"></i>
+                    <p>{{"solution.choice.t2" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                    <p> {{"solution.choice.t3" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-files-o" aria-hidden="true"></i>
+                    <p>{{"solution.choice.t4" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-shield" aria-hidden="true"></i>
+                    <p>{{"solution.choice.t5" | translate}}</p>
+                    </div>
+                  <div class="col-xs-12 sigiconsolu" id="1way">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <p>{{"solution.choice.t6" | translate}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 4%; margin-bottom: 3%;">
+                  <div class="col-xs-12" style="text-align: center; padding: 100px; background-image: url('assets/images/quiz.png'); background-repeat: no-repeat; background-position: center; ">
+                    <a ng-click="openVideoModal('quiz')">
+                      <img src="assets/images/playvideo.png" width="100px" style="cursor: pointer;">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-fluid" ng-init="showvideo1 = false;">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12 titlesolution" style="text-align: right;">
+                  <p>{{"solution.1way" | translate}}</p>
+                </div>
+                <div class="col-md-12">
+                  <p style="font-size: 20px; text-align: justify;">{{"solution.oneway.line1" | translate}}</p>
+                </div>
+                <div class="col-md-6" style="background-image: url('assets/images/bg_solution.png'); background-repeat: no-repeat; background-position: center; padding: 120px; text-align: center; margin-top: 5%; margin-bottom: 3%">
+                  <a ng-click="openVideoModal('oneway')">
+                    <img src="assets/images/playvideo.png" width="100px" style="cursor: pointer;">
+                  </a>
+                </div>
+                <div class="col-md-6" style="font-size: 19px;font-weight: 300; margin-top: 3%; margin-bottom:2%">
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <p> {{"solution.1way.t1" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t2" | translate}}</p>
+                  </div>
+                   <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-laptop" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t3" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t4" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t5" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-clone" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t6" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t7" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu">
+                    <i class="fa fa-database" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t8" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" id="2way">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <p>{{"solution.1way.t9" | translate}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-fluid" ng-init="showvideo2 = false;">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-12 titlesolution">
+                  <p>{{"solution.2way" | translate}}</p>
+                </div>
+                <div class="col-md-12">
+                  <p style="font-size: 20px; text-align: justify;">{{"solution.twoway.line1" | translate}}</p>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 3%; margin-top: 3%">
+                  <div class="col-xs-12 sigiconsolu" style="">
+                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t1" | translate}}</p>
+                  </div>
+
+                  <div class="col-xs-12 sigiconsolu" style="font-size: 19px; font-weight: 300;" >
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t2" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t3" | translate}}</p>
+                  </div>
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t4" | translate}}</p>
+                  </div>
+
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t5" | translate}}</p>
+                  </div>
+
+                  <div class="col-xs-12 sigiconsolu" >
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    <p>{{"solution.2way.t6" | translate}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 5%; margin-bottom: 3%">
+                  <div class="col-xs-12" style="text-align: center; padding: 100px; background-image: url('assets/images/2chieu.png'); background-repeat: no-repeat; background-position: center; ">
+                    <a ng-click="openVideoModal('twoway')">
+                      <img src="assets/images/playvideo.png" width="100px" style="cursor: pointer;">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: -0.2%;">
+      <div class="container-fluid">
+        <div class="row">
+          <img class="bannerbot" src="assets/images/bannerbotom.jpg" />
+          <div class="home_btn">
+            <a href="/#/schedule_demo#schedule" class="btn btn-lg m_t_10 btnbottom">{{"default.demo" | translate}}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div>

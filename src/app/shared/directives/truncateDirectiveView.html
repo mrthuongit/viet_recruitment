@@ -1,0 +1,10 @@
+<p ng-show="truncate" class="{{class}}">
+    {{shortText}} 
+    <a ng-click="toggleTruncate()" 
+        ng-show="longText && (longText.length > limit)"
+        class="link-toggle-truncate">{{expand}}</a>
+</p>
+<p ng-show="!truncate" class="{{class}}">
+    {{longText}} 
+    <a ng-click="toggleTruncate()" class="link-toggle-truncate">{{collapse}}</a>
+</p>

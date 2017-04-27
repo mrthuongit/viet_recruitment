@@ -1,0 +1,463 @@
+<style type="text/css">
+	.nonebutton {
+		pointer-events: none;
+	}
+	.nonebutton > .text-editor > .ta-editor , .nonebutton > .text-editor > .ta-editor > .bottom{
+		border: 0px;
+	}
+	.nonebutton > .text-editor > .ta-toolbar , .nonebutton > .text-editor > .ta-editor > .bottom{
+		display: none;
+	}
+</style>
+<div ng-include src="'app/modules/admin/views/main.html'"></div>
+<div ng-controller="AdminEmployeeDetailController" class="container-employee profile">
+	<h2 class="text-center main-title">{{"employer.employee.cv" | translate}}</h2>
+
+	<div class="row">
+		<div class="col-sm-offset-1 col-sm-10">
+			<div class="panel panel-info panel-emp">
+				<div class="panel-heading">
+					<h4 class="title"><i class="fa fa-info-circle" aria-hidden="true"></i> {{"employee.information" | translate}}</h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-3">
+							<div  class="thumbnail avarta-wrapper">
+								<img ngf-src="avatar" alt="">
+								<div class="edu-item btn-action-panel">
+									<button class="btn btn-warning" 
+										ngf-select="updateEmployeeAvatar(employee)"
+										ng-model="avatar" 
+										name="file" 
+										ngf-pattern="'image/*'"
+									    ngf-accept="'image/*'" 
+									    ngf-max-size="5MB" 
+									    ngf-resize="{width: 220, height: 304}">
+										<i class="fa fa-pencil" aria-hidden="true"></i>
+									</button>
+								</div>
+							</div>
+							<div align="right">
+					            <button class="btn btn-default btn-sm"
+									style="width:31%;"
+					                tooltip-placement="bottom"
+									uib-tooltip="Xem video"
+									ng-click="openVideoProfileModal();">
+					                <i class="fa fa-eye" aria-hidden="true"></i>
+					            </button>					
+							</div>
+						</div>
+						<div ng-show="!editProfile" class="col-sm-9">
+							<div class="info-item">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.applyName" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ employee.name | setFullName }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.birthdate" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ employee.birthdate }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.sex" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ employee.gender }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"login.mobile" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ employee.mobile }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>Email</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.address" | translate}}</b></p>
+									</div>
+									<div class="col-sm-8">
+										<p ng-if="employee.provinceId">{{ employee.provinceName }}, {{ employee.countryName }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.latestCompany" | translate}}</b> </p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ recentlyExpEmployer.employer }}</p>
+									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="row">
+									<div class="col-sm-4">
+										<p><b>{{"employee.highestEducation" | translate}}</b> </p>
+									</div>
+									<div class="col-sm-8">
+										<p>{{ highestEduLevel.levelName }}</p>
+									</div>
+								</div>
+								<div class="btn-action-panel">
+									<button class="btn btn-warning" type="button" ng-click="changeToEditProfile(true)">
+										<i class="fa fa-pencil" aria-hidden="true"></i>
+									</button>
+								</div>
+							</div><!-- End .info-item -->
+						</div>
+						<div ng-show="editProfile" class="col-sm-9">
+							<div ng-include="'app/modules/admin/modals/form-profile.html'"></div>
+						</div>
+					</div>
+				</div><!-- End panel-body -->
+
+			</div>
+				
+			<div ng-show="chooseEmployee.id">
+				<div class="panel panel-info panel-emp">
+					<div class="panel-heading">
+						<h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> {{"employee.experience" | translate}}</h4>
+					</div>
+					<div class="panel-body">
+						<div ng-if="expList.length > 0">
+							<div ng-repeat="exp in expList">
+								<div class="info-item">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.jobTitle" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ exp.title }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employer.invitation.Ass" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ exp.position.title }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.applyCompany" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ exp.employer }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.latestJob" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p><i ng-show="exp.current" class="fa fa-check-square-o" aria-hidden="true"></i></p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.major" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<span ng-repeat="category in exp.categories" ng-class="{'label label-default': category.title}">{{ category.title }}</span>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.durationWork" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ exp.startDate }} {{"employee.to" | translate}} {{ exp.endDate }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.jobLocation" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p ng-if="exp.provinceId && exp.countryId">{{ exp.provinceName }}, {{ exp.countryName }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.responsibilities" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9" ng-bind-html="exp.description">
+										</div>
+									</div>
+
+									<div class="btn-action-panel">
+										<button class="btn btn-warning" type="button" data-toggle="modal" data-target="#exp-modal" ng-click="setModalExp(exp)">
+											<i class="fa fa-pencil" aria-hidden="true"></i>
+										</button>
+										<button class="btn btn-danger" type="button" ng-click="removeEmployeeExp(exp)">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button>
+									</div>
+								</div>
+								<div ng-show="isSelectedExp(exp.id)">
+									<div ng-include="'app/modules/admin/modals/form-exp.html'"></div>		
+								</div>
+							</div>
+						</div>				
+						<div ng-if="expList.length == 0">			
+							<p>{{"employee.depcriptopnExp" | translate}}</p>
+
+							<hr>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center" ng-show="!createExp"> 
+								<button ng-click="resetModalExp()" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exp-modal">{{"employee.add" | translate}}</button>
+							</div>
+							<div class="col-sm-12" ng-show="createExp">
+								<div ng-include="'app/modules/admin/modals/form-exp.html'"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-info panel-emp">
+					<div class="panel-heading">
+						<h4 class="title"><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{"employee.education" | translate}}</h4>
+					</div>
+					<div class="panel-body">
+						<div ng-if="eduList.length >0">
+							<div ng-repeat="edu in eduList">
+								<div class="info-item">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"candidate.major2" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ edu.program }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.institution" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ edu.institute }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.status" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ edu.statusVi }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.graduationDate" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ edu.finishDate }}</p>
+										</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.educationLevel" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">
+											<p>{{ edu.levelName }}</p>
+										</div>
+									</div>
+
+									<div class="edu-item btn-action-panel">
+										<button class="btn btn-warning" type="button" ng-click="setModalEdu(edu)">
+											<i class="fa fa-pencil" aria-hidden="true"></i>
+										</button>
+										<button class="btn btn-danger" type="button" ng-click="removeEmployeeEdu(edu)">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button>
+									</div>
+								</div>
+								<div ng-show="isSelectedEdu(edu.id)">
+									<div ng-include="'app/modules/admin/modals/form-edu.html'"></div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="eduList.length == 0">					
+							<p>{{"employee.depcriptionEdu" | translate}}</p>
+
+							<hr>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<button ng-click="resetModalEdu()" class="btn btn-primary" type="button">{{"employee.add" | translate}}</button>
+							</div>
+							<div class="col-sm-12" ng-show="createEdu">
+								<div ng-include="'app/modules/admin/modals/form-edu.html'"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-info panel-emp">
+					<div class="panel-heading">
+						<h4 class="title"><i class="fa fa-certificate" aria-hidden="true"></i> {{"employee.certifications" | translate}}</h4>
+					</div>
+					<div class="panel-body">
+						<div ng-if="certList.length >0">
+							<div ng-repeat="cer in certList">
+								<div class="info-item">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.certifTitle" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">{{ cer.title }}</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.issuer" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">{{ cer.issuer }}</div>
+									</div>
+									<hr class="custom-hr">
+									<div class="row">
+										<div class="col-sm-3">
+											<p><b>{{"employee.issueDate" | translate}}</b></p>
+										</div>
+										<div class="col-sm-9">{{ cer.issueDate }}</div>
+									</div>
+									<div class="edu-item btn-action-panel">
+										<button class="btn btn-warning" type="button"  ng-click="setModalCer(cer)">
+											<i class="fa fa-pencil" aria-hidden="true"></i>
+										</button>
+										<button class="btn btn-danger" type="button" ng-click="removeEmployeeCer(cer)">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button>
+									</div>
+								</div>
+								<div ng-show="isSelectedCer(cer.id)">
+									<div ng-include="'app/modules/admin/modals/form-cer.html'"></div>
+								</div>
+							</div>
+						</div>
+						<div ng-if="certList.length == 0">					
+							<p>{{"employee.depcriptionCer" | translate}} </p>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center" ng-show="!createCer">
+								<button ng-click="resetModalCer()" class="btn btn-primary" type="button">{{"employee.add" | translate}}</button>
+							</div>
+							<div class="col-sm-12" ng-show="createCer">
+								<div ng-include="'app/modules/admin/modals/form-cer.html'"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-info panel-emp">
+					<div class="panel-heading">
+						<h4 class="title"><i class="fa fa-file" aria-hidden="true"></i> {{"employee.attachments" | translate}}</h4>
+					</div>
+					<div class="panel-body">
+						<table ng-if="docList.length > 0" class="table table-striped">
+							<thead>
+								<tr>
+									<th>{{"employee.attachmentTitle" | translate}}</th>
+									<th>File</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody class="doc-table-content">
+								<tr ng-repeat="doc in docList">
+									<td>{{ doc.title }}</td>
+									<td><a href="{{ doc.filedata }}" target="_blank">{{ doc.filename }}</a></td>
+									<td>
+										<button class="btn btn-danger btn-delete-doc pull-right" type="button" ng-click="removeEmployeeDoc(doc)">
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div ng-if="docList.length == 0">
+							<p>{{"employee.depcriptionDoc" | translate}}</p>
+						</div>
+
+						<hr>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<button ng-click="resetModalDoc()" ng-class="{ 
+								'custom-hide': !toggleModalDoc, 'btn btn-primary': toggleModalDoc }">{{"employee.add" | translate}}</button>
+							</div>
+						</div>
+						<div ng-class="{ 'custom-hide' : toggleModalDoc }">
+							<form name="formDoc" novalidate>
+							<div class="row">
+								<div class="col-sm-3">
+									<p class="custom-label"><b><span class="required">*</span>{{"employee.attachmentTitle" | translate}}</b></p>
+								</div>
+								<div class="col-sm-9">
+									<div class="form-group">
+										<input type="text" class="form-control" ng-model="currFile.title" ng-value="{{ currFile.title }}" name="Filetitle" required autofocus>
+										<span ng-show="formDoc.Filetitle.$invalid && !formDoc.Filetitle.$pristine" class="help-block">{{"required" | translate}}</span>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<p>
+										<button type="file" 
+										ngf-select
+										ng-model="currFile.file"
+										ngf-max-size="1MB">
+										{{"employee.selectFile" | translate}}</button>
+										{{ currFile.file.name }}
+									</p>							
+									<p>{{"employee.accept" | translate}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<button ng-click="resetModalDoc()" class="btn btn-default" type="button">{{"employee.cancel" | translate}}</button>
+									<button ng-disabled="formDoc.$invalid" ng-click="saveEmployeeDoc(currFile)" class="btn btn-primary" type="button">{{"employee.save" | translate}}</button>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div ng-include="'app/modules/admin/modals/video-profile-modal.html'"></div>
+</div> 

@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\shared\video-components\video-profile\videoProfile.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">app/shared/video-components/video-profile/</a> videoProfile.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/116</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0.86% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/116</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+angular.module('app').directive('videoProfile', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        restrict: 'E',
+        templateUrl: 'app/shared/video-components/video-profile/videoProfile.html',
+        controllerAs: 'ctrl',
+        scope: {
+            url: '=',
+            avatar: '='
+        },
+        controller: <span class="fstat-no" title="function not covered" >function($rootScope,$scope, $q, $common, $element, $sce, $log, $timeout, deviceDetector) {</span>
+<span class="cstat-no" title="statement not covered" >            var width       = 320,</span>
+                height      = 0,
+                photoBase64 = null,
+                video       = null,
+                canvas      = null,
+                photo       = null,                
+                mediaSource = new MediaSource(),
+                webcam      = document.querySelectorAll('video#webcam')[0],
+                mediaRecorder,
+                recordedBlobs,
+                sourceBuffer;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var constraints = {</span>
+                    audio: true,
+                    video: true
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var handleSourceOpen = <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >                sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');</span>
+            };         
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var handleSuccess = <span class="fstat-no" title="function not covered" >function(stream) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var defered = $q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                $scope.stream = stream;</span>
+<span class="cstat-no" title="statement not covered" >                $rootScope.$broadcast('camera-on');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                defered.resolve();</span>
+<span class="cstat-no" title="statement not covered" >                return defered.promise;</span>
+            };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var handleDataAvailable = <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (event.data &amp;&amp; event.data.size &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                    recordedBlobs.push(event.data);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (deviceDetector.browser=='firefox' &amp;&amp; !$scope.recordMode) {</span>
+<span class="cstat-no" title="statement not covered" >                    var superBuffer = new Blob(recordedBlobs, {</span>
+                        type: 'video/webm'
+                    });
+<span class="cstat-no" title="statement not covered" >                    $scope.localFile = new File([superBuffer],  new Date().getTime()+"upload.webm");</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.videoUrl = $sce.trustAsResourceUrl(window.URL.createObjectURL(superBuffer));</span>
+<span class="cstat-no" title="statement not covered" >                    $rootScope.$broadcast('data-avao;');</span>
+                }
+            };
+            
+<span class="cstat-no" title="statement not covered" >            var handleStop = <span class="fstat-no" title="function not covered" >function(event) {</span></span>
+<span class="cstat-no" title="statement not covered" >                $log.info('Recorder stopped: ', event);</span>
+            };
+            
+<span class="cstat-no" title="statement not covered" >            var handleError = <span class="fstat-no" title="function not covered" >function(error) {</span></span>
+<span class="cstat-no" title="statement not covered" >                $log.info('navigator.getUserMedia error: ', error);</span>
+            };
+  
+<span class="cstat-no" title="statement not covered" >            $scope.startRecording = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                $scope.$broadcast('timer-clear');</span>
+<span class="cstat-no" title="statement not covered" >                $scope.$broadcast('timer-start');</span>
+<span class="cstat-no" title="statement not covered" >                navigator.mediaDevices</span>
+                .getUserMedia(constraints)
+                .then(handleSuccess)
+                .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.timerBar = true; </span>
+<span class="cstat-no" title="statement not covered" >                    $scope.$apply();</span>
+<span class="cstat-no" title="statement not covered" >                    if ($scope.recordMode)</span>
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+<span class="cstat-no" title="statement not covered" >                    var stream = $scope.stream;</span>
+<span class="cstat-no" title="statement not covered" >                    if (window.URL) {</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.videoUrl = $sce.trustAsResourceUrl(window.URL.createObjectURL(stream));</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        $scope.videoUrl = $sce.trustAsResourceUrl(stream);</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    $scope.$apply();                   </span>
+<span class="cstat-no" title="statement not covered" >                    recordedBlobs = [];</span>
+<span class="cstat-no" title="statement not covered" >                    var options = {</span>
+                        mimeType: 'video/webm;codecs=vp9'
+                    };
+<span class="cstat-no" title="statement not covered" >                    if (!MediaRecorder.isTypeSupported(options.mimeType)) {</span>
+<span class="cstat-no" title="statement not covered" >                        options = {</span>
+                            mimeType: 'video/webm;codecs=vp8'
+                        };
+<span class="cstat-no" title="statement not covered" >                        if (!MediaRecorder.isTypeSupported(options.mimeType)) {</span>
+<span class="cstat-no" title="statement not covered" >                            options = {</span>
+                                mimeType: 'video/webm'
+                            };
+<span class="cstat-no" title="statement not covered" >                            if (!MediaRecorder.isTypeSupported(options.mimeType)) {</span>
+<span class="cstat-no" title="statement not covered" >                                options = {</span>
+                                    mimeType: ''
+                                };
+                            }
+                        }
+                    }
+<span class="cstat-no" title="statement not covered" >                    try {</span>
+<span class="cstat-no" title="statement not covered" >                        mediaRecorder = new MediaRecorder(stream, options);</span>
+                    } catch (e) {
+<span class="cstat-no" title="statement not covered" >                        console.error('Exception while creating MediaRecorder: ' + e);</span>
+<span class="cstat-no" title="statement not covered" >                        alert('Exception while creating MediaRecorder: ' + e + '. mimeType: ' + options.mimeType);</span>
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    mediaRecorder.onstop = handleStop;</span>
+<span class="cstat-no" title="statement not covered" >                    mediaRecorder.ondataavailable = handleDataAvailable;</span>
+<span class="cstat-no" title="statement not covered" >                    mediaRecorder.start();</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.recordMode = true;</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.$apply();</span>
+<span class="cstat-no" title="statement not covered" >                    webcam.autoplay = true;</span>
+<span class="cstat-no" title="statement not covered" >                    webcam.controls = false;</span>
+<span class="cstat-no" title="statement not covered" >                    webcam.muted = true;</span>
+                })
+                .catch(handleError);
+            };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $scope.takepicture = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                video = document.getElementById('webcam');</span>
+<span class="cstat-no" title="statement not covered" >                canvas = document.createElement("CANVAS");</span>
+<span class="cstat-no" title="statement not covered" >                photo = document.getElementById('photo');</span>
+<span class="cstat-no" title="statement not covered" >                height = video.videoHeight / (video.videoWidth/width);</span>
+<span class="cstat-no" title="statement not covered" >                var context = canvas.getContext('2d');                </span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (width &amp;&amp; height) {</span>
+<span class="cstat-no" title="statement not covered" >                    canvas.width = width;</span>
+<span class="cstat-no" title="statement not covered" >                    canvas.height = height;</span>
+<span class="cstat-no" title="statement not covered" >                    context.drawImage(video, 0, 0, width, height);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    photoBase64 = canvas.toDataURL('image/png');</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.photoBase64 = photoBase64;</span>
+<span class="cstat-no" title="statement not covered" >                    photo.setAttribute('src', photoBase64);</span>
+                } else {
+                    // clearphoto();
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $scope.saveAvatar = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                $rootScope.$broadcast('photoBase64', $scope.photoBase64);</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $scope.stopRecording = <span class="fstat-no" title="function not covered" >function() { </span></span>
+<span class="cstat-no" title="statement not covered" >                $scope.$broadcast('timer-stop');</span>
+<span class="cstat-no" title="statement not covered" >                try {</span>
+<span class="cstat-no" title="statement not covered" >                    mediaRecorder.stop();</span>
+                } catch (e) {
+<span class="cstat-no" title="statement not covered" >                    console.error('Exception while closing MediaRecorder: ' + e);</span>
+                }
+<span class="cstat-no" title="statement not covered" >                webcam.controls = true;</span>
+<span class="cstat-no" title="statement not covered" >                webcam.autoplay = true;</span>
+<span class="cstat-no" title="statement not covered" >                webcam.muted = false;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.recordMode = false;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.timerBar = false;</span>
+<span class="cstat-no" title="statement not covered" >                if (deviceDetector.browser=='chrome') {</span>
+<span class="cstat-no" title="statement not covered" >                    var superBuffer = new Blob(recordedBlobs, {</span>
+                        type: 'video/webm'
+                    });
+<span class="cstat-no" title="statement not covered" >                    $scope.localFile = new File([superBuffer], new Date().getTime()+"upload.webm" );</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.videoUrl = $sce.trustAsResourceUrl(window.URL.createObjectURL(superBuffer));</span>
+                }
+<span class="cstat-no" title="statement not covered" >                var stream = $scope.stream;</span>
+<span class="cstat-no" title="statement not covered" >                stream.stop();</span>
+            };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $scope.saveVideo = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                if ($scope.localFile) {</span>
+<span class="cstat-no" title="statement not covered" >                    var file = $scope.localFile;</span>
+<span class="cstat-no" title="statement not covered" >                    $common.uploadVideo({ file: file }, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                        if (result.status &amp;&amp; result.data.result) {</span>
+<span class="cstat-no" title="statement not covered" >                            $rootScope.$broadcast('url', result.data.url);</span>
+                        }
+                    });
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $scope.clearVideo = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                $scope.videoUrl = null;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.localFile = null;</span>
+            };
+            
+<span class="cstat-no" title="statement not covered" >            $scope.closeCamera =  <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                try {</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.stream.getVideoTracks()[0].stop();</span>
+                } catch (e) {
+                    
+                }
+            };
+                        
+<span class="cstat-no" title="statement not covered" >            $scope.$on('$destroy', <span class="fstat-no" title="function not covered" >function(next, current) {</span></span>
+<span class="cstat-no" title="statement not covered" >                $scope.closeCamera();</span>
+            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var init = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                mediaSource.addEventListener('sourceopen', handleSourceOpen, false);</span>
+<span class="cstat-no" title="statement not covered" >                $scope.recordMode = false;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.timerBar = false;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.showRecordControl = false; </span>
+<span class="cstat-no" title="statement not covered" >                webcam.autoplay = false;</span>
+<span class="cstat-no" title="statement not covered" >                webcam.controls = true;</span>
+<span class="cstat-no" title="statement not covered" >                webcam.volume = 0.8;</span>
+<span class="cstat-no" title="statement not covered" >                $scope.control = {</span>
+                    close:$scope.closeCamera
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if ($scope.url) {</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.videoUrl = $sce.trustAsResourceUrl($scope.url);</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                $scope.startRecording();</span>
+            };
+            
+<span class="cstat-no" title="statement not covered" >            init();            </span>
+        }
+    };
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 16 2016 13:24:13 GMT+0700 (SE Asia Standard Time)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

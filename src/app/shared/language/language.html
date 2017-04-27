@@ -1,0 +1,17 @@
+<style type="text/css">
+	.languagebt > div.btn {
+		font-size: 12px; text-transform: none; padding: 3px 10px; min-width: 70px; color: #0579ab;
+		transition: 0s;
+	}
+	.languagebt > div.btn > img {
+		width:30px; height: 20px;
+	}
+</style>
+<div class="languagebt" ng-controller="LanguageController" align="right" style="padding-right: 10px;">
+	<div class="btn btnwhite" ng-show="language=='en'" ng-click="doLanguage('vi')">
+		<img src="assets/images/icon_vietnamese.jpg"> Tiếng Việt
+	</div>
+	<div class="btn btnwhite" ng-show="language=='vi'" ng-click="doLanguage('en')">
+		<img src="assets/images/icon_english.jpg"> English
+	</div>
+</div>

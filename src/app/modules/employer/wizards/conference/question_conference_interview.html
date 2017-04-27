@@ -1,0 +1,136 @@
+<style>
+    @media (max-width: 500px) {
+        .interview {
+            width: 480px;
+            margin-right: 20px;
+        }
+    }
+</style>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+
+<div class="body-info-employer">
+    <form method="post" id="marginfrom" name="question_interview"> 
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading headtitle">{{"employer.assignment.newConference" | translate}}</div>
+            <div class="panel-body panel-body-0padding">
+                <div class="rowMenuInterview" align=center>
+                    <div class="menu-assignment">
+                        <ul  class="nav nav-justified">
+                            <li class="menu-video ">1. {{"employer.assignment.nameConference" | translate}}</li>
+                            <!-- <li class="menu-video" >2. {{"employer.assignment.settingInterview" | translate}}</li> -->
+                            <li class="menu-video menu-videoactive" >2. {{"employer.assignment.selectInterview" | translate}}</li>
+                            <li class="menu-video" >3. {{"employer.assignment.confirmInterview" | translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row paddingRightLeft15" align=center>
+                    <div>
+                        <div class="row" align="left"
+                        style="margin-left: 1px; margin-right: 1px">
+                            <div class="col-sm-6 tab-popup">
+                               
+                          <uib-tabset type="pills">
+                                <uib-tab index="0"
+                                    heading="{{'employer.assignment.library'|translate}}">
+                                <div
+                                    style="padding-top: 10px; overflow: hidden;">
+                                    <div>
+                                        <div
+                                            style="font-size: 16px; margin-bottom: 7px">
+                                            <span
+                                                class="glyphicon glyphicon-search"
+                                                style="float: left; padding: 10px 5px;"></span>
+                                            <div angucomplete-alt
+                                                id="searchCategories"
+                                                class="w100 dib bg-white input_search"
+                                                placeholder='{{"search.title" | translate}}'
+                                                text-searching='{{"search.searching" | translate}}'
+                                                text-no-results=""
+                                                input-class="no-border"
+                                                input-name="questionTitle"
+                                                selected-object="chooseQuestionSearch"
+                                                pause="100"
+                                                local-data="questionList"
+                                                search-fields="title"
+                                                title-field="title"
+                                                minlength="1"
+                                                clear-selected="true"
+                                                style="cursor: pointer"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label
+                                            style="font-weight: normal; float: left">{{"employer.assignment.listcategory"
+                                            | translate}}: </label>
+                                        <select class="form-control"
+                                            ng-options="category.id as category.title for category in questionCategory"
+                                            ng-model="interviewQuestion.categoryId"
+                                            ng-change="selectCategory()"></select>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <label
+                                            style="font-weight: normal;">{{"employer.assignment.listquestion"
+                                            | translate}}:</label>
+                                        <select class="form-control"
+                                            style="width: 85%; display: inline"
+                                            ng-options="question.id as question.title for question in  questionList|category:interviewQuestion.categoryId|existQuestion:interviewQuestionList|freeText"
+                                            ng-model="interviewQuestion.questionId"></select>
+                                        <input type="button"
+                                            ng-click="chooseQuestion()"
+                                            value='{{"employer.assignment.select" | translate}}'
+                                            class="btn btn-success btn-employer btn-video"
+                                            style="font-weight: bold; color: black; float: right; padding: 6px 6px;">
+                                    </div>
+                                </div>
+                              
+                                </uib-tab> <uib-tab index="1"
+                                    heading="{{'employer.assignment.manual'|translate}}">
+                                <div style="overflow: hidden;">
+                                    <br>
+                                    <div align=center>
+                                        <input
+                                            style="width: 80%; font-size: 16px; float: left"
+                                            key-enter="addQuestionManual()"
+                                            placeholder="{{'employer.assignment.manualQuestion' | translate}}"
+                                            class="form-control"
+                                            ng-model="interviewQuestion.title"></input>
+                                        <button
+                                            class="btn btn-default responsive-width btn-employer btn-video"
+                                            ng-click="addQuestionManual()" ng-disabled='!interviewQuestion.title'
+                                            style="font-weight: bold; color: black; padding: 6px 6px;">{{"employer.assignment.select"
+                                            | translate}}</button>
+                                        <br>
+                                        <br>
+                                     
+                                    </div>
+                                    <br>
+                                </div>
+                                </uib-tab> </uib-tabset>
+                            </div>
+                            <div class="col-sm-6" style="border-left: 1px solid gray; min-height: 265px;" >
+                                <h4 style="font-weight: 400; font-size: 22px;">{{"employer.assignment.interviewQuestion" | translate}}</h4>
+                                <div ng-repeat="interviewQuestion in interviewQuestionList | orderBy:'order'" ng-if="!interviewQuestion.remove">
+                                    <label class="label-sz17">{{interviewQuestion.order}}. {{interviewQuestion.title}}</label><br>
+                                    <span ng-click="removeInterviewQuestion(interviewQuestion)" class="btn btn-employer btn-video" style=";color:#d3222d;background-color:white">{{"employer.assignment.remove" | translate}}</span>
+                                    <span ng-click="moveDownInterviewQuestion(interviewQuestion)" class="btn btn-employer btn-video" style=";color:black;background-color:white">{{"employer.assignment.movedown" | translate}}</span>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        	</div>
+        </div>
+        <div class="row" style="margin-left: 1px; margin-right: 1px" align=center>
+            <a type="button " style="margin-bottom: 5px !important; width: 120px;float:left" class="btn btn-default" ng-click="back()">{{"employer.assignment.back" | translate}}</a>
+            <a type="button "  ng-click="gotoReview()" style="margin-bottom: 5px !important; width: 120px;" id="next3" class="btn btn-primary" >{{"employer.assignment.next" | translate}}</a>
+             <a  class="btn btn-default"  href="/#/employer/interview_list" style="margin-bottom: 5px !important; width: 120px;float:right">
+        {{"employer.assignment.cancel" | translate}}</a>             
+        </div>
+        <br>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

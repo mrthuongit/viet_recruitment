@@ -1,0 +1,136 @@
+<div style="margin-left:5%;margin-right:5%; height: 100%" ng-controller="QuizOverviewController">
+	<style>
+		p.heading {
+			color: rgb(242, 93, 37);
+			font-size: 16px;
+			text-align: left;
+			font-weight: 400;
+		}
+
+		p.normal {
+			color: white;
+			font-size: 13px;
+			text-align: left;
+			line-height: 150%;
+			vertical-align: middle;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.imageAndText {
+			position: relative;
+		}
+
+		.imageAndText .col {
+			position: absolute;
+			top: 6px;
+			left: 16%;
+		}
+		div.questiontitle {
+			background-color: #D1EEEE; border: solid 1px #ccc; font-weight: 400; font-size: 16px;
+		}
+		@media (min-width: 1367px) {
+		    p.normal {
+		        font-size: 14px;
+		    }
+		    p.heading, h3 {
+		        font-size: 20px;
+		    }
+		    div.questiontitle {
+		    	font-size: 18px;
+		    }
+		}
+		@media (max-width: 365px) {
+		    p.normal {
+		        font-size: 10px;
+		    }
+		    p.heading, h3 {
+		        font-size: 13px;
+		    }
+		    div.questiontitle {
+		    	font-size: 13px;
+		    }
+		}
+		@media (max-width: 280px) {
+		    p.normal {
+		        font-size: 8px;
+		    }
+		}
+	</style>
+
+	<div class="row" style="margin-left: 20px; margin-right: 20px; margin-top: 1%;">
+		<p class="heading">{{"interview.howitwork" | translate}}</p>
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-4 ">
+				<div class="imageAndText" style="width: 100%; height:100%; margin: 5px 0px;">
+					<img src="assets/images/interview/n1.png"
+						class="align-center img-responsive">
+					<div class="col" style="width: 80%;height: 100%; vertical-align: middle;">
+						<p class="normal">{{"overviewQuiz.1" | translate}}</p>
+					</div>
+				</div>
+				<div class="imageAndText" style="width: 100%; height:100%; margin: 5px 0px;">
+					<img src="assets/images/interview/n2.png"
+						class="align-center img-responsive">
+					<div class="col" style="width: 80%; height:100%; vertical-align: middle;">
+						<p class="normal">{{"overviewQuiz.2" | translate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-4 ">
+				<div class="imageAndText" style="width: 100%; margin: 5px 0px;">
+					<img src="assets/images/interview/n3.png"
+						class="align-center img-responsive">
+					<div class="col" style="width: 80%; vertical-align: middle;">
+						<p class="normal">{{"overviewQuiz.3" | translate}}</p>
+					</div>
+				</div>
+				<div class="imageAndText" style="width: 100%; margin: 5px 0px;">
+					<img src="assets/images/interview/n4.png"
+						class="align-center img-responsive">
+					<div class="col" style="width: 80%; vertical-align: middle;">
+						<p class="normal">{{"overviewQuiz.4" | translate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>	
+	</div>
+	<br>
+
+	<hr style="border: 1px solid #ccc; border-radius: 1px;">
+	<br>
+	<div class="row">
+		<div class="col-sm-6 " align=center >
+			<div class="col-sm-10 " align=left >
+				<p  class="heading"> {{"interview.you-need" | translate}}</p>
+				<div style="margin-left: 25px" >
+					<p style="line-height: 120%; font-size: 15px;">
+						<img src="assets/images/wifi.png" align="top"> {{"interview.connection" | translate}}
+						<br>
+						<img src="assets/images/quiet.png" align="top"> {{"interview.environment" | translate}}
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-6  ">
+			<div class="col-sm-10 " align=center >
+				<p class="heading" >{{"interview.quiz-details" | translate}}</p>
+				<div class="questiontitle">
+					<p>{{"interview.quiz-have" | translate}}
+						<br>
+						<h3><b>{{questionList.length}} {{"interview.question" | translate}}</b></h3>	
+						{{"interview.quiz-duration" | translate}} - <b>{{interview.quizTime}}</b> {{"interview.min" | translate}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p align="center" style="padding-top: 2%">
+		<button class="btn btn-lg btn-success responsive-width" ng-click="agreeToProceed()"
+			type="button" name="movesetup">{{"interview.continue" | translate}}</button>
+	</p>
+</div>

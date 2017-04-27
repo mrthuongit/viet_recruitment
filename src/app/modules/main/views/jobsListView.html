@@ -1,0 +1,156 @@
+<style>
+    .moto-widget-menu.moto-preset-default .moto-widget-menu-list .moto-widget-menu-item .moto-widget-menu-link-level-1.moto-widget-menu-link-active:hover {
+          color:white;
+          background: #1f79c1;
+    }
+    @media (max-width: 760px){
+        .schedule {
+         float: right;
+         margin-top: -35px;
+         width: 40%;
+         height: 40%;
+        }
+    }
+    .content {
+        margin-top: 0px;
+    }
+    .container-employee .job-item .label {
+        width: initial;
+    }
+    .job-title {
+        color: #0579ab;
+    }
+    .init-tab .active a {
+        background-color: #0579ab !important;
+        border: 1px solid #0579ab !important;
+    }
+</style>
+<div ng-include="'app/modules/main/views/menu_main.html'"></div>
+<div ng-include="'app/modules/main/views/header_search.html'"></div>
+<div class="container-employee" style="padding: 3% 6%;">
+    <div class="row search-notification" ng-show="showNotication" >
+        <h1 style="text-align: center; color: gray;">
+            {{"employee.resultNojob" | translate}}
+        </h1>
+    </div>
+    <div class="container-custom" 
+        ng-if="hotJobList.length > 0">
+        <div class="row">
+            <!-- Start new jobs -->
+            <div class="col-sm-8">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs init-tab" role="tablist">
+                    <li role="presentation" class="active"><a aria-controls="home" role="tab" data-toggle="tab">{{"employee.newjob" | translate}}</a></li>
+                </ul>
+
+                <!-- Tab content panels -->
+                <div class="tab-content init-content">
+                    <div role="tabpanel" class="tab-pane active" id="newjob">
+                        <ul class="list-unstyled">
+                            <li class="job-item" ng-repeat="job in hotJobList| orderBy:'-id'" ng-click="goToJobInformation(job)">
+                                <div class="row">
+                                    <div class="col-sm-6 job-title">
+                                        <div ng-if="!job.endjob" class="label label-danger">{{"employee.new" | translate}}</div>
+                                        <div ng-if="job.endjob" class="label"> &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                                        <div class="content" >
+                                            <div class="title">{{ job.name }}</div>
+                                            <div class="job-company">{{ job.company }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <span ng-if="job.countryName && job.provinceName">
+                                        {{ job.provinceName }},
+                                        {{ job.countryName }}
+                                      </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- End new jobs -->
+
+            <!-- Start introduction invitation video -->
+            <aside class="col-sm-4" style="padding-top: 20px; text-align: center;">
+                <img src="assets/images/pvtt_pr.png" width="80%">
+                <p style="font-size: 16px; text-transform: uppercase; font-weight: 600;">{{"price.interview" | translate}}</p><br>
+                <img src="assets/images/elearning_pr.png" width="80%">
+                <p style="font-size: 16px; text-transform: uppercase; font-weight: 600;">{{"main.elearning" | translate}}</p><br>
+                <img src="assets/images/demoproduct.png" width="80%">
+                <p style="font-size: 16px; text-transform: uppercase; font-weight: 600;">{{"main.training" | translate}}</p><br>
+            </aside>
+        </div>
+    </div>
+
+    <div class="container-custom">
+        <div class="row">
+            <!-- Start result search -->
+            <div class="col-sm-10 col-md-offset-1" id="job-content-containter" ng-if="totalJobs > 0">
+                <!-- Start header search -->
+                <div class="result-search-msg row">
+                    <div class="col-sm-8">
+                        <h2 style="padding-left:15px; margin-bottom: 25px;"><span class="red">{{totalJobs || 0 | number}}</span> {{"employee.resultJobs" | translate}}</h2>
+                    </div>  
+
+                    <div class="col-sm-4">
+                        <select name="" id="" 
+                          class="form-control" 
+                          style="margin-top: 20px;"
+                          ng-model="itemPerPage" 
+                          ng-change="changeItemPerPage(itemPerPage)">
+                           <option value="10">{{'employee.onejob'|translate}}</option>
+                            <option value="20">{{'employee.twojob'|translate}}</option>
+                           <option value="30">{{'employee.threejob'|translate}}</option>
+                           <option value="40">{{'employee.fourjob'|translate}}</option>
+                           <option value="50">{{'employee.fivejob'|translate}}</option>
+                        </select>
+                    </div>
+                </div><!-- End header search -->
+
+                <!-- List search result -->
+                <div class="row">
+                    <div class="list-jobs-content clearfix">
+                        <div class="col-sm-12">
+                            <ul class="list-unstyled search-content">
+                                <li class="job-item" ng-repeat="job in jobList" ng-click="goToJobInformation(job)">
+                                    <div class="row">
+                                        <div class="col-sm-6 job-title">
+                                            <div style="font-weight: 400;">{{ job.name }}</div>
+                                            <div class="job-company">{{ job.company }}</div>
+                                            <div ng-show="job.endjob" style="color: red; font-size: 14px; font-weight: 400;">Hết hạn</div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <span ng-if="job.provinceName && job.countryName">
+                                            {{ job.provinceName }},
+                                            {{ job.countryName }}
+                                          </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-center container-pagination" ng-if="totalJobs/itemPerPage > 1">
+                                <ul class="pagination" 
+                                  uib-pagination 
+                                  total-items="totalJobs" 
+                                  ng-model="currPage" 
+                                  max-size="maxSize"
+                                  items-per-page="itemPerPage"
+                                  num-pages="numPages"
+                                  first-text = "&laquo;" 
+                                  last-text = "&raquo;"
+                                  previous-text = "&lsaquo;"
+                                  next-text = "&rsaquo;"
+                                  ng-change = "changePage(currPage)" 
+                                  boundary-links="true" 
+                                  force-ellipses="true"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End list search result -->
+            </div><!-- End result search -->
+        </div>
+    </div>
+</div>
+<div ng-include="'app/modules/main/views/footer_main.html'"></div> 

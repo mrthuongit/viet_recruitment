@@ -1,0 +1,75 @@
+<form name="formEdu" class="form-data" novalidate>
+	<div class="modal-body">
+		<div class="form-group"
+			ng-class="{ 'has-error' : formEdu.program.$invalid 
+            &&!formEdu.program.$pristine }">
+			<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.major" | translate}}</label>
+			<input type="text" class="form-control" name="program" ng-model="currEdu.program" ng-value="{{ currEdu.program }}" required>
+			<span ng-show="formEdu.program.$invalid  && !formEdu.program.$pristine" class="help-block">{{"required" | translate}}</span>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formEdu.institude.$invalid 
+            		&&!formEdu.institude.$pristine }">
+					<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.institution" | translate}}</label>
+					<input type="text" class="form-control" name="institude" ng-model="currEdu.institute" ng-value="{{ currEdu.institute }}" required>
+					<span ng-show="formEdu.institude.$invalid  && !formEdu.institude.$pristine" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : !formEdu.status.$pristine 
+					&& (statusObj.selectedEduStatus.id == 0) }">
+					<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.status" | translate}}</label>
+					<select class="form-control" 
+					name="status"
+					ng-model="statusObj.selectedEduStatus"
+					ng-options="status.title for status in statusObj.availableEduStatus track by status.id" 
+					ng-value="status.id"><select>
+					<span ng-show="!formEdu.status.$pristine 
+					&& (statusObj.selectedEduStatus.id == 0)" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">						
+					<label ng-if="statusObj.selectedEduStatus.id == 1" for="">{{"employee.dayout" | translate}}</label>
+					<label ng-if="statusObj.selectedEduStatus.id == 2 || statusObj.selectedEduStatus.id == 0" for="">{{"employee.graduationDate" | translate}}</label>
+					<div class="input-group">
+                        <input type="text" 
+                            class="form-control"        
+                            uib-datepicker-popup 
+                            ng-model="currEdu.finishDate" 
+                            is-open="popupFinishDate.opened" 
+                            datepicker-options="dateOptions" 
+                            ng-required="true" 
+                            close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="popupFinishDate.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : !formEdu.level.$pristine 
+					&& eduLevelObj.selectedEduLevel.id == 0 }">
+					<label for=""><span class="required">*</span>{{"employee.educationLevel" | translate}}</label>
+					<select class="form-control" 
+					name="level"
+					ng-model="eduLevelObj.selectedEduLevel"
+					ng-options="level.title for level in eduLevelObj.availableEduLevel track by level.id" 
+					ng-value="level.id"><select>
+					<span ng-show="!formEdu.level.$pristine
+					&& eduLevelObj.selectedEduLevel.id == 0" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+		</div>							
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="cancelEdu()">{{"employee.cancel" | translate}}</button>
+		<button type="button" class="btn btn-primary" ng-disabled="formEdu.$invalid || (eduLevelObj.selectedEduLevel.id == 0) || (statusObj.selectedEduStatus.id == 0)" ng-click="saveEmployeeEdu(currEdu)">{{"employee.save" | translate}}</button>
+	</div>
+</form>

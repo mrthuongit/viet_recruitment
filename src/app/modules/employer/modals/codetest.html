@@ -1,0 +1,273 @@
+<script type="text/ng-template" id="modalAssessmentResultView.html">
+    <div class="panel-body tab-popup modal-assessment-result" style="padding-left: 15px;">    
+        <div align=center>
+            <label style="font-weight: normal;">{{"employer.assessment.candidate"
+                | translate}}</label>
+            {{chooseCandidate.candidate.name}}
+            <button style="float:right;" class="btn btn-danger" ng-click="cancel();"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <uib-tabset type="tabs">
+            <!-- Begin video interview --> 
+            <uib-tab index="0" heading="{{'employer.assessment.tab.answer'|translate}}">
+                <div class="tab-pane tab-employer active" id="answer">
+                    <div  ng-repeat="answer in chooseCandidate.answerList" ng-init="answer.show = false"
+                        style="margin-left: 5px; margin-right: 5px;">
+                        <p ng-click="answer.show=!answer.show" style="cursor:pointer">
+                            <label style="font-weight: normal; width: 92%">{{$index+1}}.{{answer.nameQuestion}}</label>
+                            <span class="glyphicon glyphicon-film"
+                                aria-hidden="true" style="float: right; padding-top: 10px;"></span>
+                        </p>
+                        <div ng-class="answer.show? 'blockAnswer' : 'noneAnswwer'">
+                            <div align="center"
+                                class="background-videoAss">
+                                <video ng-if="answer.videoUrl"
+                                    class="background-videoAss videoAssessment"
+                                    controls>
+                                    <source src={{answer.videoUrl|trusted}}
+                                        type="video/webm"></source>
+                                </video>
+                            </div>
+                            <div align=right ng-if="answer.videoUrl">
+                                <a style="font-size: 12pt" target="_blank" href={{answer.videoUrl}}>Link to download video</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div style="margin-top: 20px;"
+                        >
+                        <label class="">{{"employer.assessment.documentList"
+                            | translate}}</label>
+                        <ul class="list-group">
+                            <li style="font-size: 14px"
+                                ng-repeat="doc in chooseCandidate.documentList">
+                                <a ng-show="doc.title = 'undefined'" target="_blank" href={{doc.filedata}}>{{doc.filename ? doc.filename : 'File attach'}}</a>
+                                <a ng-show="doc.title != 'undefined'" target="_blank" href={{doc.filedata}}>{{doc.title ? doc.title : 'File attach'}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </uib-tab><!-- End video interview --> 
+            
+            <!-- Begin assement interview -->
+            <uib-tab index="1" heading="{{'employer.assessment.tab.assess'|translate}}">
+                <div class="tab-pane tab-employer" id="assess">
+                    <uib-tabset type="pills">
+                        <uib-tab index="0" heading="{{'employer.assessment.seft'|translate}}" ng-click="selectSelfAssessmentTab()">
+                            <div class="tab-pane tab-employer active"
+                                id="seft">
+                                <div>
+                                    <div ng-style="myAssessmentResult.id ? {'pointer-events': 'none'}:''">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label
+                                                    style="font-weight: normal;">{{"employer.assessment.vote"
+                                                    | translate}}:</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div id="vote">
+                                                    <uib-rating 
+                                                     ng-model="myAssessmentResult.vote" max="5" style="color: rgb(6,122,171)"></uib-rating>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row"
+                                            style="margin-bottom: 10px;">
+                                            <div class="col-sm-3">
+                                                <label
+                                                    style="font-weight: normal;">{{"employer.assessment.comment"
+                                                    | translate}}: </label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                      
+                                                <textarea  id="txtArea" rows="1" ng-model="myAssessmentResult.comment"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-group"
+                                        ng-show="chooseInterview.mode=='video'"
+                                        ng-repeat="group in assessment.groupList track by $index"
+                                        ng-init="group.show = false">
+                                        <div class="panel panel-default">
+                                            <div
+                                                ng-click="group.show =!group.show "
+                                                class="panel-heading" style="cursor:pointer">{{group.name}}</div>
+                                            <div
+                                                class="panel-collapse collapse"
+                                                ng-class="group.show? 'in' : ''">
+                                                <div class="row"
+                                                    ng-repeat="question in questionList[group.id]"
+                                                    style="margin-bottom: 5px;"
+                                                    ng-style="myAssessmentResult.id ? {'pointer-events': 'none'}:''">
+                                                    <div
+                                                        class="col-sm-7"
+                                                        align="left">
+                                                        <label style="font-weight: normal;">{{question.content}} </label>
+                                                    </div>
+                                                    <div
+                                                        class="col-sm-5"
+                                                        align="right">
+                                                        <select
+                                                            class="form-control"
+                                                            ng-options="value.val as value.name for value in question.options"
+                                                            ng-model="question.chooseVal"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div align="left">
+                                        <input type="button"
+                                            ng-click="submit()"
+                                            class="btn btn-employer"
+                                            value='{{"employer.assignment.save" | translate}}'>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                        <uib-tab index="1" heading="{{'employer.assessment.other'|translate}}" ng-click="selectOtherAssessmentTab()">
+                            <div class="tab-pane tab-employer"
+                                id="other">
+                                <div>
+                                    <div>
+                                        <!-- <select class="form-control"
+                                            ng-options="otherAssessment.id as otherAssessment.user for otherAssessment in otherAssessmentResult"
+                                            ng-model="otherAssessmentId"
+                                            ng-change="selectOtherAssessment(otherAssessment)"></select> -->
+                                        <select class="form-control"
+                                            ng-model="otherAssessment"
+                                            ng-change="selectOtherAssessment(otherAssessment)">
+                                             <option value="{{otherAssessment}}"
+                                                ng-repeat="otherAssessment in (otherAssessmentResult | orderBy:'-id' )">{{otherAssessment.user}}</option>   
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="pointer-events: none;">
+                                            <div class="row"
+                                                style="margin-top: 10px;">
+                                                <div class="col-sm-3">
+                                                    <label
+                                                        style="font-weight: normal;">{{"employer.assessment.vote"
+                                                        | translate}}:</label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div id="vote">
+                                                        <uib-rating
+                                                            ng-model="chooseOtherAssessment.vote"
+                                                            max="5"
+                                                            read-only="chooseOtherAssessment.isReadonly"
+                                                            style="color: rgb(6,122,171)"></uib-rating>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row"
+                                                style="margin-bottom: 10px;">
+                                                <div class="col-sm-3">
+                                                    <label
+                                                        style="font-weight: normal;">{{"employer.assessment.comment"
+                                                        | translate}}: </label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                            
+                                                    <textarea id="txtArea2" ng-model="chooseOtherAssessment.comment" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-group"
+                                            ng-show="chooseInterview.mode=='video'"
+                                            ng-repeat="groupOther in assessment.groupList track by $index"
+                                            ng-init="groupOther.showOther = false">
+                                            <div
+                                                class="panel panel-default">
+                                                <div style="cursor:pointer"
+                                                    ng-click="groupOther.showOther=!groupOther.showOther"
+                                                    class="panel-heading">{{groupOther.name}}</div>
+                                                <div
+                                                    class="panel-collapse collapse"
+                                                    ng-class="groupOther.showOther? 'in' : ''">
+                                                    <div class="row"
+                                                        ng-repeat="question in questionList[groupOther.id]"
+                                                        style="margin-bottom: 5px;">
+                                                        <div class="col-sm-7" align="left">
+                                                            <label style="font-weight: normal;">{{question.content}}</label>
+                                                        </div>
+                                                        <div
+                                                            class="col-sm-5"
+                                                            align="right">
+                                                            <span>{{question.chooseVal}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                        <uib-tab index="2" heading="{{'employer.assessment.summary'|translate}}" ng-click="selectSummaryAssessmentTab()">
+                            <div class="tab-pane tab-employer"
+                                id="summary">
+                                <div align="left">
+                                    <input type="button"
+                                        ng-click="downloadReport()"
+                                        class="btn btn-employer"
+                                        value='Download report' style="padding: 6px 6px;">
+                                </div>
+                                <div>
+                                    <div class="row"
+                                        style="pointer-events: none;">
+                                        <div class="col-sm-3">
+                                            <label
+                                                style="font-weight: normal;">{{"employer.assessment.vote"
+                                                | translate}}:</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div id="vote">
+                                                <uib-rating
+                                                    ng-model="summaryAssessment.vote"
+                                                    max="5"
+                                                    read-only="summaryAssessment.isReadonly"
+                                                    style="color: rgb(6,122,171)"></uib-rating>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-group"
+                                        ng-show="chooseInterview.mode=='video'"
+                                        ng-repeat="groupSum in assessment.groupList track by $index"
+                                        ng-init="groupSum.showSum = false">
+                                        <div class="panel panel-default">
+                                            <div style="cursor:pointer"
+                                                ng-click="groupSum.showSum =!groupSum.showSum "
+                                                class="panel-heading">{{groupSum.name}}</div>
+                                            <div
+                                                class="panel-collapse collapse"
+                                                ng-class="groupSum.showSum? 'in' : ''">
+                                                <div class="row"
+                                                    ng-repeat="question in questionList[groupSum.id]"
+                                                    style="margin-bottom: 5px;">
+                                                    <div class="col-sm-7" align="left">
+                                                        <label style="font-weight: normal;">{{question.content}}</label>
+                                                    </div>
+                                                    <div
+                                                        class="col-sm-5"
+                                                        align="right">
+                                                        <span>{{question.chooseVal}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </uib-tab><!-- End assement interview --> 
+        </uib-tabset>
+    </div>
+</script>

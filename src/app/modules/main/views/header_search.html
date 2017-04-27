@@ -1,0 +1,45 @@
+<style type="text/css">
+    @media (max-width: 767px){
+        header .search-container {
+            padding: 90px 15px 30px 15px !important;
+        }
+    }
+</style>
+<header class="header-employee" style="margin-top: 0px; background-image: url(assets/images/homebg.jpg);">
+  <div class="container search-container">
+    <form class="form-inline text-center" style="border-radius: 2px;box-shadow: none;margin-left: -5px;margin-right: -5px;background: rgba(0,0,0,.60);padding: 20px;">
+      <div class="form-group keyword-wrapper">
+        <input type="text" class="form-control input-lg" ng-model="search.keyword" placeholder='{{"employee.searchKey" | translate }}'>
+      </div>
+
+      <div class="form-group options-wrapper">
+        <select class="form-control input-lg" name="singleSelect" id="singleSelect" ng-model="search.option.categoryId" ng-change="searchJob(true)">
+          <option value="">{{"employee.searchCategories" | translate}}</option>
+          <option value="{{category.id}}" ng-repeat="category in listCategories">{{category.title}}</option>
+        </select>
+      </div>
+
+      <div class="form-group options-wrapper">
+        <select class="form-control options input-lg" name="singleSelect" id="singleSelect" ng-model="search.option.positionId" ng-change="searchJob(true)">
+          <option value="">{{"employee.searchPostions" | translate}}</option>
+          <option value="{{position.id}}" ng-repeat="position in listPosition">{{position.title}}</option>
+        </select>
+      </div>
+
+      <div class="form-group options-wrapper">
+        <select class="form-control options input-lg" 
+            id="province-list"
+            ng-model="search.option.provinceId"
+            ng-change="searchJob(true)">
+            <option value="">{{"employee.searchProvinces" | translate}}</option>
+            <option value="{{province.id}}" ng-repeat="province in listProvince|country:vietnam.id">{{province.title}}</option>
+        </select>
+      </div>
+
+      <div class="form-group btn-search-wrapper">
+        <button type="button" class="btn btn-orange btn-search btn-lg" ng-click="searchJob(true)"><b>{{"employer.assignment.search" |
+            translate}}</b></button>
+      </div>
+    </form>
+  </div>
+</header>

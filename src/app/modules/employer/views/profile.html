@@ -1,0 +1,210 @@
+<style type="text/css">
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+        background-color: rgb(6,122,171);
+        border: 1px solid rgb(6,122,171);
+        color: #fff;
+    }
+    .panel-info {
+        border-color: rgb(6,122,171);
+    }
+    .nav-tabs > li > a {
+        border-radius: 0px;
+    }
+    .nav-tabs > .uib-tab > div {
+        color: rgb(30,140,180);
+    }
+    .nav-tabs > .uib-tab.active > div, .nav-tabs > .uib-tab.active > div:focus, .nav-tabs > .uib-tab.active > div:hover {
+        background-color: lightblue;
+        color: rgb(30,140,180);
+    }
+    .btn-group > .btn {
+        padding: 2px 5px;
+        font-size: 12px;
+    }
+    .ta-scroll-window > .ta-bind {
+        height: auto;
+        min-height: 100px;
+    }
+    .ta-editor.ta-html, .ta-scroll-window.form-control {
+        min-height: 100px;
+        height: auto;
+    }
+    label{
+        font-size: 17px;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer" id="marginfrom">
+            <div align="center" class="headtitle">{{"employer.profile.title" |
+                translate}}</div>
+            <div class="panel panel-info" style="">
+                <div class="panel-body" style="padding: 15px 0px; padding-top: 0px">
+                    <uib-tabset active="activeForm"> 
+                    <uib-tab
+                        index="0"
+                        heading="{{'employer.profile.information' | translate}}" style="border-left: 0px; margin-left: -1px;cursor:default">
+                    <form name="profileCompany">
+                    <input id="idprofile" type="hidden"> <input
+                        id="image" type="hidden"> <br>
+                    <div class="row" style="margin: 0; margin-bottom: 10px;">
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-4">
+                                            <label style="font-weight: 400;">{{"employer.profile.name" | translate}}:</label>
+                                        </div>
+                                        <div class="col-sm-8" style="padding: 0px 0px">
+                                            <input type="text" class="form-control" ng-model="company.name" placeholder='{{"employer.profile.name" | translate}}' name="name" ng-required="true" autofocus>
+                                            <p class="required_employer" ng-if="profileCompany.name.$error.required">{{"required" | translate}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-4">
+                                            <label style="font-weight: normal;">Email: </label>
+                                        </div>
+                                        <div class="col-sm-8" style="padding: 0px 0px">
+                                            <input type="email" class="form-control" ng-model="company.email" placeholder="Company email" name="email" ng-required="true" autofocus ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/">
+                                            <span ng-show="profileCompany.email.$invalid && !profileCompany.email.$pristine" class="required_employer">{{"toarster.emailDefault" | translate}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-4">
+                                            <label style="font-weight: normal;">{{"employee.address" | translate}}: </label>
+                                        </div>
+                                        <div class="col-sm-8" style="padding: 0px 0px">
+                                            <input type="text" class="form-control" ng-model="company.street" placeholder='{{"employee.address" | translate}}' required autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-4">
+                                            <label style="font-weight: normal;">{{"employer.taxCode" | translate}}: </label>
+                                        </div>
+                                        <div class="col-sm-8" style="padding: 0px 0px">
+                                            <input type="number" class="form-control" ng-model="company.vat" placeholder='{{"employer.taxCode" | translate}}' required autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-4">
+                                            <label style="font-weight: normal;">{{"login.mobile" | translate}}: </label>
+                                        </div>
+                                        <div class="col-sm-8" style="padding: 0px 0px">
+                                            <input type="number" class="form-control" ng-model="company.phone" placeholder='{{"login.mobile" | translate}}' required autofocus>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" align="center">
+                                    <i class="fa fa-picture-o" aria-hidden="true" style="color: coral;"></i>
+                                    <label style="font-weight: normal;">Logo</label>
+                                    <br>
+                                    <div id="imgTest">
+                                        <img
+                                            style="border: 1px solid #ddd; padding: 10px;height: 150px; width: 140px;"
+                                            ngf-select ng-model="image.src"
+                                            accept="image/*" ngf-src="image.src">
+                                    </div>
+                                </div>
+                            </div>
+                            <label style="font-weight: normal;">{{"employer.intro" | translate}}: </label>
+                            <br>
+                            <div text-angular ng-model="company.description" id="description" class="text-editor"></div>
+                        </div>
+                        <div class="col-sm-5" align="center">
+                            <i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                            <label style="font-weight: normal;">{{"employer.assignment.aboutVideo" | translate}}</label>
+                            <div class="" align=left>
+                                <video-selector
+                                    control="videoControl"
+                                    url="company.videoUrl"
+                                    file="profile.fileUpload"></video-selector>
+                            </div>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <input type="button" ng-click="doSave()" ng-disabled="profileCompany.$invalid"
+                            style="margin-bottom: 5px !important; width: 120px;"
+                            class="btn btn-primary"
+                            value='{{"employer.assignment.save" | translate}}'>
+                    </div>
+                    </form>
+                    </uib-tab> <uib-tab index="1"
+                        heading="{{'employer.profile.license' | translate}}" style="cursor:default">
+                    <div class="row">
+                        <br>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <label style="font-weight: normal;">{{"employer.profile.license.name"
+                                | translate}}:
+                                {{licenseInfo.license.name}}</label>
+                            <br>
+                            <br>
+                            <label style="font-weight: normal;">{{"employer.profile.license.usage"
+                                | translate}}: {{licenseInfo.email}} /
+                                {{licenseInfo.license.email}}</label>
+                            <uib-progressbar max="max" value="valuevar" type="success"><span style="color:white; white-space:nowrap;">{{licenseInfo.email}} / {{licenseInfo.license.email}}</span></uib-progressbar>
+
+                            <br>
+                            <label style="font-weight: normal;">{{"employer.profile.license.ticket"
+                                | translate}}: {{licenseInfo.point}} /
+                                {{licenseInfo.license.point}}</label>
+                            <uib-progressbar max="max" value="valuevarPoint" type="success"><span style="color:white; white-space:nowrap;">{{licenseInfo.point}} / {{licenseInfo.license.point}}</span></uib-progressbar>
+
+                            <br>
+                            <label style="font-weight: normal;">{{"employer.profile.license.expire"
+                                | translate}}:
+                                {{licenseInfo.license.expireDate}}</label>
+                            <br>
+                            <br>
+                        </div>
+                        </div>
+                    </uib-tab> 
+                    <uib-tab index="2"
+                        heading="{{'employer.profile.account' | translate}}" style="cursor:default">
+                    <form name="profileAccount">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                       
+                            <label style="font-size: small;font-weight:normal">{{"employer.profile.account.oldpass"
+                                | translate}}</label>
+                            <input type="password" class="form-control"
+                                style="width: 50%"
+                                ng-model="account.oldpass" name="oldpass"
+                                ng-required="true" autofocus>
+                            <p class="required_employer" ng-if="profileAccount.oldpass.$error.required">{{"required" | translate}}</p>
+                            <label style="font-size: small;font-weight:normal">{{"employer.profile.account.newpass"
+                                | translate}}</label>
+                            <input type="password" class="form-control"
+                                style="width: 50%"
+                                ng-model="account.newpass" name="newpass"
+                                ng-required="true"
+                                autofocus>
+                            <p class="required_employer" ng-if="profileAccount.newpass.$error.required">{{"required" | translate}}</p>
+                            <label style="font-size: small;font-weight:normal">{{"employer.profile.account.confirmpass"
+                                | translate}}</label>
+                            <input type="password" class="form-control" style="width: 50%" ng-model="account.confirmpass" name="confirmpass" ng-required="true" autofocus>
+                            <span ng-show="profileAccount.confirmpass.$valid && (account.newpass != account.confirmpass) && !profileAccount.confirmpass.$pristine" class="required_employer">{{"samepass" | translate}}</span>
+                            <p class="required_employer" ng-if="profileAccount.confirmpass.$error.required">{{"required" | translate}}</p>
+                                <br>
+                                 <input type="button" ng-click="doChangepass()" ng-disabled="profileAccount.$invalid"
+                            style="margin-bottom: 5px !important;"
+                            class="btn btn-primary responsive-width"
+                            value="{{'employer.profile.changepass' | translate}}">
+                        </div>
+                    </div>
+                    </form>
+                    </uib-tab> 
+                    </uib-tabset>
+                </div>
+            </div>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

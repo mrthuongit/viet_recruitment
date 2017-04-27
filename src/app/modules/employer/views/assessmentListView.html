@@ -1,0 +1,166 @@
+<style type="text/css">
+    ul.nav-tabs > li > a {
+        font-weight: 400;
+    }
+    div.tab-popup > .panel-default > div.panel-body {
+         padding-left: 0px;
+         padding-right: 0px;
+    }
+    div.tab-employer {
+        margin-top: 15px;
+    }
+    .tab-employer > .nav-tabs > li > a{
+        color: #555;
+    }
+    .tab-employer > .nav-tabs > .active > a, .tab-employer > .nav-tabs > .active > a:hover{
+        background-color: #eee;
+        color: rgb(6,122,171);
+    }
+    .tab-pane.tab-employer.active {
+        border-bottom-color: #fff;
+    }
+</style>
+<div ng-include="'app/modules/employer/modals/modalAssessmentResultView.html'"></div>
+<div ng-include="'app/modules/employer/modals/modalCvCandidateView.html'"></div>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <form name="form4" id="marginfrom">
+        <div align="center" class="headtitle">{{"employer.main.assessmentTitle"
+            | translate}}</div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="min-height: 100%">
+                        <label class="">{{"employer.invitation.selectAss"
+                            | translate}}:</label>
+                        <select class="form-control" name="singleSelect"
+                            id="singleSelect" ng-model="chooseAss"
+                            ng-change="selectAssignment(chooseAss)">
+                            <option value="">--- {{"employer.invitation.Ass"
+                                | translate}} ---</option>
+                            <!-- not selected / blank option -->
+                            <option value="{{assignment}}"
+                                ng-repeat="assignment in (listAssignment |recruit| orderBy:'-id' )">{{assignment.name}}</option>
+                        </select>
+                        <br>
+                        <div ng-show="chooseAss">
+                            <label class="">{{"employer.assessment.interviewList"
+                                | translate}}:</label>
+                            <select name="interviewRound" id="interviewRound" class="form-control"
+                            ng-model="interviewRounds.model"
+                            ng-change="selectInterview(interviewRounds.model)">
+                                <option ng-repeat="option in (interviewRounds | orderBy:'-id')" value="{{option}}">{{"employer.assignment.round" | translate}} {{option.round}}: {{option.name}}</option>
+                            </select>
+                            <p
+                                style="margin-left: 20px; font-size: small">
+                                {{"assessment.numberCadidate" |
+                                translate}}
+                                <span style="float: right">{{interviewStats.applicant}}
+                                </span>
+                                <br>
+                                {{"assessment.numberSent" | translate}}
+                                <span style="float: right" ng-show="interviewStats.invitation != null">
+                                    {{interviewStats.invitation}}/{{interviewStats.applicant}}
+                                </span>
+                                <br>
+                                {{"assessment.numberInterview" |
+                                translate}}
+                                <span style="float: right" ng-show="interviewStats.response != null">
+                                    {{interviewStats.response}}/{{interviewStats.applicant}}
+                                </span>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <!-- Begin table show data -->
+                <table class="table table-striped"
+                    style="border: 1px solid #ccc">
+                    <thead>
+                        <tr
+                            style="border-bottom: 2px solid rgb(6, 122, 171); color: rgb(30, 140, 180); background-color: lightblue;">
+                            <th class="cell-align employer text-center" width="4%">#</th>
+                            <th class="cell-align employer " width="20%">{{"employer.candidate.name"
+                                | translate}}</th>
+                            <th class="cell-align employer " with="20%">{{"employer.candidate.email"
+                                | translate}}</th>
+                            <th class="cell-align employer " ng-show="interview.mode != 'quiz'" with="24%">Vote</th>
+                            <th class="cell-align employer text-center" width="10%" style="text-align: center"> {{"employer.candidate.cv" | translate}}</th>
+                            <th ng-if="interview.mode=='quiz'" class="cell-align employer text-center" with="24%">{{"employer.candidate.result" | translate}}</th>
+                            <th class="cell-align employer text-center" width="10%" style="text-align: center"> {{"employer.candidate.statusInvited" | translate}}</th>
+                            </th>
+                            <th ng-show="interview.mode == 'quiz'" class="cell-align employer text-center" width="12%" style="text-align: center">{{"interview.quiz" | translate}}</th>
+                            <th ng-show="interview.mode != 'quiz'" class="cell-align employer text-center" width="12%" style="text-align: center">{{"employer.candidate.assess" | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat ="candidate in candidateList">
+                            <td class="text-center" style="font-size: 16px;">{{$index+1}}</td>
+                            <td style="font-size: 16px;">{{candidate.candidate.name}}</td>
+                            <td style="font-size: 16px;">{{candidate.candidate.email}}</td>
+                            <td ng-show="interview.mode != 'quiz'">
+                                <div id="vote" ng-show="candidate.answerList.length > 0" style="pointer-events: none;">
+                                    <uib-rating ng-model="candidate.assessment.summaryAssessment.vote" max="5" read-only="true" style="color: rgb(6,122,171)"></uib-rating>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span ng-if="candidate.candidate"
+                                    ng-click="chooseEmployee(candidate.candidate)"
+                                    class="glyphicon glyphicon-user"
+                                    style="cursor: pointer; color: blue; border: 2px solid lightblue; -moz-border-radius: 100px/50px; -webkit-border-radius: 100px/178px; border-radius: 694px/208px; position: relative;"
+                                    aria-hidden="true"></span>
+                            </td>
+                            <td class="text-center" ng-if="interview.mode=='quiz'">
+                                ({{candidate.candidate.score | number:0}})
+                                <span ng-show="!candidate.candidate.pass"
+                                    class="glyphicon glyphicon-remove"
+                                    style="color: red"
+                                    aria-hidden="true"></span>
+                                <span ng-show="candidate.candidate.pass"
+                                    class="glyphicon glyphicon-ok"
+                                    style="color: green"
+                                    aria-hidden="true"></span>
+                            </td>
+                            <td class="text-center">
+                                <span ng-show="candidate.candidate.invited"
+                                    class="glyphicon glyphicon-ok"
+                                    style="color: green"
+                                    aria-hidden="true"></span>
+                                <span ng-show="!candidate.candidate.invited"
+                                    class="glyphicon glyphicon-minus"
+                                    style="color: gray"
+                                    aria-hidden="true"></span>
+                            </td>
+                            <td class="text-center" ng-show="interview.mode == 'quiz'">
+                                <button class="btn btn-primary"
+                                    ng-show="candidate.answerList.length > 0"
+                                    ng-click="openTestReport(candidate)">{{"employer.candidate.view" |
+                                translate}}</button>
+                            </td>
+                            <td class="text-center" ng-show="interview.mode != 'quiz'">
+                                <button class="btn btn-primary"
+                                    ng-show="candidate.answerList.length > 0"
+                                    ng-click="openModalAssessmentResult('lg', candidate)">{{"employer.candidate.view" |
+                                translate}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- End table show data -->
+
+                <button class="btn btn-success" type="button"
+                    ng-show="interview.mode == 'quiz'" 
+                    ng-csv="candidateArrCsv" 
+                    csv-header="headerArrCsv"
+                    filename="Report.csv">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    {{"employer.main.exportToCsv" | translate}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

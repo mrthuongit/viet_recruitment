@@ -1,0 +1,158 @@
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+<div ng-include src="'app/modules/admin/views/main.html'"></div>
+<div ng-controller ="AdminCompanyCreateEditController"  class="company-wrapper" style="margin-top: 40px; padding: 0 10%;">
+  <h2 align="center" style="padding-top: 20px; padding-bottom: 35px;">Company Create-Edit</h2>   
+  <div class="row">
+    <uib-tabset active="activeForm">
+      <uib-tab index="0" heading="Company info">
+      <form name="companyInfo">
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for="name" class="titleAss">Name</label>
+            <input type="text" class="form-control" id="name" ng-model="chooseCompany.name" placeholder="Name" name="name" ng-required="true" autofocus >
+            <p class="required_employer" ng-if="companyInfo.name.$error.required">{{"required" | translate}}</p>
+          </div>        
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for="email" class="titleAss">Email</label>
+            <input type="email" class="form-control" id="email" ng-model="chooseCompany.email" placeholder="Email" name="email" ng-required="true" autofocus ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/" >
+            <span ng-show="companyInfo.email.$invalid && !companyInfo.email.$pristine" class="required_employer">{{"toarster.emailDefault" | translate}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label for="license" class="titleAss">License</label>
+                <br>
+                <select class="form-control pull-left" 
+                  style="width: 80%;"
+                  ng-disabled="chooseCompany.id && !allowRenew" 
+                  ng-options="license.name for license in licenseObj.availableLicense track by license.id" 
+                  ng-model="licenseObj.selectedLicense"></select>
+              
+                <div class="btn-license-group pull-right"  
+                  class="pull-right"
+                  style="width: 18%;">
+                  <button class="btn btn-info btn-license form-control sample-show-hide" 
+                    ng-show="!allowRenew" 
+                    ng-disabled="!chooseCompany.id"
+                    ng-click="allowRenewLicense()">Re-new</button>
+                  <button class="btn btn-primary btn-license form-control sample-show-hide" 
+                    ng-show="allowRenew" 
+                    ng-disalbed="!chooseCompany.id"
+                    ng-click="renewLicense()">Apply</button>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div  class="row">
+          <div class="col-sm-6">
+            <label for="expire" class="titleAss">Expire</label>
+            <p class="input-group" ng-init="popupBirthday.opened = false">
+              <input type="text" class="form-control" 
+                uib-datepicker-popup="dd/MM/yyyy"
+                ng-disabled="chooseCompany.id && licenseInfo.license" ng-model="chooseCompany.licenseExpire2" is-open="popupExpire.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="popupExpire.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="license" class="titleAss">Status: {{ licenseInfo.license.state }}</label><br>
+          <switch id="enabled" name="enabled" ng-show="chooseCompany.id" ng-change="changeStateCompany(state)" ng-model="state" class="blue"></switch>
+        </div>
+        <div class="form-group">
+          <a ng-click="doSave()" ng-disabled="companyInfo.$invalid" class="btn btn-primary" style="padding: 6px 12px;">Save</a>
+          <a class="btn btn-danger" ng-click="doCancel()" style="padding: 6px 12px;">Cancel</a>
+        </div>  
+      </form>
+      </uib-tab>
+      <!-- Start user tab -->
+      <uib-tab index="2" heading="Account">
+      <div class="row">
+        <div class="col-sm-7">
+          <div style="margin-right:15px; margin-bottom: 25px;">
+            <a ng-click="openPopupCreateUser()" class="btn btn-success title"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+          </div>
+         <!-- Start form input user -->
+         <div class="row">
+          <div ng-show="isCreate" class="col-sm-12 user-wrapper" style="margin-top: 20px;">
+            <form name="accountUser">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name" ng-model="newUser.name" autofocus name="name" ng-required="true">
+                <p class="required_employer" ng-if="accountUser.name.$error.required">{{"required" | translate}}</p>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Email" ng-model="newUser.email" name="email" ng-required="true">
+                <p class="required_employer" ng-if="accountUser.email.$error.required">{{"required" | translate}}</p>
+              </div>
+              <div class="form-group">
+                <input type="{{ !showPass ? 'password' : 'text' }}" class="form-control" placeholder="Password" ng-model="newUser.password" name="password" ng-required="true">
+                <p class="required_employer" ng-if="accountUser.password.$error.required">{{"required" | translate}}</p>
+                <div style="margin-top: 5px;">
+                  <input type="checkbox" id="show-pass" ng-change="isShowPass()" ng-model="showPass" />
+                  <label for="show-pass" style="font-weight: 300; font-size: 14px">Show password</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="pull-right">
+                  <button type="button" class="btn btn-default" ng-click="cancelCreate()">Cancel</button>
+                  <button type="button" class="btn btn-primary" ng-click="createUser()" ng-disabled="accountUser.$invalid">Save</button>              
+                </div>                      
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End form input user -->
+        <div class="clearfix"></div>
+        <div class="row row-table" ng-show="listUserForCompany && (listUserForCompany.length > 0)">
+          <div class="col-sm-4 title">Name</div>
+          <div class="col-sm-6 title">Email</div>
+          <div class="col-sm-2 title"></div>
+        </div>
+        <div class="row row-table" ng-repeat="user in listUserForCompany">
+          <div ng-show="!isUserUpdate(user.id)">
+            <div class="col-sm-4">{{ user.name }}</div>
+            <div class="col-sm-6">{{ user.email }}</div>
+            <div class="col-sm-2">
+              <a aria-hidden="true"><img style="cursor: pointer;" src="assets/images/edit.gif" border="0" alt="Edit User" ng-click="openPopupUpdateUser(user.id)"></a>
+            </div>
+          </div>
+          <div class="col-sm-12 user-wrapper" ng-show="isUserUpdate(user.id)">
+            <form name="formUpdateUser">
+              <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Name" ng-model="user.name" autofocus>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="email" placeholder="Email" ng-model="user.email" disabled="disabled">
+              </div>
+              <div class="form-group">
+                <div>
+                  <input type="{{ !showPass ? 'password' : 'text' }}" class="form-control" name="password" placeholder="New password" ng-model="user.password">
+                </div>
+                <div>
+                  <input type="checkbox" id="show-pass" ng-model="showPass" />
+                  <label for="show-pass" style="font-weight: 300; font-size: 14px">Show password</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="pull-right">
+                  <button type="button" class="btn btn-default" ng-click="cancelUpdateUser()">Cancel</button>
+                  <button type="button" class="btn btn-primary" ng-click="updateUser(user)">Save</button>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </uib-tab><!-- End user tab -->
+    </uib-tabset>
+  </div>
+</div>
+<div style="margin-bottom: 55px;"></div>
+<div ng-include="'app/modules/admin/modals/popup_confirm_delete.html'"></div>

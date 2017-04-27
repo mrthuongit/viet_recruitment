@@ -1,0 +1,122 @@
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <div id="marginfrom" name="conference_interview">
+        <div class="panel panel-info">
+            <div align="center" class="panel-heading headtitle">{{"employer.assignment.newQuiz"
+                | translate}}</div>
+            <div class="panel-body panel-body-0padding">
+                <div class="row rowMenuInterview" align=center>
+                    <div class="menu-assignment">
+                        <ul class="nav nav-justified">
+                            <li class="menu-video menu-videoactive">1.
+                                {{"employer.assignment.nameQuiz" |
+                                translate}}</li>
+                            <li class="menu-video">2.
+                        {{"employer.assignment.settingInterview" |
+                        translate}}</li>
+                            <li class="menu-video">3.
+                                {{"employer.assignment.selectInterview"
+                                | translate}}</li>
+                            <li class="menu-video">4.
+                                {{"employer.assignment.confirmInterview"
+                                | translate}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="paddingRightLeft15 text-center">
+                    <div class="row" style="height: 250px;">
+                        <br>
+                        <div class="col-sm-4 text-left">
+
+                            <form name="settingQuizForm" novalidate>
+                                <div class="form-group" ng-class="{ 'has-error' : settingQuizForm.interviewName.$error.required && !settingQuizForm.interviewName.$pristine }">
+                                    <label for="interviewName">{{"employer.assignment.interviewName"
+                                        | translate}}</label>
+                                    <input type="text" class="form-control" id="interviewName"
+                                        name="interviewName"
+                                        ng-model="interview.name"
+                                        required>
+
+                                    <span class="help-block" ng-show="settingQuizForm.interviewName.$error.required">{{"required" | translate}}</span>
+                                </div>
+                                <br>
+                                
+                                <div class="form-group" ng-class="{ 'has-error' : (settingQuizForm.timeQuiz.$error.integer 
+                                || settingQuizForm.timeQuiz.$error.min) }">
+                                    <label for="timeQuiz">{{"quiz.time"
+                                        | translate}}</label>
+                                    <input type="number" class="form-control" id="timeQuiz" 
+                                        name="timeQuiz" min="1" onkeypress="return event.charCode >= 48"
+                                        ng-model="interview.quizTime"
+                                        required>
+
+                                    <span class="help-block" ng-show="settingQuizForm.timeQuiz.$error.min">{{"employer.quiz.timeQuizRequired" | translate}}</span>
+                                </div>
+
+                                <br>
+                                <div class="form-group" ng-class="{ 'has-error' : (settingQuizForm.benchmark.$error.integer 
+                                || settingQuizForm.benchmark.$error.min 
+                                || settingQuizForm.benchmark.$error.max)}">
+                                    <label for="benchmark">{{"quiz.benchmark"
+                                        | translate}}</label>
+                                    <input type="number" class="form-control" id="benchmark"
+                                        name="benchmark" min="0" max="100"
+                                        ng-model="interview.benchmark" onkeypress="return event.charCode >= 48"
+                                        required>
+                                    
+                                    <span class="help-block" ng-show="settingQuizForm.benchmark.$error.min
+                                    || settingQuizForm.benchmark.$error.max">{{"employer.quiz.benchmarkRequired" | translate}}</span>
+                                </div>
+                                <br>
+                            </form>
+
+                        </div>
+                        
+                        <div class="col-sm-2">&nbsp;</div>
+                        <div class="col-sm-4" align=left>
+                            <label for="name" class="">{{"employer.language"
+                                | translate}}</label>
+                            <div class="btn-group" style="width: 100%;">
+                                <label class="btn btn-success"
+                                    ng-model="interview.language"
+                                    uib-btn-radio="'en'">{{"employer.english"
+                                    | translate}}</label>
+                                <label class="btn btn-success"
+                                    ng-model="interview.language"
+                                    uib-btn-radio="'vi'">{{"employer.vietname"
+                                    | translate}}</label>
+                            </div>
+                            <br>
+                            <br>
+                            <label for="name" class="">{{"quiz.shuffle"
+                                | translate}}</label>
+                            <div class="btn-group" style="width: 100%;">
+                                <label class="btn btn-success"
+                                    ng-model="interview.shuffle"
+                                    uib-btn-radio="true">{{"interview.yes"
+                                    | translate}}</label>
+                                <label class="btn btn-success"
+                                    ng-model="interview.shuffle"
+                                    uib-btn-radio="false">{{"interview.no"
+                                    | translate}}</label>
+                            </div>                            
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div align=center>
+            <input type="button" ng-click="gotoQuestionInterview()"
+                ng-disabled="settingQuizForm.$invalid"
+                class="btn btn-primary"
+                value='{{"employer.assignment.next" | translate}}'
+                style="margin-bottom: 5px !important; width: 120px;">
+            <a class="btn btn-default" href="/#/employer/interview_list"
+                style="margin-bottom: 5px !important; width: 120px; float: right">{{"employer.assignment.cancel"
+                | translate}}</a>
+        </div>
+    </div>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

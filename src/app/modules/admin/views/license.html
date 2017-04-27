@@ -1,0 +1,42 @@
+<div ng-include src="'app/modules/admin/views/main.html'"></div>
+<div  ng-controller="AdminLicenseController" style="margin-top: 40px; padding: 0 10%;">
+    <div class="table-responsive">
+        <h2 align="center" style="text-transform: uppercase;">License</h2>
+        <div class="clearfix">
+	        <ul class="list-inline pull-right">
+	        	<li style="margin-right: 15px; font-weight: 500;">
+					<a ng-click="newLicenseCategory()" aria-hidden="true"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Add category</a>
+	        	</li>
+	        	<li style="margin-right: 15px; font-weight: 500;">
+	        		<a ng-click="newLicense()" aria-hidden="true"><img src="assets/images/add.gif" border="0" alt="New Company">&nbsp;Add license</a>
+	        	</li>	        	
+	        </ul>
+        </div>
+		<table class="table table-striped">
+		    <thead>
+		      <tr style="border-bottom: 2px solid rgb(6,122,171); color: rgb(30,140,180);">
+		          	<th >#</th>
+		            <th>Name</th>		            
+		            <th>Point</th>
+		            <th>Category</th>
+		            <th>Email</th>
+		            <th>Validity</th>
+		            <th>Assignment</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="license in licenseList">
+		        <td>{{$index + 1}}</td>
+		        <td>{{license.name}}</td>		        
+		        <td>{{license.point}}</td>
+		        <td>{{license.category.code}}</td>
+		        <td>{{license.email}}</td>
+		        <td>{{license.validity}}</td>
+		        <td>{{license.assignment}}</td>
+		      </tr>   
+		  </tbody>
+		</table>
+	</div>
+</div>
+<div ng-include="'app/modules/admin/modals/popup_create_license.html'"></div>
+<div ng-include="'app/modules/admin/modals/popup_create_license_category.html'"></div>

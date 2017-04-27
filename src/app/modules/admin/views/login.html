@@ -1,0 +1,30 @@
+<div ng-controller="AdminLoginController" class="row" style="margin-top: 8%" ng-keydown="$event.keyCode == 13 && doLogin()">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6" align="center">
+    <div style="border: 2px solid #357ebd">
+      <div style="background-color: #428bca; height: 60px; color: white; font-weight: 400; text-transform: uppercase">
+          <img src="assets/images/icon.png" alt="" style="width: 40px; position: relative; float: left; margin-left: 15px; margin-top: 5px;">
+          <p style="padding: 10px 0px">Administrator Login</p>
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-sm-3"><p>User Name</p></div>
+          <div class="col-sm-9">  
+              <input type="text" class="form-control" ng-model="userLogin.email" autofocus>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-3"><p>Password</p></div>
+          <div class="col-sm-9">
+              <input type="password" class="form-control" ng-model="userLogin.password">
+          </div>
+      </div>  
+                  
+      <div class="row">
+        <button type="button" class="btn btn-primary" ng-click="doLogin()">Login</button>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>

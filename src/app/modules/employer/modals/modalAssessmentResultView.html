@@ -1,0 +1,201 @@
+<script type="text/ng-template" id="modalAssessmentResultView.html">
+    <style type="text/css">
+        @media (min-width: 992px){
+            .modal-lg {
+                width: 80%;
+            }
+        }
+
+        @media (min-width: 868px){
+            .modal-lg {
+                width: 80%;
+            }
+        }
+        h4, .h4, h5, .h5, h6, .h6 {
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+        .panel-heading {
+            padding: 5px 5px;
+        }
+        .itemQue:hover{
+            color: rgb(6,122,171);
+            font-weight: bold;
+        }
+        div:focus, label:focus, p:focus {
+            outline: -webkit-focus-ring-color auto 0px;
+        }
+        .col-sm-3, .col-sm-9 {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+    <div class="panel-body tab-popup modal-assessment-result" style="padding: 30px;">
+        <div align=center>
+            <label style="font-weight: normal; text-transform: uppercase; font-size: 23px;">{{"employer.main.assessmentTitle"
+            | translate}}</label>
+            <button style="float:right;" class="btn btn-danger" ng-click="cancel();"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div style="padding-top: 15px;">
+            <div class="row">
+                <div class="col-sm-5"><p style="font-weight: 700; font-size: 30px; line-height: 1;">{{chooseAss.name}}</p></div>
+                <div class="col-sm-7" ng-style="selfAssessmentResult.id ? {'pointer-events': 'none'}:''">
+                    <div style="text-align: right; margin-right: 50px;">
+                        <div class="btn-group">
+                            <label class="btn btn-success" ng-model="selfAssessmentResult.shortlist" uib-btn-radio="true">{{"employer.assignment.Csv.pass" | translate}}</label>
+                            <label class="btn btn-success" ng-model="selfAssessmentResult.shortlist" uib-btn-radio="false">{{"employer.assignment.Csv.unPass" | translate}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-sm-3"><img src="assets/images/avatar-user.jpg" style="width: 80px;"></div>
+                    <div class="col-sm-9">
+                        <div><h4 style="font-weight: 700;">{{chooseCandidate.candidate.name}}</h4></div>
+                        <div style="font-size: 16px;"><i class="fa fa-envelope-o" aria-hidden="true" style="color: "></i> {{chooseCandidate.candidate.email}}</div>
+                    </div>
+                </div>
+                <div class="panel panel-info panel-emp" style="margin-top: 10px;">
+                    <div class="panel-heading">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> Interview Questions</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div  ng-repeat="answer in chooseCandidate.answerList" style="margin-left: 5px; margin-right: 5px;">
+                            <p ng-click="showVideoAnswer(answer);" style="cursor:pointer">
+                                <label class="itemQue" style="width: 99%; cursor:pointer" ng-style="answer.show ? {'font-weight': 'bold', 'color':'rgb(6,122,171)', 'background-color':'lightblue', 'border-radius':'5px'}:''">{{$index+1}}.{{answer.nameQuestion}}</label>
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <label class="">{{"employer.assessment.documentList" | translate}}</label>
+                            <ul class="list-group" style="margin-left: 30px;">
+                                <li style="font-size: 14px" ng-repeat="doc in chooseCandidate.documentList">
+                                    <a ng-show="doc.title = 'undefined'" target="_blank" href={{doc.filedata}}>{{doc.filename ? doc.filename : 'File attach'}}</a>
+                                    <a ng-show="doc.title != 'undefined'" target="_blank" href={{doc.filedata}}>{{doc.title ? doc.title : 'File attach'}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info panel-emp">
+                    <div class="panel-heading">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> Rating</h4>
+                    </div>
+                    <div style="pointer-events: none;">
+                        <div class="panel-body">
+                            <span>{{'employer.assessment.summary'|translate}}</span><br>
+                            <div id="vote">
+                                <uib-rating ng-model="summaryAssessment.vote" max="5" read-only="summaryAssessment.isReadonly" style="color: rgb(6,122,171)"></uib-rating>
+                            </div>
+                            <span>{{'employer.assessment.seft'|translate}}</span>
+                            <div id="vote">
+                                <uib-rating ng-model="selfAssessmentResult.vote" max="5" read-only="true" style="color: rgb(6,122,171)"></uib-rating>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <button class="btn btn-employer" ng-click="openReport()" style="padding: 6px 6px;">{{"employer.report" | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="panel panel-info panel-emp" style="margin-top: 10px;">
+                    <div class="panel-heading">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> {{'employer.assessment.other'|translate}}</h4>
+                    </div>
+                    <div class="panel-body" style="pointer-events: none;">
+                        <div ng-repeat="otherAnswer in otherAssessmentResult">
+                            <div style="margin-bottom: 15px;">
+                                <h4 style="font-weight: bold; font-size: 15px; margin-bottom: 0px;">{{ otherAnswer.user }}</h4>
+                                <div id="vote">
+                                    <uib-rating ng-model="otherAnswer.vote" max="5" read-only="true" style="color: rgb(6,122,171); font-size: 15px;"></uib-rating>
+                                </div>
+                                <p style="font-weight: normal; font-size: 15px;">{{ otherAnswer.comment }}</p>
+                                <truncate-text long-text="{{ otherAnswer.comment }}"></truncate-text>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-sm-7">
+                <div>
+                    <div align="center" class="background-videoAss">
+                        <video ng-if="answerVideoUrl.videoUrl" class="background-videoAss videoAssessment" controls ng-src={{answerVideoUrl.videoUrl|trusted}}>
+                        </video>
+                    </div>
+                    <div align=right ng-if="answerVideoUrl.videoUrl">
+                        <a style="font-size: 12pt" target="_blank" href={{answerVideoUrl.videoUrl}}>Link to download video</a>
+                    </div>
+                </div>
+                <div class="panel panel-info panel-emp" style="margin-top: 10px;">
+                    <div class="panel-heading">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> {{'employer.assessment.other'|translate}}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-repeat="otherAnswer in otherAssessmentResult">
+                            <div style="margin-bottom: 10px;">
+                                <h4 style="font-weight: bold; font-size: 15px; margin-bottom: 0px;">{{ otherAnswer.user }}</h4>
+                                <div id="vote">
+                                    <uib-rating ng-model="otherAnswer.vote" max="5" read-only="true" style="color: rgb(6,122,171); font-size: 15px;"></uib-rating>
+                                </div>
+                                <truncate-text long-text="{{ otherAnswer.comment }}" limit="70" class="comment"></truncate-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info panel-emp" style="margin-top: 10px;">
+                    <div class="panel-heading">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i> {{'employer.assessment.seft'|translate}}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-style="selfAssessmentResult.id ? {'pointer-events': 'none'}:''">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label style="font-weight: bold; font-size: 15px; color: black;">{{"employer.assessment.vote" | translate}}:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div id="vote">
+                                        <uib-rating ng-model="selfAssessmentResult.vote" read-only="false" max="5" style="color: rgb(6,122,171); font-size: 15px;"></uib-rating>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 10px;">
+                                <div class="col-sm-3">
+                                    <label style="font-weight: bold; font-size: 15px; color: black;">{{"employer.assessment.comment" | translate}}: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <textarea  id="txtArea" rows="5" ng-model="selfAssessmentResult.comment" class="form-control" style="font-size: 15px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group" ng-show="chooseInterview.mode=='video'" ng-repeat="group in assessment.groupList track by $index" ng-init="group.show = false">
+                            <div class="panel panel-default">
+                                <div ng-click="group.show =!group.show " class="panel-heading" style="cursor:pointer; font-size: 15px; color: black; font-weight: bold;">{{group.name}}</div>
+                                <div class="panel-collapse collapse" ng-class="group.show? 'in' : ''">
+                                    <div class="row" ng-repeat="question in questionList[group.id]" style="margin-bottom: 5px;" ng-style="selfAssessmentResult.id ? {'pointer-events': 'none'}:''">
+                                        <div class="col-sm-7" align="left">
+                                            <label style="font-weight: normal; font-size: 15px; color: black;">{{question.content}} </label>
+                                        </div>
+                                        <div class="col-sm-5" align="right" style="font-size: 15px;">
+                                            <select class="form-control" ng-options="value.val as value.val for value in question.options" ng-model="question.chooseVal"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div align="left" ng-if="!selfAssessmentResult.id">
+                            <input type="button" ng-click="submit()" class="btn btn-employer" value='{{"employer.assignment.save" | translate}}'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button style="float:right;" class="btn btn-danger" ng-click="cancel();">{{"login.close" | translate}}</button>
+        </div>
+    </div>
+</script>

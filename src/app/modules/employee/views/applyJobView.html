@@ -1,0 +1,100 @@
+<div ng-include="'app/modules/main/views/menu_main.html'"></div>
+<div class="container-employee employee-wrapper">
+	<div class="apply-employee">
+		<div class="row">
+			<div class="col-sm-offset-1 col-sm-10">
+				<h3 class="apply-title text-center">{{"employee.applling" | translate}} <b>{{ job.name }}</b></h3>
+				<hr>
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.applyName" | translate}}</b>
+			</div>
+			<div class="col-sm-8">
+				{{ employee.name | setFullName }} 
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.latestJob" | translate}}</b>
+			</div>
+			<div class="col-sm-8">
+				{{ recentlyExpEmployer.title ? recentlyExpEmployer.title : "Chưa có" }} 
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.applyCompany" | translate}}</b>
+			</div>
+			<div class="col-sm-8">
+				{{ recentlyExpEmployer.employer ? recentlyExpEmployer.employer : "Chưa có" }} 
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.address" | translate}}</b>
+			</div>
+			<div class="col-sm-8" ng-if="employee.provinceId && employee.countryId">
+				{{ employee.provinceName + ', ' + employee.countryName }} 
+			</div>
+			<div class="col-sm-8" ng-if="!employee.provinceId || !employee.countryId">
+				{{"employee.applyJob.notYet" | translate}} 
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.applyMobile" | translate}}</b>
+			</div>
+			<div class="col-sm-8">{{ employee.mobile ? employee.mobile : "employee.applyJob.notYet" | translate}}</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>Email</b>
+			</div>
+			<div class="col-sm-8">{{ employee.email }}</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.attachments" | translate}}</b>
+			</div>
+			<div class="col-sm-8" ng-show="docList.length > 0">
+				<p ng-repeat="doc in docList">
+					<a href="{{ doc.filedata }}">{{ doc.title }}</a>
+				</p>				
+			</div>
+			<div class="col-sm-8" ng-show="docList.length == 0">
+				{{"employee.applyJob.notYet" | translate}}				
+			</div>
+		</div>
+		<div class="row profile-item">
+			<div class="col-sm-offset-1 col-sm-2">
+				<b>{{"employee.coverLetter" | translate}}</b>
+				<br>
+				<span class="optional">({{"optional" | translate}})</span>
+			</div>
+			<div class="col-sm-8">
+				<div class="btn-letter"
+					ng-click="changeEditLetter();">
+					<p ng-show="!enterLetter">{{"employee.enterCoverLetter" | translate}}</p>
+					<p ng-show="enterLetter">{{"employee.hideCoverLetter" | translate}}</p>
+				</div>			
+			</div>
+			<div class="col-sm-offset-1 col-sm-10">
+				<div ng-show="enterLetter" class="clearfix">
+					<div text-angular ng-model="employee.letter"></div>
+				</div>			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-offset-1 col-sm-10">
+				<hr>
+			</div>
+			<div class="col-sm-offset-9 col-sm-2">
+				<button ng-click="applyJob()" type="button" class="btn btn-primary btn-block">{{"employee.send" |
+            translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'app/modules/main/views/footer_main.html'"></div> 

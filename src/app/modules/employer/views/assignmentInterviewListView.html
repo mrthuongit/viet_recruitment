@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="assets/css/employee.css">   
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer" align=center>
+    <div class="panel panel-info" id="marginfrom">
+        <div class="panel-heading headtitle"
+            >{{"employer.interviewList.title"
+            | translate}}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group" ng-if="chooseAssignment.id"
+                    align=left>
+                    <label for="state" class="titleAss">{{"employer.assignment.jobState"
+                        | translate}}</label>
+                    <div class="btn-group">
+                        <label ng-click="openJob()"
+                            class="btn btn-success"
+                            ng-model="chooseAssignment.status"
+                            uib-btn-radio="'published'">{{"employer.published"
+                            | translate}}</label>
+                        <label ng-click="closeJob()"
+                            class="btn btn-success"
+                            ng-model="chooseAssignment.status"
+                            uib-btn-radio="'closed'">{{"employer.closed"
+                            | translate}}</label>
+                    </div>
+                    <div style="float: right;">
+                        <button ng-click="newQuizInterview()"
+                                class="btn btn-default" >
+                            <span class="glyphicon glyphicon-plus"
+                                aria-hidden="true"></span>
+                            &nbsp;{{"employer.assignment.newQuizInterview"
+                            | translate}}
+                        </button>
+
+                        <button ng-click="newVideoInterview()"
+                            class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"
+                                aria-hidden="true"></span>
+                            &nbsp;{{"employer.assignment.newVideoInterview" |
+                            translate}}
+                        </button>
+                            
+                        <button ng-click="newConferenceInterview()"
+                            ng-show="licenseInfo.license.code !== 'FREE'"
+                                class="btn btn-default" >
+                            <span class="glyphicon glyphicon-plus"
+                                    aria-hidden="true"></span>
+                                &nbsp;{{"employer.assignment.newConferenceInterview"
+                                | translate}}
+                        </button>
+
+                        <!-- Show modal suggests employer buy preminum package -->
+                        <button ng-click="openModalPremiumSuggest()"
+                            ng-show="licenseInfo.license.code === 'FREE'"
+                                class="btn btn-default" >
+                            <span class="glyphicon glyphicon-plus"
+                                    aria-hidden="true"></span>
+                                &nbsp;{{"employer.assignment.newConferenceInterview"
+                                | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row table-responsive">
+                <table class="table table-striped"
+                    style="border: 1px solid #ccc">
+                    <thead>
+                        <tr
+                            style="border-bottom: 2px solid rgb(6, 122, 171); color: rgb(30, 140, 180); background-color: lightblue;">
+                            <th class="employer" width="6%">{{"employer.assignment.round"
+                                | translate}}</th>
+                            <th class="employer" with="40%">{{"employer.assignment.name"
+                                | translate}}</th>
+                            <th class="employer" width="14%">{{"employer.assignment.type"
+                                | translate}}</th>
+                            <th class="employer" width="15%">{{"employer.languageShort"
+                                | translate}}</th>
+                            <th class="employer" width="15%">{{"employer.assignment.state"
+                                | translate}}</th>
+                            <th class="employer" width="6%">
+                                <span
+                                    style="position: relative; float: left;">{{"employer.assignment.option"
+                                    | translate}}</span>
+                            </th>
+                            <th class="employer" width="4%">
+                                <span
+                                    style="position: relative; float: right;">{{"employer.assignment.delete"
+                                    | translate}}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            ng-repeat="interview in interviewList | orderBy:'round'">
+                            <td >{{interview.round}}</td>
+                            <td >{{interview.name}}</td>
+                            <td >{{interview.mode | translate}}</td>
+                            <td >{{interview.language | translate}}</td>
+                            <td >
+                                <div class="btn-group">
+                                    <label
+                                        ng-click="openInterview(interview)"
+                                        class="btn btn-success"
+                                        ng-model="interview.status"
+                                        uib-btn-radio="'published'">{{"employer.published"
+                                        | translate}}</label>
+                                    <label
+                                        ng-click="closeInterview(interview)"
+                                        class="btn btn-success"
+                                        ng-model="interview.status"
+                                        uib-btn-radio="'closed'">{{"employer.closed"
+                                        | translate}}</label>
+                                </div>
+                            </td>
+                            <td  style="padding: 2px 15px;" align=center>
+                                <a style="cursor: pointer"
+                                    ng-click="gotoInterview(interview)"
+                                    aria-hidden="true">
+                                    <img src="assets/images/edit.gif"
+                                        border="0" alt="Edit Assignment">
+                                </a>
+                            </td>
+                            <td  style="padding: 2px 15px;" align=center>
+                                <a style="cursor: pointer"
+                                    ng-show="interview.status=='initial'"
+                                    ng-click="deleteInterview(interview)"
+                                    aria-hidden="true">
+                                    <span
+                                        class="glyphicon glyphicon-remove"
+                                        style="color: red"
+                                        aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div align=center>
+                    <a class="btn btn-default" href="/#/employer" style=" width: 120px;">{{"employer.assignment.cancel" | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+    <br>
+</div>
+<div ng-include src="'app/modules/employer/modals/modalPremiumSuggestView.html'"></div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

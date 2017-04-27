@@ -1,0 +1,180 @@
+<style type="text/css">
+    @media (min-width: 992px){
+        .modal-sm {
+            width: 60%;
+        }
+    }
+
+    @media (min-width: 868px){
+        .modal-sm {
+            width: 60%;
+        }
+    }
+    @media (min-width: 768px){
+        .modal-sm {
+            width: 60%;
+        }
+    }
+
+    h4, .h4, h5, .h5, h6, .h6 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        line-height: 20px;
+    }
+    .panel-heading {
+        padding: 5px 5px;
+    }
+    .itemQue:hover{
+        color: rgb(6,122,171);
+        font-weight: bold;
+    }
+    div:focus, label:focus, p:focus {
+        outline: -webkit-focus-ring-color auto 0px;
+    }
+    .col-sm-3, .col-sm-9 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    html, body {
+        background-color: rgb(177,173,171);
+    }
+</style>
+<div class="modal-dialog modal-sm" pdf-save-content="idreport" style="width: 894px;">
+    <div class="modal-content">
+        <div class="panel-body tab-popup modal-assessment-result" style="padding-left: 15px;">
+            <div align=center>
+                <label style="font-weight: normal; text-transform: uppercase; font-size: 23px; color: #31708f"> {{"employer.report" | translate}}</label>
+                <button style="float:right;" class="btn btn-access" pdf-save-button="idreport" pdf-name="report_assessment.pdf"><i class="fa fa-download" aria-hidden="true"></i></button>
+            </div>
+            <div style="background-color: #F0FDFD; border-bottom: 2px solid #ccc; border-top: 2px solid #ccc; font-family: sans-serif; margin-top: 10px;">
+                <div style="padding-top: 15px; margin-bottom: 10px; padding-left: 15px;">
+                    <h4 style="font-size: 30px;">{{chooseCandidate.candidate.name}}</h4>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style=" padding-top: 10px; padding-bottom: 10px;  padding-left: 30px;">
+                        <div style="border-top: 2px solid #ccc;"><label style="font-size: 18px; margin-bottom: 10px;">{{"employer.employee.showInfo" | translate}}</label></div>
+                        <div class="row" style="font-size: 16px;">
+                            <div class="col-sm-5">Email: </div>
+                            <div class="col-sm-7" style="font-weight: bold">{{chooseCandidate.candidate.email}}</div>
+                            <div class="col-sm-5">{{"employer.position" | translate}}: </div>
+                            <div class="col-sm-7" style="font-weight: bold">{{chooseCandidate.chooseAss.name}}</div>
+                            <div class="col-sm-5">{{"employer.interviewDate" | translate}}: </div>
+                            <div class="col-sm-7" ng-if="chooseCandidate.interviewDate">{{chooseCandidate.interviewDate}}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-info panel-emp" style="margin-top: 10px; border-color: #F0FDFD">
+                            <div class="panel-heading" style="background-color: midnightblue; color: #fff;">
+                                <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i>
+                                {{'employer.assessment.summary'|translate}}
+                                </h4>
+                            </div>
+                            <div class="panel-body" style="background-color: #F0FDFD;">
+                                <div class="row">
+                                    <div class="col-sm-3" style="font-size: 17px; font-weight: bold">{{"employer.assignment.Csv.pass" | translate}}:</div>
+                                    <div class="col-sm-9">{{number_pass}} / {{total_emp}}</div>
+                                </div>
+                                <div class="row" style="margin-top: 7px;">
+                                    <div class="col-sm-3" style="font-size: 17px; font-weight: bold">Rating:</div>
+                                    <div class="col-sm-9" style="pointer-events: none;">
+                                        <div id="vote">
+                                            <uib-rating ng-model="chooseCandidate.summaryAssessment.vote" max="5" read-only="chooseCandidate.summaryAssessment.isReadonly" style="color: rgb(6,122,171);"></uib-rating>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-family: sans-serif; margin-top: 15px;" ng-if="chooseCandidate.summaryAssessment.answerList.length > 0">
+                <div class="panel panel-info panel-emp" style="margin-top: 10px; margin-bottom: 20px !important;">
+                    <div class="panel-heading" style="background-color: #0B1264; color: #fff;">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i>
+                        {{'employer.capability'|translate}}
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="padding-left: 7%; padding-right: 7%; padding-top: 15px; pointer-events: none;">
+                            <div class="col-sm-4" style="text-align: center; width: 33.33333333%;">
+                                <label style="font-size: 18px; color: black;">{{name1}}</label>
+                                <canvas id="pie" class="chart chart-pie" chart-data="data1" chart-labels="labels" chart-colors="colors"></canvas>
+                                <p style="color: black; font-weight: bold">{{percent1}}%</p>
+                                <p style="text-align: center; font-size: 16px; margin-bottom: 0px;"><i class="fa fa-square" aria-hidden="true" style="color: rgba(17,153,211, 1);"></i>{{"employer.assignment.Csv.pass" | translate}}: {{data1[0] | number:0}} / {{chooseCandidate.groupList[0].total}}</p>
+                            </div>
+                            <div class="col-sm-4" style="text-align: center; width: 33.33333333%;">
+                                <label style="font-size: 18px; color: black;">{{name2}}</label>
+                                <canvas id="pie" class="chart chart-pie" chart-data="data2" chart-labels="labels" chart-colors="colors"></canvas>
+                                <p style="color: black; font-weight: bold">{{percent2}}%</p>
+                                <p style="text-align: center; font-size: 16px; margin-bottom: 0px;"><i class="fa fa-square" aria-hidden="true" style="color: rgba(17,153,211, 1);"></i> {{"employer.assignment.Csv.pass" | translate}}: {{data2[0] | number:0}} / {{chooseCandidate.groupList[1].total}}</p>
+                            </div>
+                            <div class="col-sm-4" style="text-align: center; width: 33.33333333%;">
+                                <label style="font-size: 18px; color: black;">{{name3}}</label>
+                                <canvas id="pie" class="chart chart-pie" chart-data="data3" chart-labels="labels" chart-colors="colors"></canvas>
+                                <p style="color: black; font-weight: bold">{{percent2}}%</p>
+                                <p style="text-align: center; font-size: 16px; margin-bottom: 0px;"><i class="fa fa-square" aria-hidden="true" style="color: rgba(17,153,211, 1);"></i> {{"employer.assignment.Csv.pass" | translate}}: {{data3[0] | number:0}} / {{chooseCandidate.groupList[2].total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-family: sans-serif;">
+                <div class="panel panel-info panel-emp" style="margin-top: 10px; margin-bottom: 0px !important;">
+                    <div class="panel-heading" style="background-color: #050C55; color: #fff;">
+                        <h4 class="title"><i class="fa fa-list" aria-hidden="true"></i>
+                        {{"employer.totalcomment" | translate}}
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" ng-show="chooseCandidate.selfAssessmentResult.id">
+                            <div class="col-sm-12">
+                                <div><label style="font-size: 17px; padding-left: 5px;">{{ chooseCandidate.selfAssessmentResult.comment }}</label></div>
+                                <div class="row" style="padding-bottom: 10px;">
+                                    <div class="col-sm-5">
+                                        <label style="font-size: 14px; margin-bottom: 0px; padding-left: 5px;">{{"employer.commentby" | translate}} <span style="font-style: italic">{{ chooseCandidate.candidate.name }}</span></label>
+                                    </div>
+                                    <div class="col-sm-2" style="pointer-events: none;">
+                                        <div id="vote">
+                                            <uib-rating ng-model="chooseCandidate.selfAssessmentResult.vote" max="5" read-only="true" style="color: rgb(6,122,171); font-size: 13px;"></uib-rating>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5" ng-if="chooseCandidate.selfAssessmentResult.shortlist">
+                                        <i class="fa fa-check" aria-hidden="true" style="color: rgb(6,122,171)"></i> <label class="btn" style="font-size: 15px; border-radius: 3px; color: rgb(6,122,171); border-color: rgb(6,122,171); pointer-events: none; padding: 4px 12px; margin-top: -5px;">{{"employer.assignment.Csv.pass" | translate}}</label>
+                                    </div>
+                                    <div class="col-sm-5" ng-if="!chooseCandidate.selfAssessmentResult.shortlist">
+                                        <i class="fa fa-check" aria-hidden="true" style="color: #fff"></i> <label class="btn" style="font-size: 15px; border-radius: 3px; color: #585858; border-color: #585858; pointer-events: none; padding: 4px 12px; margin-top: -5px;">{{"employer.assignment.Csv.unPass" | translate}}</label>
+                                    </div>
+                                </div>
+                                <div style="border-bottom: 2px solid #777777;"></div>
+                            </div>
+                        </div>
+                        <div ng-repeat="otherAnswer in chooseCandidate.otherAssessmentResult">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div><label style="font-size: 17px; padding-left: 5px;">{{ otherAnswer.comment }}</label></div>
+                                    <div class="row" style="padding-bottom: 10px;">
+                                        <div class="col-sm-5">
+                                            <label style="font-size: 14px; margin-bottom: 0px; padding-left: 5px;">{{"employer.commentby" | translate}} <span style="font-style: italic">{{ otherAnswer.user }}</span></label>
+                                        </div>
+                                        <div class="col-sm-2" style="pointer-events: none;">
+                                            <div id="vote">
+                                                <uib-rating ng-model="otherAnswer.vote" max="5" read-only="true" style="color: rgb(6,122,171); font-size: 13px;"></uib-rating>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5" ng-if="otherAnswer.shortlist">
+                                            <i class="fa fa-check" aria-hidden="true" style="color: rgb(6,122,171)"></i> <label class="btn" style="font-size: 15px; border-radius: 3px; color: rgb(6,122,171); border-color: rgb(6,122,171); pointer-events: none; padding: 4px 12px; margin-top: -5px;">{{"employer.assignment.Csv.pass" | translate}}</label>
+                                        </div>
+                                        <div class="col-sm-5" ng-if="!otherAnswer.shortlist">
+                                            <i class="fa fa-check" aria-hidden="true" style="color: #fff"></i> <label class="btn" style="font-size: 15px; border-radius: 3px; color: #585858; border-color: #585858; pointer-events: none; padding: 4px 12px; margin-top: -5px;">{{"employer.assignment.Csv.unPass" | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div style="border-bottom: 2px solid #777777;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

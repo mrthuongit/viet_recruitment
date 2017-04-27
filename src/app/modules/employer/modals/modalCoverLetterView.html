@@ -1,0 +1,24 @@
+<script type="text/ng-template" id="modalCoverLetter.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel();"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title text-center" id="modal-title">{{"employer.coverLetter" | translate}}</h3>
+    </div>
+
+    <div class="modal-body modal-body-cv" id="modal-body">
+        <div style="width: 95%; margin: auto;">
+            <div ng-bind-html="candidate.letter"></div>
+        </div>
+    </div>
+
+    <div class="modal-footer modal-footer-cv">
+        <button class="btn btn-success" 
+            ng-click="exportPdf()">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            {{"download" | translate}}
+        </button>
+
+        <button class="btn btn-danger" type="button" ng-click="cancel()">
+            {{"login.close" | translate}}
+        </button>
+    </div>
+</script>

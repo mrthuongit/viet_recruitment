@@ -1,0 +1,41 @@
+<div align=center>
+    <div
+        style="position: relative; background-color: rgba(40,160,210,.9); width: 325px; height: 245px;">
+        <div style="position: absolute; z-index: 999; font-weight: bold; top: 5px; left: 50%; transform: translateX(-50%)"
+            ng-show="timerBar">
+            <span style="color: white; font-size: 14px">
+                <timer interval="1000"> {{mminutes}} :
+                {{sseconds}} </timer>
+            </span>
+        </div>
+        <video id="webcam" 
+            video-autoplay data-attr-autoplay={{videoAttr.autoplay}}
+            video-control data-attr-control={{videoAttr.controls}}
+            video-muted data-attr-muted={{videoAttr.muted}}
+            poster="{{ videoUrl?'':'assets/images/logow.png' }}"
+            src={{videoUrl|trusted}}
+            style="position: absolute; top: 2.5px; left: 2.5px; width: 320px; height: 240px"></video>
+    </div>
+    <div class="row" style="margin-top: 5px" align=center ng-init="iupload = true; irecord = true; iclear = true;">
+        <button ngf-select="selectFileUpload($files)" ng-mouseover="iupload = false" ng-mouseleave="iupload = true" class="btn btn-default  btn-employer btn-video" style="width: 45px; height: 30px" >
+            <span ng-show="iupload" class="fa fa-upload"></span>
+            <span ng-show="!iupload">{{"employer.assignment.browse" | translate}}</span>
+            </button>
+        <div style="padding: 3px; display: inline-block;" align=center>
+            <a ng-click="startRecording()" ng-show="!recordMode">
+                <img style="width: 30px; height: 30px"
+                    ng-src="{{recordMode?'assets/images/interview/b2.png':'assets/images/interview/b1.png'}}">
+            </a>
+            <a ng-click="stopRecording()" ng-show="recordMode">
+                <img style="width: 30px; height: 30px"
+                    src="assets/images/interview/a1.png">
+            </a>
+        </div>
+        <button ng-mouseover="iclear = false" ng-mouseleave="iclear = true" 
+            class="btn btn-default  btn-employer btn-video"
+            style="border-color: #d3222d; background-color: #d3222d; width: 45px; height: 30px;"
+            ng-disabled="showRecordControl" ng-click="clearVideo()">
+            <span ng-show="!iclear">{{"employer.assignment.remove"| translate}}</span>
+            <span ng-show="iclear" class="glyphicon glyphicon-trash"></span></button>
+    </div>
+</div>

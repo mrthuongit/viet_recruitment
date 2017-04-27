@@ -1,0 +1,39 @@
+<div ng-controller="InterviewPracticeController"  style="margin-left:50px;margin-right:50px">
+
+	<div style="background-color: #dddddd; padding: 20px 30px;">
+		<div class="row "
+		style="background-color: white; padding: 1% 1%;">
+		<div class="col-sm-9 ">
+			<div align="center"
+			style="background-color: gray; padding: 14px 6px; color: white; font-weight: bold;">
+			{{timePrompt}}
+		</div>
+		<div style="width: 480px; height: 360px;" >
+			<video-recorder control="recorder"   ></video-recorder>
+			<img
+			src="assets/images/location.png"
+			style="z-index: 3; position: absolute; top: 55px; right: 20px">
+		</div>
+	</div>
+	<div class="col-sm-3 ">
+		<div>
+			<input name="ready" class="btn btn-primary" id="answerButtonPractice"
+			style="font-size: 16px; font-weight: 500; width: 100%"
+			type="button" >
+		</div>
+		<div align="left" style="position: absolute; top: 150px">
+			<div style="font-weight: 500; font-size: 25px">{{"interview.pratice-mode" | translate}}</div>
+			<br>
+			<div style="font-weight: 500; font-size: 20px;">{{"interview.question" | translate}} {{index}} /
+				{{questionList.length}}</div>
+
+				<div>{{question.title}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<p align="center" style="vertical-align: middle; padding-top: 2px;">
+	<button class="btn btn-success responsive-width"  ng-click="proceedInterview()"  style="vertical-align: middle; font-weight: 500;">{{"interview.begin-interview" | translate}}</button>
+	<button class="btn btn-default responsive-width" ng-disabled="practice" ng-click="continuePractice()"  style="vertical-align: middle; font-weight: 500;">{{"interview.continue-practice" | translate}}</button>
+</p>
+</div>

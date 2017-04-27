@@ -1,0 +1,69 @@
+<style type="text/css">
+	p {
+		text-align: justify; text-justify: inter-word;
+		color: black;
+		font-size: 17px;
+	}
+	.titlep {
+		color: navy;
+		font-weight: 400;
+	}
+	.left30 {
+		margin-left: 30px;
+	}
+	p.left30 > span {
+		font-weight: 400;
+	}
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div ng-controller="CareerDetailController" align="center" class="body-info">
+	<br>
+	<div ng-if="displayEmployee" align="center" style="border: 1px; width: 90%;">
+		<h2 style="color: #656767; font-weight:300; line-height:30px;">{{"career.candidate" | translate}}</h2>
+		<p style="font-weight:400; line-height:30px;">1. {{"career.candidate1" | translate}}</p>
+		<p>{{"career.candidate11" | translate}}</p>
+		<p style="font-weight:400; line-height:30px;">2. {{"career.candidate2" | translate}}</p>
+		<p>{{"career.candidate21" | translate}}</p>
+		<p style="font-weight:400; line-height:30px;">3. {{"career.interviewsp7" | translate}}.</p>
+		<p>{{"career.interviewsp71" | translate}}
+			<br><span class="titlep">I. {{"career.interviewsp72" | translate}}</span>
+		</p>	
+		<p class="left30">
+			<span>1. {{"career.interviewsp721.title" | translate}}</span> {{"career.interviewsp721" | translate}}<br>
+			<span>2. {{"career.interviewsp722.title" | translate}}</span> {{"career.interviewsp722" | translate}}<br>
+			<span>3. {{"career.interviewsp723.title" | translate}}</span>{{"career.interviewsp723" | translate}}<br>
+			<span>4. {{"career.interviewsp724.title" | translate}}</span>{{"career.interviewsp724" | translate}}<br>
+			<span>5. {{"career.interviewsp725.title" | translate}}</span>{{"career.interviewsp725" | translate}}<br>
+			<span>6. {{"career.interviewsp726.title" | translate}}</span>{{"career.interviewsp726" | translate}}
+		</p>
+		<p class="titlep">II. {{"career.interviewsp8" | translate}}</p>
+		<p class="left30">
+			<span>1. {{"career.interviewsp81.title" | translate}}</span>{{"career.interviewsp81" | translate}}<br>
+			<span>2. {{"career.interviewsp82.title" | translate}}</span>{{"career.interviewsp82" | translate}}<br>
+			<span>3. {{"career.interviewsp83.title" | translate}}</span>{{"career.interviewsp83" | translate}}<br>
+			<span>4. {{"career.interviewsp84.title" | translate}}</span>{{"career.interviewsp84" | translate}}<br>
+			<span>5. {{"career.interviewsp85.title" | translate}}</span>{{"career.interviewsp85" | translate}}<br>
+			<span>6. {{"career.interviewsp86.title" | translate}}</span>{{"career.interviewsp86" | translate}}<br>
+			<span>7. {{"career.interviewsp87.title" | translate}}</span>{{"career.interviewsp87" | translate}}<br>
+			<span>8. {{"career.interviewsp88.title" | translate}}</span>{{"career.interviewsp88" | translate}}<br>
+			<span>9. {{"career.interviewsp89.title" | translate}}</span>{{"career.interviewsp89" | translate}}
+		</p>
+		<p>{{"career.finish" | translate}}</p>   			
+	</div>
+	<div ng-if="!displayEmployee" align="center" style="border: 1px; width: 80%;">
+		<h2 style="color: #656767; font-weight:300; line-height:30px;">{{"career.employer" | translate}}</h2>
+		<p><span class="titlep">VietInterview</span> {{"career.employer1" | translate}}</p>
+		<h3 class="titlep">{{"career.employer2" | translate}}</h3>
+		<p class="left30">1.	{{"career.employer21" | translate}}
+			<br>2.	{{"career.employer22" | translate}}
+			<br>3.	{{"career.employer23" | translate}}
+			<br>4.	{{"career.employer24" | translate}}
+		</p>
+		<p>{{"career.employer3" | translate}}</p>
+	</div>
+</div>
+
+<br><br><br>
+
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div> 
+

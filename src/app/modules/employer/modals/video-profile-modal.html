@@ -1,0 +1,15 @@
+<!-- <div id="emp-video" ng-controller="CandidateDetailController"> -->
+<script type="text/ng-template" id="videoProfileModal.html">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{"employer.employee.showvideo" | translate}}</h4>
+  </div>
+  <div class="modal-body text-center">
+    <div style="width: 480px; padding-bottom: 400px; margin:auto; position: relative;">
+      <video src="{{videoUrl|trusted}}"
+        style="width: 480px; position: absolute; top: 0; left: 0; bottom: 0; right: 0;" 
+        controls=""></video>        
+    </div>
+  </div>
+</script>
+<!-- </div> -->

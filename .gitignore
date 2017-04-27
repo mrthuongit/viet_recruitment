@@ -1,0 +1,13 @@
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/bower_components
+/webkitbuilds/
+/cache/
+/php/
+/test/
+/.settings/
+/.ftpaccess.js
+/src/app/config.js
+/debug.log

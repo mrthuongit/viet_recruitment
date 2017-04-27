@@ -1,0 +1,106 @@
+<form name="formEmp" class="form-data" novalidate>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formEmp.lastName.$invalid 
+	        		&&!formEmp.lastName.$pristine }">
+					<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.lastName" | translate}}</label>
+					<input type="text" class="form-control" name="lastName" ng-model="employee.lastName" value="{{ employee.lastName }}" required>
+					<span ng-show="formEmp.lastName.$invalid && !formEmp.lastName.$pristine" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formEmp.firstName.$invalid 
+	        		&&!formEmp.firstName.$pristine }">
+					<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.firstName" | translate}}</label>
+					<input type="text" class="form-control" name="firstName" ng-model="employee.firstName" value="{{ employee.firstName }}" required>
+					<span ng-show="formEmp.firstName.$invalid && !formEmp.firstName.$pristine" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="exampleInputEmail1">{{"employee.birthdate" | translate}}</label>
+					<div class="input-group">
+						<input type="text" 
+							class="form-control" 		
+							uib-datepicker-popup 
+				          	ng-model="employee.birthdate" 
+				          	is-open="popupBirthday.opened" 
+				          	datepicker-options="dateOptions" 
+				          	ng-required="true" 
+				          	close-text="Close" />
+			          	<span class="input-group-btn">
+			            	<button type="button" class="btn btn-default" ng-click="popupBirthday.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+			          	</span>
+		          	</div>
+            	</div>
+			</div>						
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="exampleInputPassword1">{{"employee.sex" | translate}}</label>
+					<select name="" id=""
+						class="form-control"
+						ng-model="genders.selectedGender"
+						ng-options="gender.title for gender in genders.availableGenders track by gender.id"></select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formEmp.mobile.$invalid 
+	                &&!formEmp.mobile.$pristine }">
+					<label for="exampleInputPassword1">{{"login.mobile" | translate}}</label>
+					<input type="text" class="form-control" name="mobile" 
+					ng-pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
+					ng-model="employee.mobile" 
+					ng-value="{{ employee.mobile }}">
+					<span ng-show="formEmp.mobile.$invalid && !formEmp.mobile.$pristine" class="help-block">{{"employee.uninvail" | translate}}</span>
+				</div>
+			</div>	
+			<div class="col-sm-6">		
+				<div class="form-group"
+					ng-class="{ 'has-error' : formEmp.email.$invalid 
+	                &&!formEmp.email.$pristine }">
+					<label for="exampleInputEmail1"><span class="required">*</span>Email</label>
+					<input type="email" class="form-control" name="email" 
+					ng-pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
+					ng-model="employee.email" 
+					ng-value="employee.email" required>
+					<span ng-show="formEmp.email.$invalid && !formEmp.email.$pristine" class="help-block">{{"employee.uninvail" | translate}}</span>
+				</div>
+			</div>					
+		</div>	
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="countries-list">{{"employee.country" | translate}}</label>
+					<select class="form-control" 
+						id="countries-list"
+						ng-model="countries.selectedCountry"
+						ng-options="country.title for country in countries.availableCountries track by country.id" 
+						ng-change="getProvincesListByCountry(countries.selectedCountry.id)">
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="province-list">{{"employee.city" | translate}}</label>
+					<select class="form-control" 
+						id="province-list"
+						ng-model="provinces.selectedProvince"
+						ng-options="province.title for province in provinces.availableProvinces track by province.id">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="resetEmployeeProfile()">{{"employee.cancel" | translate}}</button>
+		<button type="button" class="btn btn-primary" ng-disabled="formEmp.$invalid" ng-click="updateEmployeeProfile(employee)">{{"employee.save" | translate}}</button>
+	</div>
+</form>

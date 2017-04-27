@@ -1,0 +1,137 @@
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+
+<div class="container-employer" id="marginfrom">
+	<div class="headtitle text-center">{{"employer.main.candidateApplyList" | translate}}</div>
+
+	<form class="form-inline clearfix" style="margin-bottom: 5px;">
+        <select class="form-control options" name="singleSelect" ng-model="titlejob" ng-change="findjob(titlejob)" style="padding-right: 12px; max-width: 200px;">
+			<option value="">{{"employee.filterJob" | translate}}</option>
+			<option value="{{ assignment }}" ng-repeat="assignment in (listAssignment |recruit| orderBy:'-id' )">{{ assignment.name }}</option>
+		</select>
+
+        <button class="btn btn-success"  ng-click="exportToExcel()" ng-show="showExcel && titlejob && candidateList.length > 0">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            {{"employer.main.exportToExcel" | translate}}
+        </button>
+        <span ng-show="filterApplyJob == 'full'" style="margin-left: 15px;"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;{{"employer.candidate.full" | translate}}</span>
+		<span ng-show="filterApplyJob != 'full'" style="margin-left: 15px;" ng-click="filterFull()"><i class="fa fa-square-o" aria-hidden="true"></i>&nbsp;{{"employer.candidate.full" | translate}}</span>
+		<span ng-show="filterApplyJob == 'apply'" style="margin-left: 10px;"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;{{"employer.main.candidateApply" | translate}}</span>
+		<span ng-show="filterApplyJob != 'apply'" style="margin-left: 10px;" ng-click="filterApply()"><i class="fa fa-square-o" aria-hidden="true"></i>&nbsp;{{"employer.main.candidateApply" | translate}}</span>
+		<span ng-show="filterApplyJob == 'invitation'" style="margin-left: 10px;"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;{{"employer.candidate.invitation" | translate}}</span>
+		<span ng-show="filterApplyJob != 'invitation'" style="margin-left: 10px;" ng-click="filterInvitation()"><i class="fa fa-square-o" aria-hidden="true"></i>&nbsp;{{"employer.candidate.invitation" | translate}}</span>
+
+		<select name="pageOptions"
+			class="form-control options pull-right"
+		    ng-options="option.name | translate for option in pageOptions.availableOptions track by option.value"
+      		ng-model="pageOptions.selectedOption"
+      		ng-change="changeItemsPerPage(pageOptions.selectedOption)"
+      		ng-show="!showExcel"></select>
+    </form>
+
+    <table class="table table-hover table-new-candidate">
+		<thead>
+			<tr>
+				<th class="text-center cell-align" style="width: 3%;">#</th>
+				<th class="cell-align" style="width: 14%">{{"employer.main.candidateApplyName" | translate}}</th>
+                <th class="text-center cell-align" style="width: 4%">CV</th>
+                <th class="text-center cell-align" style="width: 4%">{{"coverLetter" | translate}}</th>
+				<th class="cell-align" style="width: 14%">Email</th>
+				<th class="cell-align" style="width: 10%">{{"employer.main.candidateApplyMobile" | translate}}</th>
+				<th class="cell-align" style="width: 10%">{{ "employee.birthdate" | translate }}</th>
+				<th class="cell-align" style="width: 15%">{{ "employee.highestEducation" | translate }}</th>
+				<th class="cell-align" style="width: 10%">{{ "employee.numberExp" | translate }}</th>
+				<th class="cell-align" style="width: 16%" ng-if="!showExcel">{{"employer.main.jobName" | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="candidate in candidateList | filter:filter">
+				<td class="text-center">{{$index + (currPage - 1)*itemsPerPage + 1}}</td>
+				<td><a ng-click="openModalCvCandidate(candidate)">{{candidate.name | setFullName}}</a></td>
+                <td class="text-center">
+                    <button class="btn btn-default"
+                    ng-click="openModalCvCandidate(candidate)"
+                    ng-show="candidate.employeeId"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                </td>
+                <td class="text-center">
+                    <button ng-show="candidate.letter"
+                    	ng-click="openModalCoverLetter(candidate)" 
+                    	class="btn btn-default"><i class="fa fa-file-text-o" aria-hidden="true"></i></button>
+                </td>
+				<td>{{candidate.email}}</td>
+				<td>{{candidate.mobile ? candidate.mobile : ''}}</td>
+				<td>{{candidate.birthdate ? candidate.birthdate : '' | date: 'dd/MM/yyyy'}}</td>
+				<td>{{candidate.highestEduLevel}}</td>
+				<td style="text-align: center;">{{candidate.numberExp}}</td>
+				<td ng-if="!showExcel">{{candidate.jobName ? candidate.jobName : ''}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div ng-if="!showExcel" class="text-center container-pagination" ng-if="(totalCandidates/itemsPerPage) > 1">
+		<ul class="pagination"
+			uib-pagination
+			total-items="totalCandidates"
+			ng-model="currPage"
+			max-size="maxSize"
+			items-per-page="itemsPerPage"
+			num-pages="numPages"
+			first-text = "&laquo;"
+			last-text = "&raquo;"
+			previous-text = "&lsaquo;"
+			next-text = "&rsaquo;"
+			ng-change = "changePage(currPage)"
+			boundary-links="true"
+			force-ellipses="true"></ul>
+	</div>
+</div>
+
+<div id="export-to-excel" style="display: none;">
+	<table>
+		<tbody>
+			<tr></tr>
+			<tr>
+				<td></td>
+				<td colspan="14" style="text-align: center; font-size: 16px;">
+					{{"employer.main.candidateApplyList" | translate}}
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="14" style="text-align: center; font-style: italic;">
+					" {{ titleJob }} "
+				</td>
+			</tr>
+			<tr></tr>
+		</tbody>
+	</table>
+	<table class="table table-hover table-new-candidate" style="border: 1px solid #ddd;">
+		<thead>
+			<tr>
+				<th></th>
+				<th class="text-center"> # </th>
+				<th colspan="2">{{"employer.main.candidateApplyName" | translate}}</th>
+				<th colspan="3">Email</th>
+				<th>{{"employer.main.candidateApplyMobile" | translate}}</th>
+				<th colspan="2">{{ "employee.birthdate" | translate }}</th>
+				<th colspan="2">{{ "employee.highestEducation" | translate }}</th>
+				<th colspan="4">{{ "employee.numberExp" | translate }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="candidate in candidateList | filter:filter">
+				<td></td>
+				<td style="text-align: center;">{{$index + (currPage - 1)*itemsPerPage + 1}}</td>
+				<td colspan="2">{{candidate.name | setFullName}}</td>
+				<td colspan="3">{{candidate.email}}</td>
+				<td>{{candidate.mobile ? candidate.mobile : ''}}</td>
+				<td colspan="2" style="text-align: center;">{{candidate.birthdate ? candidate.birthdate : ''}}</td>
+				<td colspan="2">{{candidate.highestEduLevel}}</td>
+				<td colspan="4" style="text-align: center;">{{candidate.numberExp}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div ng-include="'app/modules/employer/modals/modalCvCandidateView.html'"></div>
+<div ng-include="'app/modules/employer/modals/modalCoverLetterView.html'"></div>
+<div ng-include="'app/modules/employer/views/footer.html'" class="text-center footer-employer" ></div>

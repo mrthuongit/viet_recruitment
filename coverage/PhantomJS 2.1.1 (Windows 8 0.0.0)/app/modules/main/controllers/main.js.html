@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\modules\main\controllers\main.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">app/modules/main/controllers/</a> main.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">2.96% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/135</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/35</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">2.96% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/135</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+angular.module('mainModule')
+    .controller('HomeController', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $translate, $q,</span>
+        $location, $employee, $window, $filter, toastr, $common, localStorageService, _,$uibModal,
+        EMPLOYEE_DEFAULT_VALUES,POPUP_DIALOG_RESULT, $log, $cache) {
+<span class="cstat-no" title="statement not covered" >        $scope.page_main = "homepage";</span>
+<span class="cstat-no" title="statement not covered" >        $scope.employee = localStorageService.get('employee');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $rootScope.$on('changeEmployee', <span class="fstat-no" title="function not covered" >function(employee) {</span></span>
+<span class="cstat-no" title="statement not covered" >            $log.info('on change employee', employee);</span>
+<span class="cstat-no" title="statement not covered" >            $scope.employee = employee;</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var allcountry = $translate.instant('employee.searchCountries');</span>
+<span class="cstat-no" title="statement not covered" >        var allProvince = $translate.instant('employee.searchProvinces');</span>
+<span class="cstat-no" title="statement not covered" >        var location = EMPLOYEE_DEFAULT_VALUES.LOCATION;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.search = {</span>
+            keyword: '',
+            option:
+            {
+                countryId: '',
+                provinceId: '',
+                positionId: '',
+                categoryId: ''
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        $scope.jobList = [];</span>
+<span class="cstat-no" title="statement not covered" >        $scope.totalJobs = 0;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.itemPerPage = 10;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.totalPages = 0;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.currPage = 1;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.maxSize = 4;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.optionNumbers = {</span>
+                availableNumbers: [
+                    {
+                        id: 1,
+                        value: 10,
+                        lable: $translate.instant('employee.onejob')
+                    },
+                    {
+                        id: 2,
+                        value: 20,
+                        lable: $translate.instant('employee.twojob')
+                    },
+                    {
+                        id: 3,
+                        value: 30,
+                        lable: $translate.instant('employee.threejob')
+                    },
+                    {
+                        id: 4,
+                        value: 40,
+                        lable: $translate.instant('employee.fourjob')
+                    },
+                    {
+                        id: 5,
+                        value: 50,
+                        lable: $translate.instant('employee.fivejob')
+                    }
+                ],
+                selectedNumber:
+                    {
+                        id: 1,
+                        value: 10
+                    }
+            }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function getCategories()</span>
+            {
+<span class="cstat-no" title="statement not covered" >                var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >                $cache.getJobCategory(</span>
+                {
+                    lang: 'vi'
+                }, <span class="fstat-no" title="function not covered" >function(result)</span>
+                {
+<span class="cstat-no" title="statement not covered" >                    if (result.status)</span>
+                    {
+<span class="cstat-no" title="statement not covered" >                        $scope.listCategories = result.data.categoryList;</span>
+<span class="cstat-no" title="statement not covered" >                        deferred.resolve(true);</span>
+                    }
+                    else
+                    {
+<span class="cstat-no" title="statement not covered" >                        deferred.resolve(false);</span>
+                    }
+                });
+<span class="cstat-no" title="statement not covered" >                return deferred.promise;</span>
+            }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function getPositions()</span>
+            {
+<span class="cstat-no" title="statement not covered" >                var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >                $cache.getJobPosition(</span>
+                {
+                    lang: 'vi'
+                }, <span class="fstat-no" title="function not covered" >function(result)</span>
+                {
+<span class="cstat-no" title="statement not covered" >                    if (result.status)</span>
+                    {
+<span class="cstat-no" title="statement not covered" >                        $scope.listPosition = result.data.positionList;</span>
+<span class="cstat-no" title="statement not covered" >                        deferred.resolve(true);</span>
+                    }
+                    else
+                    {
+<span class="cstat-no" title="statement not covered" >                        deferred.resolve(false);</span>
+                    }
+                });
+<span class="cstat-no" title="statement not covered" >                return deferred.promise;</span>
+            }
+            
+<span class="fstat-no" title="function not covered" >        function getLocations()</span>
+        {
+<span class="cstat-no" title="statement not covered" >            var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >            $cache.getJobLocation(</span>
+            {
+                lang: 'vi'
+            }, <span class="fstat-no" title="function not covered" >function(result)</span>
+            {
+<span class="cstat-no" title="statement not covered" >                if (result.status)</span>
+                {
+<span class="cstat-no" title="statement not covered" >                    result.data.countryList.unshift(</span>
+                    {
+                        id: '',
+                        title: '---' + allcountry + '---'
+                    });
+<span class="cstat-no" title="statement not covered" >                    $scope.listLocation = result.data.countryList;</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.listProvince = result.data.provinceList;</span>
+<span class="cstat-no" title="statement not covered" >                    deferred.resolve(true);</span>
+                }
+                else
+                {
+<span class="cstat-no" title="statement not covered" >                    deferred.resolve(false);</span>
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            return deferred.promise;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.openPopupLogin = <span class="fstat-no" title="function not covered" >function(tab)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            var modalInstance = $uibModal.open(</span>
+            {
+                templateUrl: 'app/modules/main/modals/popup_login.html',
+                controller: 'LoginDialogController',
+                resolve: {
+                    activeTab: <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                        return tab;</span>
+                    }
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            modalInstance.result.then(<span class="fstat-no" title="function not covered" >function(action)</span></span>
+            {
+<span class="cstat-no" title="statement not covered" >                if (action == POPUP_DIALOG_RESULT.EMPLOYER_LOGIN)</span>
+                {
+<span class="cstat-no" title="statement not covered" >                    $location.path('/employer');</span>
+                }
+            }, <span class="fstat-no" title="function not covered" >function()</span>
+            {
+<span class="cstat-no" title="statement not covered" >                $log.info('Modal dismissed at: ' + new Date());</span>
+            });
+        };
+<span class="cstat-no" title="statement not covered" >        $scope.getProvincesListByCountry = <span class="fstat-no" title="function not covered" >function(countryId)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            if (countryId !== '')</span>
+            {
+<span class="cstat-no" title="statement not covered" >                $scope.provincesList = _.filter($scope.listProvince, <span class="fstat-no" title="function not covered" >function(province)</span></span>
+                {
+<span class="cstat-no" title="statement not covered" >                    return countryId == province.countryId;</span>
+                });
+            }
+            else
+            {
+<span class="cstat-no" title="statement not covered" >                $scope.provincesList = $scope.listProvince;</span>
+            }
+            // Insert all province to listProvince
+<span class="cstat-no" title="statement not covered" >            $scope.provincesList.unshift(</span>
+            {
+                id: '',
+                title: allProvince
+            });
+<span class="cstat-no" title="statement not covered" >            $scope.provinces = {</span>
+                availableProvinces: $scope.provincesList,
+                selectedProvince: $scope.provincesList[0]
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.setCurrCountry = <span class="fstat-no" title="function not covered" >function(countryId)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            $scope.currCountry = _.find($scope.listLocation, <span class="fstat-no" title="function not covered" >function(country)</span></span>
+            {
+<span class="cstat-no" title="statement not covered" >                return country.id == countryId;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            $scope.countries = {</span>
+                availableCountries: $scope.listLocation,
+                selectedCountry: $scope.currCountry
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.setCurrProvince = <span class="fstat-no" title="function not covered" >function(provinceId)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            $scope.currProvince = _.find($scope.provincesList, <span class="fstat-no" title="function not covered" >function(province)</span></span>
+            {
+<span class="cstat-no" title="statement not covered" >                return province.id == provinceId;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            $scope.provinces = {</span>
+                availableProvinces: $scope.provincesList,
+                selectedProvince: $scope.currProvince
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.getJobListInit = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            $common.searchJob($scope.search, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >                    var jobList = result.data.jobList.assignmentList;</span>
+<span class="cstat-no" title="statement not covered" >                    localStorageService.set('jobList', jobList);</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.jobListInit = $filter('orderBy')(jobList, 'id', true);</span>
+                    // Get 10 new jobs
+<span class="cstat-no" title="statement not covered" >                    $scope.jobListInit = $scope.jobListInit.slice(0, 10);</span>
+                    // Get name provine and country
+<span class="cstat-no" title="statement not covered" >                    $scope.jobListInit.forEach(<span class="fstat-no" title="function not covered" >function(job)</span></span>
+                    {
+<span class="cstat-no" title="statement not covered" >                        var existProvince = _.find($scope.listProvince, <span class="fstat-no" title="function not covered" >function(</span></span>
+                            province)
+                        {
+<span class="cstat-no" title="statement not covered" >                            return province.id == job.provinceId;</span>
+                        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        job.provinceName = existProvince ? existProvince.title : '';</span>
+                        
+<span class="cstat-no" title="statement not covered" >                        var existLocation = _.find($scope.listLocation, <span class="fstat-no" title="function not covered" >function(</span></span>
+                            location)
+                        {
+<span class="cstat-no" title="statement not covered" >                            return location.id == job.countryId;</span>
+                        })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        job.countryName = existLocation ? existLocation.title : '';</span>
+                    });
+<span class="cstat-no" title="statement not covered" >                    localStorageService.set('jobList', jobList);</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    $log.info('Khong lay duoc danh sach viec lam')</span>
+                }
+            });
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        getCategories()</span>
+        .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >            return getPositions();</span>
+        })
+        .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >            return getLocations()</span>
+        })
+        .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >            $scope.setCurrCountry(location.countryId);</span>
+<span class="cstat-no" title="statement not covered" >            $scope.getProvincesListByCountry(location.countryId);</span>
+<span class="cstat-no" title="statement not covered" >            $scope.setCurrProvince(location.provinceId);</span>
+        })
+        .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >            $scope.getJobListInit();</span>
+        })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.goToJobInformation = <span class="fstat-no" title="function not covered" >function(job) {</span></span>
+            // $location.path('/job-information').search({id:job.id});
+<span class="cstat-no" title="statement not covered" >            $window.open('#/job-information/' + job.id);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        $scope.searchJob = <span class="fstat-no" title="function not covered" >function()</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            $scope.search.option.countryId = $scope.countries.selectedCountry.id;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.search.option.provinceId = $scope.provinces.selectedProvince.id;</span>
+<span class="cstat-no" title="statement not covered" >            var info = $employee.setSearchOptions($scope.search);</span>
+<span class="cstat-no" title="statement not covered" >            $common.searchJob(info, <span class="fstat-no" title="function not covered" >function(result)</span></span>
+            {
+<span class="cstat-no" title="statement not covered" >                if (result.status)</span>
+                {
+<span class="cstat-no" title="statement not covered" >                    var jobList = result.data.jobList;</span>
+<span class="cstat-no" title="statement not covered" >                    if (!Array.isArray(jobList) || jobList.length === 0)</span>
+                    {
+<span class="cstat-no" title="statement not covered" >                        $scope.jobList = [];</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.showNotication = true;</span>
+                    }
+                    else
+                    {
+<span class="cstat-no" title="statement not covered" >                        localStorageService.set('jobList', jobList);</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.showNotication = false;</span>
+<span class="cstat-no" title="statement not covered" >                        jobList = $filter('orderBy')(jobList, 'id', true);</span>
+<span class="cstat-no" title="statement not covered" >                        jobList.map(<span class="fstat-no" title="function not covered" >function(job)</span></span>
+                        {
+                            // add provinde name
+<span class="cstat-no" title="statement not covered" >                            var existProvince = _.find($scope.listProvince, <span class="fstat-no" title="function not covered" >function(</span></span>
+                                province)
+                            {
+<span class="cstat-no" title="statement not covered" >                                return province.id == job.provinceId;</span>
+                            });
+<span class="cstat-no" title="statement not covered" >                            job.provinceName = existProvince ? existProvince.title :</span>
+                                '';
+                            // add country name
+<span class="cstat-no" title="statement not covered" >                            var existLocation = _.find($scope.listLocation, <span class="fstat-no" title="function not covered" >function(</span></span>
+                                location)
+                            {
+<span class="cstat-no" title="statement not covered" >                                return location.id == job.countryId;</span>
+                            })
+<span class="cstat-no" title="statement not covered" >                            job.countryName = existLocation ? existLocation.title :</span>
+                                '';
+                        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        localStorageService.set('jobList', jobList);</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.jobListPagination = jobList.slice(0, $scope.itemPerPage);</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.jobList = jobList;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.totalJobs = $scope.jobList.length;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.totalPages = Math.ceil($scope.totalJobs / $scope.itemPerPage);</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.currPage = 1;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.maxSize = 4;</span>
+                    }
+                }
+                else
+                {
+<span class="cstat-no" title="statement not covered" >                    $scope.showNotication = true;</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.jobList = [];</span>
+                }
+<span class="cstat-no" title="statement not covered" >                $scope.jobListInit = [];</span>
+            });
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.changePage = <span class="fstat-no" title="function not covered" >function(page)</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            $window.scrollTo(0, 400);</span>
+<span class="cstat-no" title="statement not covered" >            $scope.currPage = page;</span>
+<span class="cstat-no" title="statement not covered" >            var start = (page - 1) * $scope.itemPerPage;</span>
+<span class="cstat-no" title="statement not covered" >            var end = page * $scope.itemPerPage;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.jobListPagination = $scope.jobList.slice(start, end);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.changeItemPerPage = <span class="fstat-no" title="function not covered" >function()</span></span>
+        {
+<span class="cstat-no" title="statement not covered" >            $scope.totalJobs = $scope.jobList.length;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.itemPerPage = $scope.optionNumbers.selectedNumber.value;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.numPages = Math.ceil($scope.jobList.length / $scope.itemPerPage);</span>
+<span class="cstat-no" title="statement not covered" >            if ($scope.currPage &gt; $scope.totalPages)</span>
+            {
+<span class="cstat-no" title="statement not covered" >                $scope.currPage = $scope.totalPages;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            var start = ($scope.currPage - 1) * $scope.itemPerPage;</span>
+<span class="cstat-no" title="statement not covered" >            var end = $scope.currPage * $scope.itemPerPage;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.jobListPagination = $scope.jobList.slice(start, end);</span>
+        }
+    });</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 16 2016 13:24:13 GMT+0700 (SE Asia Standard Time)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

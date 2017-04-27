@@ -1,0 +1,178 @@
+<style>
+    .circle {
+        background: #3592cb;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+    simple-chat > message-composer {
+        border: 1px solid #E33539;
+        height: 35px;
+        right: 10px;
+        left: -15px;
+    }
+    message-composer textarea {
+        margin: 2px;
+        height: 30px;
+    }
+    .simple-chat-container {
+        overflow-y: scroll;
+        height: calc(100% - 35px);
+        min-height: 50px;
+        margin-right: 10px;
+    }
+    .nav-tabs > li {
+        cursor: pointer;
+        border-bottom: 1px solid gainsboro;
+    }
+    .nav-tabs > .uib-tab > div:hover{
+        border-bottom-color: #eee;
+    }
+    .nav-tabs > .uib-tab.active > div, .nav-tabs > .uib-tab.active > div:hover {
+        color: coral;
+        background-color: gainsboro;
+    }
+    .tab-content {
+        font-size: 15px;
+        max-height: calc(100% - 75px);;
+        overflow: scroll;
+    }
+    .uib-tab > div {
+        font-weight: 400;
+    }
+    div.paddingLeft15 {
+        padding-left: 15px;
+    }
+    span.paddingLeft30 {
+        padding-left: 30px;
+    }
+    hr {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    span.closeImage {
+        background: #eee;
+    }
+    span.closeImage:hover {
+        background: cadetblue;
+    }
+    span.closeImage:focus {
+        outline: -webkit-focus-ring-color auto 0px;
+    }
+    simple-chat:focus, .simple-chat-container:focus {
+        outline: -webkit-focus-ring-color auto 0px;
+    }
+</style>
+<div style="background-color: rgb(27,79,147); height: 100vh;" ng-init="showWhiteboard=false; showTabset=false;indextab = 0">
+    <div style="height: 45px; background-color: rgb(27,79,147); padding-top: 5px; padding-bottom: 5px">
+        <div class="col-sm-3" align=left> <img src="assets/images/interview/Logo vietinterview.png" style="width: 150px; height: 35px;"> </div>
+        <div class="col-sm-6" align=center style="position: relative; height: 100%"> <span style="text-align: center; width: 100%; color: white; position: absolute; top: 50%; transform: translateY(-50%);">
+                {{"conference.candidate" | translate}} :
+                {{candidate.name}} </span> </div>
+        <div class="col-sm-3" align=right style="height: 100%; position: relative; color: white; padding: 5px"> <span class=" glyphicon glyphicon-log-out " style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" ng-click="leaveMeeting()"></span> </div>
+    </div>
+    
+    <div class="row" style="height: calc(100vh - 50px); margin-right:0px;">
+        <div ng-class="showTabset?'col-sm-8':'col-sm-12'" style="position: relative; height: 100%;padding: 0px 0px;">
+            <div ng-class="showWhiteboard?'col-sm-5':'col-sm-12'" style="position: relative; height: 100%;padding:0px 0px;" align=left>
+                <div style="height: 100%; width:100%" align=center style="padding: 0px;">
+               
+                    <video-call member-id="{{memberId}}" control="callControl" meeting-id="{{meetingId}}" moderator="{{moderator}}" candidate="{{candidate}}" role={{profile.role}}></video-call>
+                </div>
+                <div style="position: absolute; float: right; bottom: 0; right:0; margin-bottom: 0px; cursor: pointer; text-align: right;">
+                    <button ng-show="!showWhiteboard" style="color: white; background-color: rgb(27,79,147); padding: 5px 18px;text-align: center" ng-click="showWhiteboard=true"><i class="fa fa-upload fa-lg" aria-hidden="true"><br><span style="font-size: 13px">Upload</span></i></button>
+                    <button ng-show="profile.role=='moderator' && !showTabset" style="color: white; background-color: rgb(27,79,147); padding: 5px 15px; border-left: 1px solid #e0e0e0; text-align: center; margin-left: -5px;" ng-click="showTabset=!showTabset;indextab=0"><i class="fa fa-question-circle-o fa-lg"  aria-hidden="true"><br><span style="font-size: 13px">Question</span></i></button>
+                    <button ng-show="!showTabset" style="color: white; background-color: rgb(27,79,147); padding: 5px 25px; border-left: 1px solid #e0e0e0; text-align: center; margin-left: -5px;" ng-click="showTabset=!showTabset;indextab=1"><i class="fa fa-wpforms fa-lg" aria-hidden="true"><br><span style="font-size: 13px">Job</span></i></button>
+                    <button ng-show="!showTabset" style="color: white; background-color: rgb(27,79,147); padding: 5px 22px; border-left: 1px solid #e0e0e0; text-align: center; margin-left: -5px;" ng-click="showTabset=!showTabset;indextab=2"><i class="fa fa-commenting fa-lg" aria-hidden="true"><br><span style="font-size: 13px">Chat</span></i>
+                        <i ng-show="alertMessage" style="color: #FF8000; position: absolute; float: right; bottom: 8px; right: 5px; font-size: 18px;" class="fa fa-exclamation-circle" aria-hidden="true"></i></button>
+                </div>
+            </div>
+            <div ng-show="showWhiteboard" class="col-sm-7" style="background-color: white; height: 100%; padding: 0px 0px;" >
+                <div style=" width:100%">
+                    <span class="closeImage" style="float: right; position: absolute; margin-right: 0px; top: 2px; float: left; left: -35px; padding: 5px 13px 5px 15px; border-radius: 25px;"  ng-click="showWhiteboard=!showWhiteboard"><i class="fa fa-angle-double-right fa-lg" aria-hidden="true" style="color: gray;cursor: pointer;"></i></span>
+                </div>
+                    <whiteboard member-id="{{memberId}}" meeting-id="{{meetingId}}"></whiteboard>
+            </div>
+        </div>
+        <div ng-show="showTabset" class="col-sm-4 tabpadding" style="background-color: white; height: 100%; padding: 0px; padding-left: 0px">
+            <uib-tabset active="indextab" justified="true" style="height: 100%;">
+                <uib-tab index="0" heading='{{"conference.question" | translate}}' ng-show="profile.role=='moderator'">
+                    <div ng-show="profile.role=='moderator'" >
+                        <h4>{{"employer.assignment.listquestion"| translate}}</h4>
+                        <hr style="border-top: 1px solid gray;">
+                        <div ng-repeat="interviewQuestion in questionList  | orderBy:'order'" class="paddingLeft15">
+                            <div> 
+                                <span style="font-weight: normal">{{"employer.assignment.question"
+                                | translate}}
+                                {{interviewQuestion.order}}:
+                                {{interviewQuestion.title}}</span> 
+                                <span ng-show="interviewQuestion.attempted" style="color: green; text-align: right; text-transform: italic; font-size: 12px; float: right; margin-right:10px;">{{"conference.complete" | translate}}</span> 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9" align=left>
+                                    <button class="btn btn-primary" ng-disabled="interviewQuestion.attempted || interviewQuestion.recordMode" ng-click="startRecord(interviewQuestion)">{{"conference.start" | translate}}</button>
+                                    <button class="btn btn-default" ng-disabled="interviewQuestion.attempted" ng-click="stopRecord(interviewQuestion)">{{"conference.done" | translate}}</button>
+                                    <button class="btn btn-default" ng-disabled="interviewQuestion.attempted || interviewQuestion.recordMode" ng-click="skip(interviewQuestion)">{{"conference.skip" | translate}}</button>
+                                </div>
+                                <div class="col-sm-3" align=right> 
+                                    <span ng-show="interviewQuestion.recordMode" style="color: Red; font-size: 16px">
+                                        <timer interval="1000">
+                                        {{mminutes}} : {{sseconds}} </timer>
+                                    </span>
+                                </div>
+                            </div>
+                            <br> 
+                        </div>
+                        <div align=left ng-show="completeQuestion">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">{{"conference.assessmentForm" | translate}}</div>
+                                <div class="panel-body" align=center>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label style="font-size:14px;font-weight: normal;">{{"employer.assessment.vote" | translate}}:</label>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div id="vote">
+                                                <uib-rating ng-disabled = "assessmentResult.id" ng-model="assessmentResult.vote" max="5" read-only="chooseCandidate.isReadonly" style="color: rgb(6,122,171)"></uib-rating>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 10px;">
+                                        <div class="col-sm-5">
+                                            <label style="font-size:14px;font-weight: normal;">{{"employer.assessment.comment" | translate}}: </label>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <textarea id="txtArea" rows="1" ng-disabled = "assessmentResult.id" ng-model="assessmentResult.comment" class="form-control"></textarea> 
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success" ng-disabled = "assessmentResult.id" ng-click="submitAssessment()">{{"interview.submit" | translate}}</button>
+                                    <button class="btn btn-default" ng-show="assessmentResult.id" ng-click="endMeeting()">{{"conference.endInterview" | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                    
+                <uib-tab index="1" heading='{{"conference.job" | translate}}'>
+                    <h4>{{job.name}}</h4>
+                    <hr style="border-top: 1px solid gray;">
+                    <h5 style="font-size: 15px;">{{'conference.job.description' | translate}}</h5>
+                        <span class="paddingLeft30" style="font-size:14px;">{{job.description | htmlToPlaintext}}</span>
+                    <h5 style="font-size: 15px;">{{'conference.job.requirement' | translate}}</h5>
+                        <span class="paddingLeft30" style="font-size:14px;">{{job.requirements | htmlToPlaintext}}</span>
+                    <h5 style="font-size: 15px;">{{'conference.job.province' | translate}}</h5>
+                        <span class="paddingLeft30" style="font-size:14px;">{{job.province}}</span>
+                    <h5 style="font-size: 15px;">{{'conference.job.country' | translate}}</h5>
+                        <span class="paddingLeft30" style="font-size:14px;">{{job.country}}</span>
+                </uib-tab>
+                    
+                <uib-tab index="2" heading='{{"conference.chat" | translate}}' ng-click="closeAlertMessage();">
+                    
+                    <simple-chat messages="chatMessages" local-user="me" send-function="userChat" show-composer="true" control="true" style="margin-top:20px; bottom: 0px; position: absolute; border: 0px; height: calc(100% - 50px); " ng-click="closeAlertMessage();"> </simple-chat>
+                </uib-tab>
+            </uib-tabset>
+            <i ng-show="alertMessage" style="color: red; position: absolute; float: right; top: 14px; right: 10px;" class="fa fa-comments" aria-hidden="true"></i>
+            <span class="closeImage" style="position: absolute; margin-right: 0px; top: 2px; float: left; left: -35px; padding: 5px 13px 5px 15px; border-radius: 25px;" ng-click="showTabset_()"><i class="fa fa-angle-double-right fa-lg" aria-hidden="true" style="color: gray;cursor: pointer;"></i></span>
+        </div>
+    </div>
+</div>

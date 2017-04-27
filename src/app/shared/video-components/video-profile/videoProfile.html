@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-8">
+        <div 
+        style="position: relative; background-color: rgba(0, 0, 0, .9); width: 325px; height: 245px;">
+            <div ng-show="timerBar"
+                style="position: absolute; color: red; font-weight: bold; top: 5px; left: 50%; margin-left: -21px; z-index: 10000">
+                <span style="color: white; font-size: 14px">
+                    <timer interval="1000">{{mminutes}} :
+                    {{sseconds}}</timer>
+                </span>
+            </div>
+            <video id="webcam"
+                ng-attr-poster="videoUrl?'':'images/icon.png'"
+                ng-src="{{videoUrl}}"
+                style="position: absolute; top: 2.5px; left: 2.5px; width: 320px; height: 240px"></video>
+        </div>
+
+        <div class="row" style="margin-top: 5px;">
+            <button class="btn btn-default btn-sm"
+                ng-click="startRecording()">
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+            </button>            
+            <button class="btn btn-default btn-sm"
+                ng-click="takepicture()"
+                ng-disabled="!recordMode">
+                <i class="fa fa-camera" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-default btn-sm"
+                ng-click="stopRecording()">
+                <i class="fa fa-stop-circle" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-primary btn-sm"
+                ng-click="saveVideo()"
+                ng-disabled="recordMode">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-danger btn-sm"
+                ng-click="clearVideo()"
+                ng-disabled="recordMode">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>        
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+        <div class="output">
+            <img id="photo" class="img-responsive" alt="The screen capture will appear in this box." src="{{ avatar }}">
+        </div>
+        <a ng-if="photoBase64" ng-click="saveAvatar();" style="font-size: 14px; cursor: pointer;">Lưu làm ảnh đại diện</a>
+    </div>
+</div>   

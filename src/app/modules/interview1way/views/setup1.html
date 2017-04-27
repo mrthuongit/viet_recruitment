@@ -1,0 +1,20 @@
+<div ng-controller="InterviewSetup1Controller" >
+<p>
+<h4 style="color: #0099FF"><b>{{"interview.configuration" | translate}}</b></h4>
+<br>
+<img src="assets/images/s1.png" align="top">
+<img src="assets/images/s2o.png" align="top">
+<img src="assets/images/s3o.png" align="top">
+<br>
+<span style="font-weight:bold;font-family:verdana">{{"interview.allow" | translate}}</span>
+<br>
+<br>
+	<p align="center" style="vertical-align: middle;">
+    <div>
+         <video-recorder control="recorder" ng-hide="true" actionBar="false" ></video-recorder>
+    </div>
+	<button class="btn btn-success responsive-width"
+	  ng-click="proceed()" value="Continue" style="vertical-align: middle; font-weight: bold;">
+	  {{"interview.chooseallow" | translate}}</button> 
+</p>	
+</div>

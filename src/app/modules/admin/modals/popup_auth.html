@@ -1,0 +1,66 @@
+<div class="modal fade profile-modal" id="authEmployeeModal" class="authEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="authModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Nav tabs -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a data-target="#signIn" aria-controls="home" role="tab" data-toggle="tab">Đăng nhập</a></li>
+                    <li role="presentation"><a data-target="#signUp" aria-controls="profile" role="tab" data-toggle="tab">Đăng ký</a></li>
+                </ul>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Start SignIn -->                
+                <div role="tabpanel" class="tab-pane active" id="signIn">
+                    <form name="formSignIn" ng-submit="doLogin()" novalidate>
+                        <div class="modal-body">
+                            <div class="form-group"
+                                ng-class="{ 'has-error' : formSignIn.employeeEmail.$invalid 
+                                &&!formSignIn.employeeEmail.$pristine }">
+                                <input type="email" class="form-control" id="login-email" name="employeeEmail" ng-model="userLogin.email" placeholder="Nhập địa chỉ email" required>
+                                <span ng-show="formSignIn.employeeEmail.$invalid && !formSignIn.employeeEmail.$pristine" class="help-block">Enter a valid email.</span>
+                            </div>
+                            <div class="form-group"
+                                ng-class="{ 'has-error' : formSignIn.employeePassword.$invalid 
+                                &&!formSignIn.employeePassword.$pristine }">
+                                <input type="password" class="form-control" id="login-pass" name="employeePassword" ng-model="userLogin.password" placeholder="Nhập mật khẩu" required>
+                                <span ng-show="formSignIn.employeePassword.$invalid && !formSignIn.employeePassword.$pristine" class="help-block">Enter a valid password.</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="doLogin()">Đăng Nhập</button> -->
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Đăng Nhập</button>
+                        </div>
+                    </form>
+                </div><!-- End SignIn -->
+
+                <!-- Start SignUp -->
+                <div role="tabpanel" class="tab-pane" id="signUp">
+                    <form name="formSignUp" ng-submit="doRegister()" novalidate>
+                        <div class="modal-body">                            
+                            <div class="form-group"
+                                ng-class="{ 'has-error' : formSignIn.employeeSignupEmail.$invalid 
+                                &&!formSignIn.employeeSignupEmail.$pristine }">
+                                <input type="text" class="form-control" id="signup-email" name="employeeSignupEmail" ng-model="userRegister.email" placeholder="Nhập địa chỉ email">
+                                <span ng-show="formSignIn.employeeSignupEmail.$invalid && !formSignIn.employeeSignupEmail.$pristine" class="help-block">Enter a valid email.</span>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="signup-pass" ng-model="userRegister.password" placeholder="Nhập mật khẩu">
+                            </div>
+                            <div class="signup-confirm-pass">
+                                <input type="password" class="form-control" id="signup-confirm-pass" ng-model="userRegister.confirmPassword" placeholder="Nhập lại mật khẩu">
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="doRegister()">Đăng ký</button> -->
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Đăng ký</button>
+                        </div>
+                    </form>
+                </div><!-- End SignUp -->
+            </div><!-- End tapnels -->
+        </div>
+    </div>
+</div>

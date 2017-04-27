@@ -1,0 +1,22 @@
+<div ng-controller="InterviewSetup3Controller">
+    <div align="center">
+        <p>
+        <h4 style="color: #0099FF">
+            <b>{{"interview.configuration" | translate}}</b>
+        </h4>
+        <img src="assets/images/s1o.png" align="top">
+        <img src="assets/images/s2o.png" align="top">
+        <img src="assets/images/s3.png" align="top">
+        <br>
+        <span style="font-weight: bold; font-family: verdana">{{"interview.record-video" | translate}}</span>
+        <div style="margin-top: 1%">
+            <div class="row" style="width: 480px; height: 360px;position: relative;" >
+                <video-recorder  control="recorder"  ></video-recorder>
+            </div>
+            <div class="row" style="margin-top: 1%">
+                <button class="btn btn-success responsive-width"
+                    ng-click="openDialog()"
+                    style=" vertical-align: middle; font-weight: bold;">{{"interview.ready" | translate}}</button>
+            </div>
+        </div>
+    </div>

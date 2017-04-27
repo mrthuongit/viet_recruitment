@@ -1,0 +1,159 @@
+<style>
+html {
+        position: relative;
+        min-height: 100%;
+    }
+body {
+      / Margin bottom by footer height /
+      /*margin-bottom: 30px;*/
+    }
+li {
+	color: white;
+}
+
+li.bkgColorActive {
+	background-color: rgb(88, 183, 165);
+}
+
+li.bkgColorNormal {
+	background-color: rgb(33, 124, 162);
+}
+a.navbar-brand{
+    padding: 10px 15px;
+}
+div.bkgColorNormal, ul.bkgColorNormal {
+    background-color: rgb(33, 124, 162);
+}
+
+ul > li {
+    padding: 15px 15px;
+}
+.wrapper {
+	/*min-height: 100%;
+	height: auto !important;*/
+	/*height: 100%;*/
+	margin: 0 auto -40px;
+    margin-bottom: 30px;
+    z-index: 90;
+	/* the bottom margin is the negative value of the footer's height */
+}
+.navbar {
+    margin-bottom: 0px;
+}
+hr {
+     margin-top: 0px; 
+     margin-bottom: 0px; 
+}
+
+video {
+	width: 130%;
+	height: auto;
+	max-height: 100%;
+}
+
+.btn-success{
+    color:white;
+    background-color:rgb(6,122,171);
+     border-color:gray;
+}
+.btn-success:hover,.btn-success:focus,.btn-success:active {
+    color:rgb(6,122,171);
+    background-color:rgb(232,232,232);
+    border-color:rgb(6,122,171);
+}
+@media (max-width: 1366px) {
+    ul > li {
+        font-size: 14px;
+    }
+    a.navbar-brand{
+        padding: 10px 10px;
+        padding-top: 5px;
+    }
+    ul > li {
+        padding: 15px 0px;
+    }
+    button, span, input {
+        font-size: 14px;
+    }
+    p {
+        font-size: 18px;
+    }
+}
+@media (min-width: 1367px) {
+    p.normal {
+        font-size: 14px;
+    }
+    p {
+        font-size: 20px;
+    }
+    p.heading, h3 {
+        font-size: 20px;
+    }
+    div.questiontitle {
+        font-size: 17px;
+    }
+    button, span, input {
+        font-size: 16px;
+    }
+}
+@media (max-width: 365px) {
+    p.normal, p {
+        font-size: 12px;
+    }
+    p.heading, h3 {
+        font-size: 13px;
+    }
+    div.questiontitle {
+        font-size: 13px;
+    }
+}
+</style>
+<div align="center" style="width: 100%; height: 100%" class="wrapper" ng-controller="QuizMainController">
+    <div class="bkgColorNormal">
+        <nav class="navbar navbar-inverse bkgColorNormal" role="navigation">
+            <div class="masthead bkgColorNormal">
+                <div class="navbar-header bkgColorNormal">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuInterview" aria-expanded="false" aria-controls="menuInterview">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ><img src="assets/images/interview/Logo vietinterview.png"
+                        style="width: 150px; height: 35px; margin-right: 10px;"></a>
+                </div>
+                <div id="menuInterview" class="navbar-collapse collapse" align="center" aria-expanded="false" style="padding-right: 0px; padding-left: 0px; border-top: 0px solid transparent; ">
+                    <ul class="nav nav-justified bkgColorNormal">
+                        <li ng-class="(stage=='welcome')? 'bkgColorActive' : 'bkgColorNormal'"  style="vertical-align: middle;">
+                            <img src="assets/images/interview/i1.png" width="22px">
+                            &nbsp; &nbsp;1. {{"interview.intro" | translate}}
+                        </li>
+                        <li ng-class="(stage=='overview')? 'bkgColorActive' : 'bkgColorNormal'"  style="vertical-align: middle;">
+                            <img src="assets/images/interview/i2.png" width="22px">
+                            &nbsp; &nbsp;2. {{"interview.guide" | translate}}
+                        </li>
+                        <li ng-class="(stage=='interview')? 'bkgColorActive' : 'bkgColorNormal'" style="vertical-align: middle;">
+                            <i class="fa fa-file-text-o" aria-hidden="true" style="color: #fff; font-size: 20px;"></i>
+                            &nbsp; &nbsp;3. {{"interview.quiz" | translate}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div ng-include ng-if="stage == 'welcome'"
+        src="'app/modules/interviewQuiz/views/welcome.html'"></div>
+    <div ng-include ng-if="stage == 'overview'"
+        src="'app/modules/interviewQuiz/views/overview.html'"></div>
+    <div ng-include ng-if="stage == 'interview'"
+        src="'app/modules/interviewQuiz/views/interview.html'"></div>
+
+</div>
+<div class="footer-interview">
+<div align="center" style="vertical-align: middle; text-align: center;">
+    <hr width="100%" style="margin-bottom: 0px; margin-top: 25px;width: 50%">
+    <p style="font-size: small; margin-bottom: 0px;">Copyright &copy; 2016 Thanh Cong A
+        Chau JSC
+    <p>
+</div>
+</div>

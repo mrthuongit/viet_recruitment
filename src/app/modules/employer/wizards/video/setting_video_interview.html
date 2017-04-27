@@ -1,0 +1,110 @@
+<style type="text/css">
+    @media (max-width: 1200px) {
+        div.maxcol {
+            width: 50%;
+        }
+    }
+    @media (max-width: 769px) {
+        div.maxcol {
+            width: 100%;
+        }
+    }
+</style>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer">
+    <form method="post" enctype="multipart/form-data" id="marginfrom"
+        name="setting_video">
+        <div class="panel panel-info">
+        <div align="center" class="panel-heading headtitle">{{"employer.assignment.newVideo" |
+            translate}}</div>
+        <div class="panel-body panel-body-0padding">
+        <div class="row rowMenuInterview" align=center>
+                <div class="menu-assignment">
+                    <ul class="nav nav-justified">
+                        <li class="menu-video ">1.
+                            {{"employer.assignment.nameInterview" |
+                            translate}}</li>
+                        <li class="menu-video menu-videoactive">2.
+                            {{"employer.assignment.settingInterview" |
+                            translate}}</li>
+                        <li class="menu-video">3.
+                            {{"employer.assignment.selectInterview" |
+                            translate}}</li>
+                        <li class="menu-video">4.
+                            {{"employer.assignment.confirmInterview" |
+                            translate}}</li>
+                    </ul>
+            </div>
+        </div>
+        <br>
+        <div class="row paddingRightLeft15" align=center>
+                        <div class="col-sm-6" align=left>
+                            <label for="response" class="titleAss" style="float: left; margin-right: 10px; padding-top: 5px">{{"employer.assignment.responseFull"
+                                | translate}}</label>
+                            <input type="number" min=1 step="1" onkeypress="return event.charCode >= 48" ng-model="interview.response" class="form-control" id="response" ng-required="true" autofocus name="response" style="width: 60px;">
+                            <p class="required_employer"
+                                ng-if="setting_video.response.$error.required">{{"required"
+                                | translate}}</p>
+                            <br>
+                        </div>
+                        <div class="col-sm-6" align="left">
+                            <label for="prepare" class="titleAss" style="float: left; margin-right: 10px; padding-top: 5px">{{"employer.assignment.prepareFull" | translate}}</label>
+                            <input type="number" min=1 step=1 onkeypress="return event.charCode >= 48" ng-model="interview.prepare" class="form-control" id="question" ng-required="true" autofocus name="prepare" style="width: 60px">
+                            <p class="required_employer"
+                                ng-if="setting_video.prepare.$error.required">{{"required"
+                                | translate}}</p>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6 maxcol">
+                            <!-- <br>
+                            <div class="row">
+                                <div class="col-sm-5"> --><i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                                    <label class="titleAss">{{"employer.assignment.introVideo"
+                                        | translate}}</label>
+                               <!--  </div>
+                                <div class="col-sm-7"> -->
+                                    <video-selector
+                                        control="videoControlIntro"
+                                        url="interview.introUrl"
+                                        file="uploadFile.intro"></video-selector>
+                                <!-- </div>
+                            </div> -->
+                            </div>
+                            <!-- <br> -->
+                            <div class="col-sm-6 maxcol">
+                            <!-- <div class="row">
+                                <div class="col-sm-5"> --><i class="fa fa-cog fa-lg" style="color: rgb(40,160,210);"></i>
+                                    <label class="titleAss">{{"employer.assignment.exitVideo"
+                                        | translate}}</label>
+                                <!-- </div>
+                                <div class="col-sm-7"> -->
+                                    <video-selector
+                                        control="videoControlExit"
+                                        url="interview.exitUrl"
+                                        file="uploadFile.exit"></video-selector>
+                                <!-- </div>
+                            </div> -->
+                            </div>
+                        </div>
+                    </div>
+            <!-- </div> -->
+            </div>
+            <div align=center>
+                <input type="button" name="back" class="btn btn-default"
+                    value='{{"employer.assignment.back" | translate}}' style="float:left;margin-bottom: 5px !important; width: 120px;"
+                    ng-click="backInterview()">
+                <input type="button" class="btn btn-primary" style="margin-bottom: 5px !important; width: 120px;"
+                    ng-click="gotoQuestionInterview()"
+                    value='{{"employer.assignment.next" | translate}}'>
+                <a  class="btn btn-default" href="/#/employer/interview_list" style="float:right;margin-bottom: 5px !important; width: 120px;">
+                     {{"employer.assignment.cancel" | translate}}</a>
+               
+            </div>
+             <br>
+    </form>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

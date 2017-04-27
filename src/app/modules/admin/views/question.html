@@ -1,0 +1,28 @@
+<div ng-include src="'app/modules/admin/views/main.html'"></div>
+<div  ng-controller = "AdminQuestionController" style="margin-top: 65px; padding: 0 10%;">   
+    <div class="table-responsive">
+        <h2 align="center">Question</h2>
+
+		<table class="table table-striped">
+		    <thead>
+		      <tr style="border-bottom: 2px solid rgb(6,122,171); color: rgb(30,140,180);">
+		          <th >#</th>
+		            <th >Name</th>
+		            <th >Category</th>
+		            <th >Content</th>
+		            <th></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat="question in questionList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+		        <td>{{question.id}}</td>
+		        <td>{{question.title}}</td>
+		        <td>{{question.nameCategory}}</td>
+		        <td>{{question.content}}</td>
+		        <td ng-click="editQuestion(question)"><a aria-hidden="true"><img src="../images/edit.gif" border="0" alt="Edit Company"></a></td>
+		      </tr>   
+		  </tbody>
+		</table>
+		<uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" rotate="false" items-per-page="itemsPerPage"></uib-pagination>
+	</div>
+</div>

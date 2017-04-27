@@ -1,0 +1,116 @@
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer" id="marginfrom">
+    <div align="center" class="headtitle">{{"employer.assignment.joblist"
+        | translate}}</div>
+    <div style="position: relative">
+        <span
+            style="position: absolute; right: 15px; bottom: 5px; font-weight: 500;">
+            <a style="cursor: pointer" ng-click="newAssign()">
+                <span class="glyphicon glyphicon-plus"
+                    aria-hidden="true"></span>
+                &nbsp;{{"employer.assignment.newAssignment" |
+                translate}}
+            </a>
+        </span>
+        <form class="form-inline">
+            <div class="form-group has-feedback">
+                <input type="text" 
+                    class="form-control"
+                    placeholder='{{"employer.assignment.searchlist" | translate}}'
+                    ng-model="searchText"
+                    style="width: 300px; margin-bottom: 5px;">
+                <span
+                    class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped"
+            style="border: 1px solid #ccc">
+            <thead>
+                <tr
+                    style="border-bottom: 2px solid rgb(6, 122, 171); color: rgb(30, 140, 180); background-color: lightblue;">
+                    <th class="employer cell-align" width="4%">#</th>
+                    <th class="employer cell-align" with="30%">{{"employer.assignment.name"
+                        | translate}}</th>
+                    <th class="employer cell-align" width="32%">{{"employer.assignment.description"
+                        | translate}}</th>
+                    <th class="employer cell-align" width="10%">{{"employer.assignment.state"
+                        | translate}}</th>
+                    <th class="employer cell-align" width="12%">{{"employer.assignment.deadline"
+                        | translate}}</th>
+                    <th class="employer cell-align" width="4%">
+                        <span style="position: relative; float: left;">{{"employer.assignment.option"
+                            | translate}}</span>
+                    </th>
+                    <th class="employer cell-align" width="4%">
+                        <span style="position: relative; float: right;">{{"employer.assignment.delete"
+                            | translate}}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  ng-repeat="assign in assignmentList | filter: searchText">
+                    <td>{{$index + (currPage - 1)*itemsPerPage + 1}}</td>
+                    <td>{{assign.name}}</td>
+                    <td style="overflow: hidden">
+                        <div
+                            style="text-overflow: ellipsis; width: 300px; overflow: hidden; white-space: nowrap;">{{assign.description
+                            | htmlToPlaintext}}</div>
+                    </td>
+                    <td align=center ng-if="assign.status=='published'">{{"employer.published"
+                        | translate}}</td>
+                    <td align=center ng-if="assign.status=='initial'">{{"employer.draft"
+                        | translate}}</td>
+                    <td align=center ng-if="assign.status=='closed'">{{"employer.closed"
+                        | translate}}</td>
+                    <td align=center ng-if="!assign.status">{{"employer.draft"
+                        | translate}}</td>
+                    <td>{{assign.deadline | date: 'dd/MM/yyyy'}}</td>
+                    <td style="padding: 2px 15px;">
+                        <a style="cursor: pointer"
+                            ng-click="editAssign(assign)"
+                            aria-hidden="true">
+                            <img src="assets/images/edit.gif" border="0"
+                                alt="Edit Assignment">
+                        </a>
+                    </td>
+                    <td style="padding: 2px 15px;">
+                        <a style="cursor: pointer"
+                            ng-show="assign.status=='initial' || !assign.status"
+                            ng-click="deleteAssign(assign)"
+                            aria-hidden="true">
+                            <span class="glyphicon glyphicon-remove"
+                                style="color: red" aria-hidden="true"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div align="right" style="font-size: 14px;">
+            {{"employer.assignment.choosepage" | translate}}
+            <select name="pageOptions"
+                ng-options="option.name | translate for option in pageOptions.availableOptions track by option.value"
+                ng-model="pageOptions.selectedOption"
+                ng-change="changeItemsPerPage(pageOptions.selectedOption)"></select>
+            {{"employer.assignment.onepage" | translate}}
+            <br>
+            <ul class="pagination"
+                uib-pagination
+                total-items="totalAssigns"
+                ng-model="currPage"
+                max-size="maxSize"
+                items-per-page="itemsPerPage"
+                num-pages="numPages"
+                first-text = "&laquo;"
+                last-text = "&raquo;"
+                previous-text = "&lsaquo;"
+                next-text = "&rsaquo;"
+                ng-change = "changePage(currPage)"
+                boundary-links="true"
+                force-ellipses="true"></ul>
+        </div>
+    </div>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

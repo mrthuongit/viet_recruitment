@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\modules\cc\controllers\cc_company.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">app/modules/cc/controllers/</a> cc_company.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.27% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/79</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.27% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/79</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+angular.module('customerCareModule').controller('CustomerCareCompanyController', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $location, $routeParams, </span>
+  $admin, _, localStorageService, blockUI,$q) {
+<span class="cstat-no" title="statement not covered" >	$scope.userCustomerCare = localStorageService.get('userCustomerCare');</span>
+<span class="cstat-no" title="statement not covered" >	$scope.viewCustomerCare = { page: "company"};</span>
+<span class="cstat-no" title="statement not covered" >  var token = $scope.userCustomerCare.token;</span>
+  //var code = 0;
+&nbsp;
+	
+<span class="cstat-no" title="statement not covered" >	$rootScope.doLogout = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >    	  $admin.logoutAccount({ token: $rootScope.userCustomerCare.token }, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >	          if (result.status) {</span>
+<span class="cstat-no" title="statement not covered" >	        	 $scope.userCustomerCare = null;</span>
+<span class="cstat-no" title="statement not covered" >	            localStorageService.remove('userCustomerCare');</span>
+<span class="cstat-no" title="statement not covered" >	            $location.path('/cc');</span>
+	          }
+    	  });
+      }
+<span class="cstat-no" title="statement not covered" >  $scope.setPage = <span class="fstat-no" title="function not covered" >function(pageNo) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.currentPage = pageNo;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    $scope.pageChanged = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        $log.info('Page changed to: ' + $scope.currentPage);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    $scope.setItemsPerPage = <span class="fstat-no" title="function not covered" >function(num) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.itemsPerPage = num;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.currentPage = 1; </span>//reset to first paghe
+    };    
+<span class="cstat-no" title="statement not covered" >    $scope.setSearch = <span class="fstat-no" title="function not covered" >function(search) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $scope.totalItems = $scope.list.length;</span>
+    };
+	
+<span class="cstat-no" title="statement not covered" >      var getLicense = <span class="fstat-no" title="function not covered" >function(defer) {</span></span>
+<span class="cstat-no" title="statement not covered" >         if (!localStorageService.get('licenseList')) {</span>
+<span class="cstat-no" title="statement not covered" >    	  $admin.getLicense({token: $scope.userCustomerCare.token}, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >              if (result.status &amp;&amp; result.data.result) {</span>
+<span class="cstat-no" title="statement not covered" >            	  $scope.listLicense = result.data.licenseList;</span>
+<span class="cstat-no" title="statement not covered" >            	  localStorageService.set('licenseList', $scope.listLicense);</span>
+<span class="cstat-no" title="statement not covered" >            	  defer.resolve();</span>
+              }
+            });
+      } else {
+<span class="cstat-no" title="statement not covered" >        $scope.listLicense = localStorageService.get('licenseList');</span>
+<span class="cstat-no" title="statement not covered" >        defer.resolve();</span>
+      }
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var getCompany =  <span class="fstat-no" title="function not covered" >function(defer) {</span></span>
+        // if (!localStorageService.get('companyList')) {
+<span class="cstat-no" title="statement not covered" >        	  $admin.getCompany({ token: $scope.userCustomerCare.token}, <span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >              if (result.status &amp;&amp; result.data.result) {</span>
+<span class="cstat-no" title="statement not covered" >	            	$scope.listCompany = result.data.companyList;</span>
+<span class="cstat-no" title="statement not covered" >		            localStorageService.set('companyList', $scope.listCompany);</span>
+	            }
+<span class="cstat-no" title="statement not covered" >              $scope.totalItems = $scope.listCompany.length;</span>
+<span class="cstat-no" title="statement not covered" >              defer.resolve();</span>
+        	  });
+        // } else {
+        //     $scope.listCompany = localStorageService.get('companyList');
+        //     $scope.totalItems = $scope.listCompany.length;
+        //     defer.resolve();
+        // }
+&nbsp;
+        // localStorageService.set('companyList', $scope.listCompany);
+<span class="cstat-no" title="statement not covered" >        $scope.viewby = 8;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.currentPage = 1;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.itemsPerPage = $scope.viewby;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.maxSize = 5;</span>
+        
+      }    
+          
+<span class="cstat-no" title="statement not covered" >      $scope.getEmail = <span class="fstat-no" title="function not covered" >function(Companyid) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >        var company = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >         $admin.getLicenseInfo({token: token, companyId: Companyid}, <span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >          if(result.status){</span>
+<span class="cstat-no" title="statement not covered" >            company = result.data.licenseInfo.email;</span>
+<span class="cstat-no" title="statement not covered" >            deferred.resolve(company);</span>
+          } else {
+<span class="cstat-no" title="statement not covered" >            deferred.resolve(company);</span>
+          }        
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return deferred.promise;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $scope.getPoint = <span class="fstat-no" title="function not covered" >function(Companyid) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >          var point = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >           $admin.getLicenseInfo({token: token, companyId: Companyid}, <span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >            if(result.status){</span>
+<span class="cstat-no" title="statement not covered" >              point = result.data.licenseInfo.point;</span>
+<span class="cstat-no" title="statement not covered" >              deferred.resolve(point);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              deferred.resolve(point);</span>
+            }        
+          });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          return deferred.promise;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var getPointCompany = <span class="fstat-no" title="function not covered" >function(defer) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $scope.listCompany.reduce(<span class="fstat-no" title="function not covered" >function(prev, curr) {</span></span>
+<span class="cstat-no" title="statement not covered" >              return prev.then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                return $scope.getPoint(curr.id).then(<span class="fstat-no" title="function not covered" >function(pointC) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  return curr.point = pointC;</span>
+                });
+              });
+            }, Promise.resolve());
+<span class="cstat-no" title="statement not covered" >        defer.resolve();</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var init = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        var deferArray = [$q.defer(), $q.defer(), $q.defer()];</span>
+<span class="cstat-no" title="statement not covered" >        var loopPromises = [];</span>
+<span class="cstat-no" title="statement not covered" >        angular.forEach(deferArray, <span class="fstat-no" title="function not covered" >function(deferItem) {</span></span>
+<span class="cstat-no" title="statement not covered" >            loopPromises.push(deferItem.promise);</span>
+        });
+<span class="cstat-no" title="statement not covered" >        deferArray[0].promise.then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            getCompany(deferArray[1]);</span>
+        });
+<span class="cstat-no" title="statement not covered" >        deferArray[1].promise.then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            getPointCompany(deferArray[2]);</span>
+        });
+        
+<span class="cstat-no" title="statement not covered" >        getLicense(deferArray[0]);</span>
+<span class="cstat-no" title="statement not covered" >          $q.all(loopPromises).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            $scope.listCompany.reduce(<span class="fstat-no" title="function not covered" >function(prev, curr) {</span></span>
+<span class="cstat-no" title="statement not covered" >              return prev.then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                return $scope.getEmail(curr.id).then(<span class="fstat-no" title="function not covered" >function(company) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  return curr.used = company;</span>
+                });
+              });
+            }, Promise.resolve());
+          });
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      init();</span>
+      
+  });</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 16 2016 13:24:13 GMT+0700 (SE Asia Standard Time)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

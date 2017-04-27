@@ -1,0 +1,13 @@
+<script type="text/ng-template" id="createVideoModal.html">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{"employee.profile.videoIntro" | translate}}</h4>
+  </div>
+  <div class="modal-body text-center">
+    <div style="width: 480px; height: 320px; margin:auto;">
+      <video-profile
+      url="videoUrl"
+      avatar="avatar"></video-profile>        
+    </div>
+  </div>
+</script>

@@ -1,0 +1,68 @@
+<style >
+
+</style>
+<div ng-include="'app/modules/main/views/menu_main.html'"></div>
+
+<div class="container container-job-detail" style="margin-top: 2%;">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+
+      <div class="job-header">
+        <div class="row">
+          <div class="col-sm-2">
+            <a class="logo-company thumbnail">
+              <img ng-if="company.image" ng-src="{{ 'data:image/png;base64, ' + company.image }}" alt="{{ company.name }}">
+              <img ng-if="!company.image" ng-src="assets/images/no_logo_company.png" alt="company.name">
+            </a>
+          </div>
+          <div class="col-sm-7">
+            <h3>{{ job.name }}</h3>
+            <p>{{"employee.applyCompany" | translate}}: {{ company.name }}</p>
+            <p>{{"employee.expires" | translate}}: {{ job.deadline }}</p>
+            <p ng-if="job.provinceId || job.countryId">{{"employee.address" | translate}}: {{ job.provinceName }}, {{ job.countryName }}</p>
+          </div>
+          <div class="col-sm-3" style="margin-top: 7%;">
+            <span ng-if="applyed" style="text-transform: uppercase; font-weight: 500; font-size: 16px; border: 1px solid #3A5FCD; padding: 12px 12px; background-color: ghostwhite; color: #3A5FCD; border-radius: 5px;">{{"employee.applyed" | translate}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>{{"employee.description" | translate}}</h4>
+        </div>
+        <div class="panel-body">
+          <div ng-bind-html="job.description"></div>
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>{{"employee.requirement" | translate}}</h4>
+        </div>
+        <div class="panel-body">
+          <div ng-bind-html="job.requirements"></div>
+        </div>
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>{{"employee.company" | translate}}</h4>
+        </div>
+        <div class="panel-body">
+          <p><b>{{ company.name }}</b></p>
+          <p ng-if="company.videoUrl">
+            <button class="btn btn-warning" ng-click="openVideoCompanyModal()"><i class="fa fa-video-camera" aria-hidden="true"></i> {{"employer.assignment.aboutVideo" | translate}}</button>
+          </p>
+          <div ng-if="company.description" ng-bind-html="company.description"></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div ng-if="!applyed && !job.endjob" class="text-center">
+  <button ng-click="gotoApplyJob()" type="button" class="btn btn-primary">{{"employee.apply" | translate}}</button>
+</div>
+</div>
+<div ng-include="'app/modules/main/modals/popup_video_company.html'"></div>
+<div ng-include="'app/modules/main/views/footer_main.html'"></div> 

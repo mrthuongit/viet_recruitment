@@ -1,0 +1,38 @@
+<div  style="margin: 20px" ng-controller="QuizWelcomeController">
+    <div class="row">
+        <p>
+        <span style="font-weight: bold; font-size: 24pt; color: graytext;">{{"interview.hi" | translate}},
+            {{candidate.email}} .</span>
+            <br>
+        <span style="font-weight: bold; color: graytext;">{{"interview.welcomeQuiz" | translate}}</span>
+    </div>
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="color: #0099FF">
+                <b>{{interview.name}} </b>
+            </div>
+            <div class="panel-body">
+                <video id="webcam" src={{welcomeSrc|trusted}} autoplay  style="width:480px;height:320px">
+                </video>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <input type="checkbox" name="checkview" id="checkview" value="checkview"
+            ng-model="agree" ng-checked="agree" title="I agree">
+        <label for="checkview"
+            style="color: graytext; font-size: small; font-family: cursive;">
+            {{"interview.iAgree" | translate}}
+            <a href="#">{{"interview.service" | translate}}</a>
+            {{"interview.and" | translate}}
+            <a href="">{{"interview.policy" | translate}}</a>
+        </label>
+            <br>
+        <p>
+            <input class="btn btn-lg btn-success" type="button"
+                name="moveover" ng-disabled="!agree" value='{{"interview.continue" | translate}}'
+                style="font-size: 16px;" ng-click="agreeToProceed()">
+        </p>
+    </div>
+</div>

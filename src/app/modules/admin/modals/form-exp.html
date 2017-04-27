@@ -1,0 +1,127 @@
+<style type="text/css">
+	.btn-group > .btn {
+        padding: 2px 5px;
+        font-size: 12px;
+    }
+    .ta-scroll-window > .ta-bind {
+        height: auto;
+        min-height: 100px;
+    }
+    .ta-editor.ta-html, .ta-scroll-window.form-control {
+        min-height: 100px;
+        height: auto;
+    }
+</style>
+<form name="formExp" class="form-data" novalidate>
+	<div class="modal-body">
+		<div class="form-group row"
+			ng-class="{ 'has-error' : formExp.title.$invalid 
+            &&!formExp.title.$pristine }">
+            <div class="col-sm-6">
+            	<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.jobTitle" | translate}}</label>
+				<input type="text" class="form-control" name="title" ng-model="currExp.title" ng-value="{{ currExp.title }}" required autofocus>
+				<span ng-show="formExp.title.$invalid && !formExp.title.$pristine" class="help-block">{{"required" | translate}}</span>
+            </div>
+            <div class="col-sm-6">
+            	<label for="position"><span class="required">*</span>{{"employer.invitation.Ass" | translate}}</label>
+				<select class="form-control" 
+					ng-model="positions.seletedPosition"
+					ng-options="position.title | translate for position in positions.availabePositions track by position.id" 
+					ng-value="position.id">
+				</select>
+				<!-- <span ng-show="formExp.position.$invalid && !formExp.title.$pristine" class="help-block">{{"required" | translate}}</span> -->
+            </div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group"
+                    ng-class="{ 'has-error' : formExp.employer.$invalid 
+                    &&!formExp.employer.$pristine }">
+					<label for="exampleInputPassword1"><span class="required">*</span>{{"employee.applyCompany" | translate}}</label>
+					<input type="text" class="form-control" name="employer" ng-model="currExp.employer" ng-value="{{ currExp.employer }}" required>
+					<span ng-show="formExp.employer.$invalid && !formExp.employer.$pristine" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group exp-current">
+					<input id="current-job" type="checkbox" ng-model="currExp.current">
+					<label for="current-job">{{"employee.latestJob" | translate}}</label>
+				</div>	
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<label for="exampleInputPassword1"><span class="required">*</span>{{"employee.major" | translate}}</label>
+		  	<ui-select multiple tagging="tagTransform" tagging-tokens="SPACE|,|/" ng-model="categories.selectedCategory" theme="bootstrap" ng-disabled="disabled" style="width: 800px;" title="Choose a person">
+			    <ui-select-match placeholder="Select">{{$item.title}}</ui-select-match>
+			    <ui-select-choices repeat="category in categories.availableCategories">
+				    <div ng-if="category.isTag" ng-bind-html="category.title + ' ' + $select.taggingLabel | highlight: $select.search"></div>
+				    <div ng-if="!category.isTag" ng-bind-html="category.title | highlight: $select.search"></div>
+			    </ui-select-choices>
+		  	</ui-select>
+		</div>
+			
+		<div class="row">
+			<div class="col-sm-12">
+				<label for="exampleInputEmail1">{{"employee.jobLocation" | translate}}</label>
+			</div>					
+			<div class="col-sm-6">
+				<div class="form-group">
+					<select class="form-control" 
+						id="countries-list"
+						ng-model="countries.selectedCountry"
+						ng-options="country.title | translate for country in countries.availableCountries track by country.id" 
+						ng-value="country.id"
+						ng-change="getProvincesListByCountry(countries.selectedCountry.id)">
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<select class="form-control" 
+						id="province-list"
+						ng-model="provinces.selectedProvince"
+						ng-options="province.title | translate for province in provinces.availableProvinces track by province.id"
+						ng-value="province.id">
+					</select>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="exampleInputEmail1">{{"employee.startDate" | translate}}</label>
+                	<p class="input-group" ng-init="popupExpstart.opened = false">
+			          	<input type="text" class="form-control" uib-datepicker-popup 
+			          	ng-model="currExp.startDate2" is-open="popupExpstart.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" name="startDate"/>
+			          	<span class="input-group-btn">
+			            	<button type="button" class="btn btn-default" ng-click="popupExpstart.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+			          	</span>
+			        </p>
+			        <p class="required_employer" ng-if="formExp.startDate.$error.required">{{"required" | translate}}</p>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="exampleInputEmail1">{{"employee.end" | translate}}</label>
+                	<p class="input-group" ng-init="popupExpend.opened = false">
+			          	<input type="text" class="form-control" uib-datepicker-popup 
+			          	ng-model="currExp.endDate2" is-open="popupExpend.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" name="endDate"/>
+			          	<span class="input-group-btn">
+			            	<button type="button" class="btn btn-default" ng-click="popupExpend.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+			          	</span>
+			        </p>
+			        <p class="required_employer" ng-if="formExp.endDate.$error.required">{{"required" | translate}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">{{"employee.responsibilities" | translate}}</label>
+			<div text-angular ng-model="currExp.description" id="{{responsibilities + $index}}" placeholder='{{"employee.responsibilities" | translate}}' class="text-editor" name="{{responsibilities + $index}}"></div>
+		</div>				
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="cancelEditExp()">{{"employee.cancel" | translate}}</button>
+		<button type="button" class="btn btn-primary" ng-disabled="formExp.$invalid" ng-click="saveEmployeeExp()">{{"employee.save" | translate}}</button>
+	</div>
+</form>

@@ -1,0 +1,15 @@
+
+<div  style="height: 100%; padding: 2px;">
+    <div style="width:100%" ng-init="iimage = true; ipdf = true;">
+        <button ngf-select="insertFile(file)" class="btn btn-default" ng-model="file" ngf-max-size="10MB" style="color: coral; height: 32px" >
+            <i class="fa fa-upload" aria-hidden="true" style="font-size: 15px;"></i>&nbsp;
+            <span>Upload File</span>
+        </button>
+    </div>
+    <div id="whiteboard" style="height:calc(100% - 35px);width:100%">
+        <img ng-if="displayImage" src={{whiteboard.image.data}} style="max-width:100%;max-height:100%;">
+        <div ng-if="!displayImage" ng-controller="sharePdfCtrl" style="max-width:100%;max-height:100%;">
+			<ng-pdf template-url="app/shared/share-pdf/viewer.html" canvasid="pdf" scale="page-fit" page=1 style="max-height:100%;"></ng-pdf>
+		</div>
+    </div>
+</div>

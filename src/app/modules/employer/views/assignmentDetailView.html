@@ -1,0 +1,172 @@
+<style type="text/css">
+.btn-group>.btn {
+	padding: 2px 5px;
+	font-size: 12px;
+}
+
+.ta-scroll-window>.ta-bind {
+	height: auto;
+	min-height: 100px;
+}
+
+.ta-editor.ta-html, .ta-scroll-window.form-control {
+	min-height: 100px;
+	height: auto;
+}
+a.btn.btn-success.ng-binding::after {
+    display: none;
+}
+</style>
+<div ng-include src="'app/modules/employer/views/menu.html'"></div>
+<div class="body-info-employer" align=center>
+    <div class="panel panel-info" id="marginfrom">
+        <div class="panel-heading headtitle">
+            <span ng-if="chooseAssignment && chooseAssignment.id">{{"employer.assignment.editAssignment"|translate}}</span>
+            <span ng-if="!chooseAssignment || !chooseAssignment.id">{{"employer.assignment.newAssignment"|translate}}</span>
+            <div ng-if="chooseAssignment.id" align=center
+                style="float: right">
+                <a class="btn btn-success"
+                    ng-show="chooseAssignment.id"
+                    href="/#/employer/interview_list"
+                    style="margin-bottom: 5px !important; background-color: #4cae4c">
+                    <span class="glyphicon glyphicon-film"
+                        aria-hidden="true"></span>
+                    {{"employer.assignment.videoInterviewBtn" |
+                    translate}} 
+                </a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form name="assignmentCE">
+                <div class="row">
+                    <div class="col-sm-9" align=left>
+                        <label for="name" class="titleAss">{{"employer.assignment.name"
+                            | translate}}</label>
+                        <input type="text" class="form-control"
+                            id="name" name="name"
+                            ng-model="chooseAssignment.name"
+                            placeholder='{{"employer.assignment.name" | translate}}'
+                            ng-required="true" autofocus>
+                        <p class="required_employer"
+                            ng-if="assignmentCE.name.$error.required">{{"required"
+                            | translate}}</p>
+                        <br>
+                        <label style="cursor: pointer" for="description"
+                            class="titleAss"
+                            ng-click="showDesc=!showDesc"
+                            ng-init="showDesc=true">{{"employer.assignment.description"
+                            | translate}}</label>
+                        <div text-angular ng-show="showDesc"
+                            ng-model="chooseAssignment.description"
+                            id="description" class="text-editor"
+                            name="description" ng-required="true"></div>
+                        <p class="required_employer"
+                            ng-if="assignmentCE.description.$error.required">{{"required"
+                            | translate}}</p>
+                        <br>
+                        <label style="cursor: pointer" for="description"
+                            class="titleAss" ng-click="showReq=!showReq"
+                            ng-init="showReq=true">{{"employer.assignment.requirements"
+                            | translate}}</label>
+                        <div text-angular ng-show="showReq"
+                            ng-model="chooseAssignment.requirements"
+                            id="requirements" class="text-editor"
+                            name="requirement" ng-required="true"></div>
+                        <p class="required_employer"
+                            ng-if="assignmentCE.requirement.$error.required">{{"required"
+                            | translate}}</p>
+                    </div>
+                    <div class="col-sm-3" align=left>
+                        <div class="form-group">
+                            <label for="position" class="titleAss">{{"employer.assignment.category"
+                                | translate}}</label>
+                            <ui-select multiple
+                                ng-model="chooseAssignment.categoryIdList"
+                                theme="bootstrap"
+                                close-on-select="false" ng-required="true" name="categoryIdList"> <ui-select-match>{{$item.title}}
+                            </ui-select-match> <ui-select-choices
+                                repeat="cat.id as cat in listCategories">
+                            <div
+                                ng-bind-html="cat.title | highlight: $select.search"></div>
+                            </ui-select-choices> </ui-select>
+                            <p class="required_employer" ng-if="assignmentCE.categoryIdList.$error.required">{{"required"
+                                | translate}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="position" class="titleAss">{{"employer.assignment.position"
+                                | translate}}</label>
+                            <select class="form-control"
+                                ng-options="position.id as position.title for position in listPosition"
+                                ng-model="chooseAssignment.positionId"
+                                ng-required="true" name="positionI"></select>
+                            <p class="required_employer"
+                                ng-if="assignmentCE.positionI.$error.required">{{"required"
+                                | translate}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="titleAss">{{"employer.assignment.country"
+                                | translate}}</label>
+                            <select class="form-control"
+                                ng-change="changeCountry()"
+                                ng-options="location.id as location.title for location in listLocation"
+                                ng-model="chooseAssignment.countryId"
+                                ng-required="true" name="countryI"></select>
+                            <p class="required_employer"
+                                ng-if="assignmentCE.countryI.$error.required">{{"required"
+                                | translate}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="province" class="titleAss">{{"employer.assignment.province"
+                                | translate}}</label>
+                            <select class="form-control"
+                                ng-options="level.id as level.title for level in listLevel |country:chooseAssignment.countryId"
+                                ng-model="chooseAssignment.provinceId"
+                                ng-required="true" name="provinceI"></select>
+                            <p class="required_employer"
+                                ng-if="assignmentCE.provinceI.$error.required">{{"required"
+                                | translate}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="deadline" class="titleAss">{{"employer.assignment.deadline"
+                                | translate}}</label>
+                            <div
+                                style="width: 100%; float: left; margin-bottom: 10px;">
+                                <p class="input-group"
+                                    ng-init="popupBirthday.opened = false">
+                                    <input type="text"
+                                        class="form-control"
+                                        uib-datepicker-popup
+                                        ng-disabled="chooseCompany.id && licenseInfo.license"
+                                        ng-model="chooseAssignment.deadline2"
+                                        is-open="popupdeadline.opened"
+                                        datepicker-options="dateOptions"
+                                        ng-required="true" name="deadline"
+                                        close-text="Close"
+                                        style="pointer-events: none" />
+                                    <span class="input-group-btn">
+                                        <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="popupdeadline.opened = true;">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                <p class="required_employer" ng-if="assignmentCE.deadline.$error.required">{{"required" | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div align=center>
+        <input ng-click="doSave()" type="button" class="btn btn-primary"
+            value='{{"employer.assignment.save" | translate}}'
+            style="margin-bottom: 5px !important; width: 120px;">
+        <a class="btn btn-default" href="/#/employer"
+            style="margin-bottom: 5px !important; width: 120px;">{{"employer.assignment.cancel" | translate}}</a>
+    </div>
+    <br>
+</div>
+<div ng-include src="'app/modules/employer/views/footer.html'"
+    align="center" class="footer-employer"></div>

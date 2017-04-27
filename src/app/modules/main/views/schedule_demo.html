@@ -1,0 +1,111 @@
+<style>
+  .formct > div {
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  .formct > div> input{
+    color: black;
+  }
+</style>
+<div ng-include src="'app/modules/main/views/menu_main.html'"></div>
+<div style="background-image: url('assets/images/home/bg_schedule.jpg');">
+  <div style="background-color: #1c1c1c; opacity: 0.9;">
+    <section id="schedule">
+      <div class="container-fluid">
+        <div class="row" style="margin-top: 10%; margin-bottom: 3%">
+          <div class="container">
+            <div class="row">
+              <div class="allsolution">
+                <div class="col-sm-8">
+                  <p class="moto-text_system_4" style="font-size: 23px; text-align: center; text-shadow: 1px 1px 1px #fff; color: #fff; text-transform: uppercase; line-height: 35px; font-weight: 500; ">{{"main.tip" | translate}}<br></p>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                  <img src="assets/images/keyhand.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-fluid">
+        <div class="row" style="margin-bottom: 7%;">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-5">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1mzpGLRN2a5OlwaPaFU1U4rA4KUE" width="100%" height="450" style="border-radius: 5px;"></iframe>
+              </div>
+              <div class="col-sm-1"></div>
+              <div class="col-sm-6">
+                <div style="background-color: #E6E6E6;">
+                  <p style=" font-size: 23px; text-transform: capitalize; font-weight: 400; text-align: left; padding: 0px 30px; margin-bottom: 0px;"><span>{{"scheduleDemo.request" | translate}}</span></p>
+                </div>
+                <div style="padding: 10px 30px; background-color: #fff; color: #1c1c1c;">
+                  <form name="contactForm" class="formct">
+                    <div>
+                      <input type="text" class="form-control" ng-model="contact.fullname" name="fullname" required placeholder='{{"scheduleDemo.fullname" | translate}}' style="font-size: 17px; margin-bottom: 5px;">
+                      <span ng-show="contactForm.fullname.$invalid && !contactForm.fullname.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" ng-model="contact.company" name="company" required placeholder='{{"scheduleDemo.company" | translate}}' style="font-size: 17px; margin-bottom: 5px;">
+                      <span ng-show="contactForm.company.$invalid && !contactForm.company.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div>
+                      <input type="text" class="form-control" ng-model="contact.job" name="job" required placeholder='{{"scheduleDemo.job" | translate}}' style="font-size: 17px; margin-bottom: 5px;">
+                      <span ng-show="contactForm.job.$invalid && !contactForm.job.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div>
+                      <input type="email" class="form-control" ng-model="contact.email" name="email" required placeholder='{{"scheduleDemo.email" | translate}}' style="font-size: 17px; margin-bottom: 5px;">
+                      <span ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div>
+                      <input type="tel" class="form-control" ng-model="contact.phone" name="phone" required placeholder='{{"scheduleDemo.phone" | translate}}' style="font-size: 17px; margin-bottom: 5px;">
+                      <span ng-show="contactForm.phone.$invalid && !contactForm.phone.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div>
+                      <textarea class="form-control" ng-model="contact.information" name="information" required placeholder='{{"scheduleDemo.information" | translate}}' style="font-size: 17px; margin-bottom: 0px;"></textarea>
+                      <span ng-show="contactForm.information.$invalid && !contactForm.information.$pristine" class="">{{"required" | translate}}</span>
+                    </div>
+                    <div style="margin-top: 15px; padding-bottom: 27px;">
+                      <div class="moto-widget moto-widget-button moto-preset-4 moto-align-left">
+                        <button type="button" class="btn btn-success" ng-click="scheduleDemo()" style="padding: 10px 45px;">{{"employee.send" | translate}}</button>
+                      </div>
+                      <p class="show-mess" ng-show="!sendDemo">{{"employee.showNotification" | translate}}!</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="" style="padding: 80px 25px; background-color: #fff;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="moto-cell col-sm-1"></div>
+            <div class="moto-cell col-sm-10" data-container="container" style="border: 1px solid #d9d9d9; padding-top: 15px; padding-bottom: 15px; padding-left: 0px; padding-right: 0px; margin-bottom: 20px;">
+              <marquee id="marq" scrollamount="3" loop="50" scrolldelay="0" >
+                <a style="cursor: pointer">
+                  <img src="assets/images/customer_logo/hdsaison.png" title="Vietinterview" width="130" height="90"/>
+                </a>
+                <a style="cursor: pointer">
+                  <img src="assets/images/customer_logo/homcredit.png" title="Vietinterview" width="130" height="90"/>
+                </a>
+                <a style="cursor: pointer">
+                  <img src="assets/images/customer_logo/trananh.jpg" title="Vietinterview" width="130" height="90"/>
+                </a>
+              </marquee>
+            </div>
+            <div class="moto-cell col-sm-1"></div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </div>
+</div>
+<div ng-include src="'app/modules/main/views/footer_main.html'"></div>

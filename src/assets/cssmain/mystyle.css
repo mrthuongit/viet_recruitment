@@ -1,0 +1,400 @@
+#bs-example-navbar-collapse-1 ul li a {
+	color: #0579ab;
+    font-family: Source Sans Pro;
+  	font-weight: bold;
+    font-size: 15px;
+
+}
+.cool-link {
+    display: inline-block;
+}
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2.5px;
+    background: rgb(6,122,171);
+    transition: width .4s;
+}
+
+.cool-link:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+#main_menu {
+	background: white;
+
+
+}
+.m_t_10 {
+	background-color: rgb(6,122,171);
+	border: solid white 1px;
+	font-weight: bold;
+    font-size: 18px;
+    width: 18%;
+}
+.btnbasic {
+	background-color: rgb(6,122,171);
+	font-weight: bold;
+    font-size: 18px;
+	border-radius: 3%;
+	font-family: Source Sans Pro;
+
+
+}
+.btnbasic:hover {
+	background-color: rgba(255,255,255,0);
+	font-weight: bold;
+	border: solid 2px rgb(6,122,171);
+    font-size: 18px;
+	border-radius: 3%;
+	color: black;
+
+
+}
+.home_btn a:hover {
+	background-color: rgba(255,255,255,0);
+	color: white;
+}
+.btnsolution {
+	background: white;
+	color:black;
+	border: solid 2px black;
+	border-radius: 4px;
+	
+	text-align: center;
+}
+.btnsolution:hover {
+	color: black;
+	background: white;
+	border: solid 2px rgb(6,122,171);
+	border-radius: 4px;
+
+}
+#bs-example-navbar-collapse-1 ul li a:hover{
+	 
+
+}
+.content { margin-top: 30px; }
+
+
+.home{
+  
+    
+}
+
+
+
+.bannerbot {
+	width: 100%;
+}
+.btnbottom {
+	margin-top: -300px;
+    margin-left: 200px;
+    
+}
+.mainmenu ul li a {
+
+}
+.mainmenu ul li a {
+	
+}
+.sign1 {
+	font-weight: bold;
+    color: black;
+    margin-left: 18px;
+}
+.single_history_content p {
+	  color: black;
+    margin-top: -50px;
+    font-size: 17px;
+    margin-left: 40px;
+}
+@media screen and (max-width: 770px) {
+    .btnbottom {
+	margin-top: -150px;
+    margin-left: 100px;
+	}
+	.single_history_content p{
+		margin-top: 20px;
+	}
+
+}
+@media (min-width: 768px) and (max-width: 1131px){
+
+	.img-review1{
+	
+	margin-left: 0px;
+}
+}
+/*  ---- Price -----*/
+.headtab h2 {
+	color: black;
+    border-bottom: solid;
+    max-width: 150px;
+  
+    margin: auto;
+}
+.footermain {
+	background:rgb(55, 59, 67);
+    margin-top: -21px
+}
+ .logoft {
+	 max-width: 50%;
+    margin-top: 30px;
+    margin-left: 70px;
+
+}
+.contactft p{
+	font-size: 25px;
+    color: white;
+    margin-top: 30px;
+}
+.contactft i {
+
+    color: white;
+    font-size: 20px
+}
+.ftcontent p
+{
+	font-size: 15px;
+    margin-top: 10px;
+
+}
+.ftlogo {
+	    margin-top: 15px;
+
+}
+.ftlogo i {
+	font-size: 30px;
+}
+.contactft .col-xs-4 p {
+	font-size:13px;
+}
+.bgcolor {
+	min-height: 430px;
+	 background-color: rgba(32, 166, 235, .5); 
+}
+.bgcolor h2 {
+	    color: white;
+    padding-top: 20px
+}
+.head_title3 {
+	margin-bottom: 10px;
+}
+.btnprice {
+	text-align: center;
+}
+.head_title3  h2{
+	margin-top: 16px;
+}
+.btnsolutionpr {
+	background: white;
+	color:black;
+	border: solid 2px black;
+	border-radius: 4px;
+	font-family: Source Sans Pro;
+}
+.btnsolutionpr:hover {
+	color: black;
+	background: white;
+	border: solid 2px rgb(6,122,171);
+	border-radius: 4px;
+
+}
+.phantram {
+	margin-top: -16%;
+    margin-left: 18%;
+}
+.pt {
+	    padding-right: 14%;
+}
+.mytable thead tr th {
+	font-family: Source Sans Pro;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	border: solid 1px black;
+	border-top: solid 1px black;
+	color: black;
+}
+.mytable tbody tr td {
+	font-weight: 300;
+	font-family: Source Sans Pro;
+	font-size: 20px;
+	text-align: center;
+	border: solid 1px black;
+	color: black;
+}
+.tabprice {
+	
+ }
+.tabprice {
+	margin-bottom: 20px;
+}
+.tabprice h2 {
+	margin-top: 0px;
+	margin: auto;
+	max-width: 320px;
+	text-align: center;
+	border-bottom: solid 2px;
+	color: black;
+	font-family: Source Sans Pro;
+	margin-bottom: 10px;
+}
+
+.bannermain {
+	 width: 100%;
+	background: white;
+	height: auto;
+}
+.bgbannermain {
+
+ width: 100%;
+}
+.bgbanner {
+	background-image: url("../images/headerD.gif");
+	min-height: 540px;
+    margin-top: 75px;
+    padding-top: 4%;
+
+}
+.contentbanner .iicon i  {
+	color: #067aab ;
+	font-size: 50px;
+
+}
+.contentbanner .iicon a {
+	font-size: 30px;
+	color: #067aab;
+}
+.bgbanner h1 {
+	margin-top: 7%;
+ 	text-align: center;
+ 	margin: auto;
+    color: white;
+    font-size: 35px;
+    font-weight: bold
+}
+.bgbanner h2 {
+	color: white;
+	text-align: center;
+	margin: auto;
+	font-size: 24px;
+	padding-top:2%;
+	font-weight: 300;
+}
+.color {
+	color:black;
+}
+.single_counter_item span {
+	font-size: 25px;
+	color: white;
+}
+.titeldf{
+	color:black;
+	margin: auto;
+	text-align: center;
+
+}
+.titeltop {
+	margin-top: 6%;
+	text-decoration: underline ;
+	color: white;
+}
+
+
+
+.contentbanner {
+	background: rgba(255,255,255,0.7);
+	min-height: 350px;
+	width: 80%;
+	margin: auto;
+
+}
+.contentbanner h2 {
+	color: #067aab;
+}
+.downicon {
+	margin-top:100px;
+
+}
+
+.round {
+	min-height: 150px;
+}
+.sground {
+	width: 178px;
+	height: 178px;
+	border-radius:50%;
+	background: #96c952;
+
+}
+.allround {
+	margin-top: 4.5%;
+    margin-left: 9%;
+}
+.twoicon {
+	padding-top: 23%;
+    text-align: center
+}
+.twoicon i {
+	color: white;
+    font-size: 60px;
+    text-align: center;
+}
+.twoicon p {
+    color: white;
+    font-size: 16px;
+}
+.mainReview {
+	background: #ebebeb;
+	color: black;
+}
+.mainReview h3 {
+	font-size: 28px;
+	font-weight: 600;
+	 /*margin-top: 12%;*/
+}
+.mainReview .col-md-6 {
+	padding-left: 5%;
+    border-right: solid 2px white;
+}
+
+.mainReview h4 {
+	margin-bottom: 9%;
+}
+.clearfix {
+	margin-top: 4%;
+}
+.quotecontent p{
+	    text-align: center;
+}
+.btnplay {
+	margin: auto;
+	text-align: center;
+}
+.mshow  h2 {
+	text-align: center;
+	color: white;
+}
+.contactText > a{
+    font-size: 12px;
+    color: white;
+}
+.contactText > a:hover {
+    color: white;
+}
+p.size16 {
+	font-size: 16px;
+}
+p.size18 {
+	font-size: 18px;
+}
+p.size20 {
+	font-size:20px;
+}
+p.size22 {
+	font-size:20px;
+}

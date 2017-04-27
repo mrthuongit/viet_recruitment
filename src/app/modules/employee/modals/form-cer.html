@@ -1,0 +1,44 @@
+<form name="formCer" class="form-data" novalidate>
+	<div class="modal-body">
+		<div class="form-group"
+			ng-class="{ 'has-error' : formCer.nameCer.$invalid 
+            &&!formCer.nameCer.$pristine }">
+			<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.certifTitle" | translate}}</label>
+			<input type="text" class="form-control" ng-model="currCer.title" name="nameCer" ng-value="{{ currCer.title }}" required>
+			<span ng-show="formCer.nameCer.$invalid  && !formCer.nameCer.$pristine" class="help-block">{{"required" | translate}}</span>
+		</div>
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="form-group"
+					ng-class="{ 'has-error' : formCer.issuer.$invalid 
+            		&&!formCer.issuer.$pristine }">
+					<label for="exampleInputEmail1"><span class="required">*</span>{{"employee.issuer" | translate}}</label>
+					<input type="text" class="form-control" name="issuer" ng-model="currCer.issuer" ng-value="currCer.issuer" required>
+					<span ng-show="formCer.issuer.$invalid  && !formCer.issuer.$pristine" class="help-block">{{"required" | translate}}</span>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">{{"employee.issueDate" | translate}}</label>					
+                	<div class="input-group">
+                        <input type="text" 
+                            class="form-control"        
+                            uib-datepicker-popup 
+                            ng-model="currCer.issueDate" 
+                            is-open="popupIssueDate.opened" 
+                            datepicker-options="dateOptions" 
+                            ng-required="true" 
+                            close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="popupIssueDate.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="cancelCer()">{{"employee.cancel" | translate}}</button>
+		<button type="button" class="btn btn-primary" ng-click="saveEmployeeCer(currCer)" ng-disabled="formCer.$invalid">{{"employee.save" | translate}}</button>
+	</div>
+</form>
